@@ -1,0 +1,516 @@
+/* --- CORE STYLES FROM P15B / JSS .STYLE --- */
+
+/* PropertySet fallbacks */
+.ps-bold {
+    font-weight: bold;
+}
+
+.ps-italic {
+    font-style: italic;
+}
+
+.ps-Link {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.ps-box {
+    background-color: #F0F0F0;
+    border: 1px solid #000;
+    padding: 2pt;
+}
+
+.ps-preformatted_font {
+    font-family: monospace;
+}
+
+/* Title Base Styles (from Title_font, Title_color, Title_alignment) */
+.ps-Title_font {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Mapped Sanserif */
+.ps-Title_color {
+    color: #000000;
+}
+
+/* Most titles in .style override to black */
+.ps-Title_alignment {
+    text-align: left;
+}
+
+/* Specific Title Level Sizes */
+.ps-Title_document {
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+/* For main DM title */
+.ps-Title_1 {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.ps-Title_2 {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.ps-Title_3 {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.ps-Title_4 {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.ps-Title_formalBlock {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* --- JSS-SPECIFIC ELEMENT STYLING (derived from P15B .style) --- */
+
+/* Chapter Title (S1000D procedure/title) */
+.s1000d-procedure-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    /* From Title_space */
+    /* Consider adding ps-box styles here if JSS requires boxed chapter titles */
+    /* padding: 2pt; background-color: #F0F0F0; border: 1px solid #000; */
+}
+
+.s1000d-procedure-title-prefix {
+    display: block;
+    margin-bottom: 0.25em;
+}
+
+/* Section Title (S1000D levelledPara/title) */
+.s1000d-levelledPara-title {
+    font-family: 'Times New Roman', Times, serif;
+    /* As per P15B procedure/procedure/title */
+    font-size: 16pt;
+    /* For first level, adjust for deeper levels if needed */
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+}
+
+.s1000d-levelledPara-title-prefix {
+    margin-right: 0.5em;
+}
+
+/* Paragraphs */
+.s1000d-para {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    text-align: justify;
+    line-height: 1.65em;
+    margin-top: 8pt;
+    /* Standard_space from P15B */
+    margin-bottom: 6pt;
+    /* p element SpaceAfter from P15B */
+}
+
+.s1000d-para:first-child {
+    margin-top: 0;
+}
+
+li>.s1000d-para,
+/* Para directly in list item */
+li>span.s1000d-para {
+    /* Span-wrapped para in list item */
+    margin-top: 6pt;
+    /* List_item_space from P15B */
+    margin-bottom: 6pt;
+}
+
+li>span.s1000d-para {
+    display: inline;
+}
+
+/* First para in li often inline */
+
+
+/* Lists - based on P15B ol/li and ul/li */
+.s1000d-procedural-ol,
+.s1000d-random-ul {
+    margin-bottom: 8pt;
+    /* Standard_space optimum */
+}
+
+.s1000d-procedural-ol {
+    list-style-type: none;
+    counter-reset: ol-level1-jss;
+    padding-left: 0;
+}
+
+.s1000d-procedural-ol>li {
+    counter-increment: ol-level1-jss;
+    position: relative;
+    padding-left: 2.5em;
+    /* From P15B ol/li indent */
+    margin-bottom: 6pt;
+    /* From P15B List_item_space */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+}
+
+.s1000d-procedural-ol>li::before {
+    content: "(" counter(ol-level1-jss, lower-alpha) ")";
+    /* P15B (a) format */
+    position: absolute;
+    left: 0.75em;
+    width: 1.5em;
+    text-align: right;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+/* Nested OL - Example for level 2 (i, ii, ...) */
+.s1000d-procedural-ol .s1000d-procedural-ol {
+    counter-reset: ol-level2-jss;
+}
+
+.s1000d-procedural-ol .s1000d-procedural-ol>li {
+    counter-increment: ol-level2-jss;
+    padding-left: 3em;
+    /* P15B ol//ol/li indent */
+}
+
+.s1000d-procedural-ol .s1000d-procedural-ol>li::before {
+    content: counter(ol-level2-jss, lower-roman) ")";
+    /* P15B i) format */
+    /* Adjust left/width as per P15B ol//ol/li Numbering alignAt/tabtoAfter */
+    left: 0.5em;
+    width: 2em;
+    text-align: right;
+}
+
+
+.s1000d-random-ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.s1000d-random-ul>li {
+    position: relative;
+    padding-left: 1.25em;
+    /* From P15B ul/li indent */
+    margin-bottom: 6pt;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+}
+
+.s1000d-random-ul>li::before {
+    content: "•";
+    /* P15B ul/li bullet */
+    position: absolute;
+    left: 0em;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+/* Nested UL - Example for level 2 (–) */
+.s1000d-random-ul .s1000d-random-ul>li::before {
+    content: "–";
+    /* P15B ul//ul/li bullet */
+}
+
+.s1000d-random-ul .s1000d-random-ul .s1000d-random-ul>li::before {
+    content: "♦";
+    /* P15B ul//ul//ul/li bullet */
+}
+
+
+/* Figure and Table Captions (Titles) */
+.s1000d-figure-title,
+.s1000d-table-title {
+    font-family: Arial, sans-serif;
+    /* From P15B fig/title, table/title */
+    font-size: 12pt;
+    font-weight: bold;
+    /* fig/title in P15B, table/title is normal but overridden */
+    color: #000000;
+    text-align: center;
+    margin-top: 3pt;
+    margin-bottom: 6pt;
+    /* Give a bit more space after formal block titles */
+    font-style: normal;
+    /* Override Bootstrap defaults if any */
+}
+
+.s1000d-figure-title-prefix,
+.s1000d-table-title-prefix {
+    margin-right: 0.3em;
+}
+
+/* Note Styling */
+.s1000d-note {
+    /* Combines .s1000d-note and .ps-box from P15B */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    text-align: justify;
+    background-color: #F0F0F0;
+    border: 1px solid #000;
+    padding: 6pt;
+    /* Bootstrap alert padding is larger, this is closer to P15B 2pt + internal para spacing */
+    margin-top: 8pt;
+    margin-bottom: 6pt;
+}
+
+.s1000d-note .s1000d-para {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+}
+
+.s1000d-note .s1000d-para:last-child {
+    margin-bottom: 0;
+}
+
+.s1000d-note-prefix {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+/* Warnings and Cautions (based on S1000D structure, styled like notes but with Bootstrap alert colors) */
+.s1000d-warning,
+.s1000d-caution {
+    /* Inherits .s1000d-note for base font/box, Bootstrap provides color */
+    /* Specific JSS colors for warnings/cautions would go here if different from Bootstrap */
+}
+
+.s1000d-warning .alert-heading,
+.s1000d-caution .alert-heading {
+    font-weight: bold;
+    margin-right: 0.5em;
+    /* Like s1000d-note-prefix */
+}
+
+
+/* Table Cells */
+.s1000d-table td,
+.s1000d-table th {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    text-align: left;
+    line-height: 1.65em;
+    padding-top: 3pt;
+    padding-bottom: 3pt;
+    vertical-align: top;
+}
+
+.s1000d-table thead th {
+    font-weight: bold;
+    /* From P15B thead */
+}
+
+/* Symbol for Tool Icon */
+.s1000d-tool-icon {
+    height: 1em;
+    /* Or specific size based on JSS */
+    vertical-align: baseline;
+    /* Adjust as needed */
+    margin-right: 0.2em;
+}
+
+
+.s1000d-procedural-ol {
+    list-style-type: none;
+    counter-reset: ol-level1-jss;
+    /* Still useful if CSS fallback is desired or for other purposes */
+    padding-left: 0;
+}
+
+.s1000d-procedural-ol>li {
+    position: relative;
+    padding-left: 2.5em;
+    /* Keep the indent */
+    margin-bottom: 6pt;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+}
+
+/* --- Additions/Modifications for JSS Custom List Markers --- */
+
+.jss-custom-alpha-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 8pt;
+    /* Standard_space from P15B for ol */
+    margin-bottom: 8pt;
+}
+
+.jss-custom-alpha-list>li.jss-custom-alpha-li {
+    position: relative;
+    padding-left: 2.5em;
+    /* Indent for content (from P15B ol/li) */
+    margin-bottom: 6pt;
+    /* List_item_space from P15B */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    text-align: justify;
+}
+
+.jss-list-marker {
+    position: absolute;
+    left: 0;
+    width: 2.2em;
+    /* Adjusted slightly to accommodate "(a)" and space, tune as needed */
+    text-align: right;
+    padding-right: 0.3em;
+    /* Space between marker and content start */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    display: inline-block;
+}
+
+.jss-custom-alpha-li>span.s1000d-para {
+    /* First para in JSS custom list */
+    display: inline;
+}
+
+/* For nested JSS ordered lists (e.g., roman numerals using CSS counters) */
+.jss-nested-roman-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+    counter-reset: jss-roman-counter;
+    /* CSS counter for roman numerals */
+}
+
+.jss-nested-roman-list>li.jss-nested-roman-li {
+    position: relative;
+    padding-left: 3em;
+    /* Example indent for nested list */
+    margin-bottom: 6pt;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    counter-increment: jss-roman-counter;
+}
+
+.jss-nested-roman-list>li.jss-nested-roman-li::before {
+    content: counter(jss-roman-counter, lower-roman) ") ";
+    /* e.g., i) ii) */
+    position: absolute;
+    left: 0.5em;
+    /* Adjust as needed for alignment */
+    width: 2.2em;
+    /* Adjust */
+    text-align: right;
+    padding-right: 0.3em;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+.jss-nested-roman-li>span.s1000d-para {
+    /* First para in nested JSS list */
+    display: inline;
+}
+
+/* Ensure your other styles (s1000d-para, s1000d-procedure-title, etc.) are also present */
+
+/* In your custom.css / main.css */
+
+/* In your custom.css / main.css */
+
+ol.jss-custom-alpha-list {
+    list-style-type: none !important;
+    /* CRUCIAL! Hides 1, 2, 3... */
+    padding-left: 0;
+    margin-top: 8pt;
+    margin-bottom: 8pt;
+}
+
+ol.jss-custom-alpha-list>li.jss-custom-alpha-li {
+    position: relative;
+    padding-left: 2.5em;
+    /* Make space for your (a) */
+    margin-bottom: 6pt;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    text-align: justify;
+}
+
+span.jss-list-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.2em;
+    /* Adjust to fit "(a)" or wider if needed */
+    text-align: right;
+    padding-right: 0.3em;
+    /* Space marker text from actual content */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+    display: inline-block;
+}
+
+div.jss-list-item-content>span.s1000d-para {
+    /* First para inside the content wrapper */
+    display: inline;
+}
+
+/* For nested roman lists using CSS counters */
+ol.jss-nested-roman-list {
+    list-style-type: none !important;
+    padding-left: 0;
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+    counter-reset: jss-roman-counter;
+}
+
+ol.jss-nested-roman-list>li.jss-nested-roman-li {
+    position: relative;
+    padding-left: 3em;
+    margin-bottom: 6pt;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    text-align: justify;
+    counter-increment: jss-roman-counter;
+}
+
+ol.jss-nested-roman-list>li.jss-nested-roman-li::before {
+    content: counter(jss-roman-counter, lower-roman) ") ";
+    /* e.g., i) ii) - Adjust as per JSS */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.7em;
+    text-align: right;
+    padding-right: 0.3em;
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: normal;
+}
+
+div.jss-list-item-content>span.s1000d-para {
+    /* First para inside the content wrapper */
+    display: inline;
+}

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/pm.xsd">
+  <identAndStatusSection>
+    <pmAddress>
+      <pmIdent>
+        <pmCode modelIdentCode="MS" pmIssuer="00000" pmNumber="00001" pmVolume="00"/>
+        <language languageIsoCode="en" countryIsoCode="IN"/>
+        <issueInfo issueNumber="001" inWork="04"/>
+      </pmIdent>
+      <pmAddressItems>
+        <issueDate year="2025" month="07" day="08"/>
+        <pmTitle>IPMS</pmTitle>
+        <shortPmTitle>IPMS</shortPmTitle>
+      </pmAddressItems>
+    </pmAddress>
+    <pmStatus>
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany>
+        <enterpriseName>LT</enterpriseName>
+      </responsiblePartnerCompany>
+      <applic>
+        <displayText>
+          <simplePara>All</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="S1000D" systemDiffCode="F" systemCode="04" subSystemCode="1" subSubSystemCode="0" assyCode="0301" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </pmStatus>
+  </identAndStatusSection>
+  <content>
+    <pmEntry>
+      <pmEntryTitle>Front Matter</pmEntryTitle>
+      <pmEntry>
+        <pmEntryTitle>Front Matter</pmEntryTitle>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="00" subSubSystemCode="11" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="412" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation</techName>
+              <infoName>Installation</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="00" subSubSystemCode="11" assyCode="02" disassyCode="00" disassyCodeVariant="A" infoCode="410" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Removal</techName>
+              <infoName>Removal</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Chapter 1</pmEntryTitle>
+      <pmEntry>
+        <pmEntryTitle>Chapter 1</pmEntryTitle>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="30" subSubSystemCode="00" assyCode="03" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Descriptive</techName>
+              <infoName>Descriptive</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="30" subSubSystemCode="10" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Foreword</techName>
+              <infoName>Foreword</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="30" subSubSystemCode="11" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Foreword</techName>
+              <infoName>Foreword</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="30" subSubSystemCode="13" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Descriptive</techName>
+              <infoName>Descriptive</infoName>
+            </dmTitle>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Chapter 2</pmEntryTitle>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="40" subSubSystemCode="01" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Foreword</techName>
+            <infoName>Foreword</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="40" subSubSystemCode="01" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Descriptive</techName>
+            <infoName>Descriptive</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="40" subSubSystemCode="02" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Foreword</techName>
+            <infoName>Foreword</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Chapter 3</pmEntryTitle>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="01" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Foreword</techName>
+            <infoName>Foreword</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="01" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Descriptive</techName>
+            <infoName>Descriptive</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="02" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Foreword</techName>
+            <infoName>Foreword</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="07" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Descriptive</techName>
+            <infoName>Descriptive</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="08" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Descriptive</techName>
+            <infoName>Descriptive</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="08" assyCode="02" disassyCode="00" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Descriptive</techName>
+            <infoName>Descriptive</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="09" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Information for 042A</techName>
+            <infoName>Information for 042A</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="09" assyCode="02" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Information for 042A</techName>
+            <infoName>Information for 042A</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="10" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Information for 040A</techName>
+            <infoName>Information for 040A</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="10" assyCode="02" disassyCode="00" disassyCodeVariant="A" infoCode="044" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Information for 044A</techName>
+            <infoName>Information for 044A</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="10" assyCode="03" disassyCode="00" disassyCodeVariant="A" infoCode="412" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Installation</techName>
+            <infoName>Installation</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="12" assyCode="01" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Information for 042A</techName>
+            <infoName>Information for 042A</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+      <dmRef>
+        <dmRefIdent>
+          <dmCode modelIdentCode="MS" systemDiffCode="A" systemCode="T1" subSystemCode="70" subSubSystemCode="12" assyCode="03" disassyCode="00" disassyCodeVariant="A" infoCode="410" infoCodeVariant="A" itemLocationCode="D"/>
+          <issueInfo issueNumber="001" inWork="00"/>
+          <language languageIsoCode="en" countryIsoCode="IN"/>
+        </dmRefIdent>
+        <dmRefAddressItems>
+          <dmTitle>
+            <techName>Removal</techName>
+            <infoName>Removal</infoName>
+          </dmTitle>
+        </dmRefAddressItems>
+      </dmRef>
+    </pmEntry>
+  </content>
+</pm>

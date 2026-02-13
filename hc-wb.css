@@ -1,0 +1,147 @@
+/* 
+Xignal Viewer - CSS Stylesheet Customization 
+
+Customer:   High Contrast - White on black
+Version:    1.0
+
+*/
+
+
+body {
+	font-family:verdana;
+	font-size:10pt;
+	color:white;
+	background-color:black;
+}
+
+.dmTitleBar {
+	color:white;
+	background-color:black;
+}
+
+.idstatusTitle {
+	color:white;
+	background-color:black;
+}
+
+.prelreqTitle {
+	color:white;
+	background-color:black;
+}
+
+.mainProcedureTitle {
+	color:white;
+	background-color:black;
+}
+
+.closeRqmtsTitle {
+	color:white;
+	background-color:black;
+}
+
+/* ---- Standard text ---- */
+a {
+	color:yellow;
+}
+a:hover {
+	color:red;
+	text-decoration:underline;
+}
+
+/* ----- Tables ----- */
+
+caption {
+	color:white;
+}
+
+thead th,
+thead td {
+	background-color:black;
+}
+
+
+table.tblReferences {
+	border-bottom: 1px solid white;
+}
+table.tblReferences thead th {
+	border-bottom: 1px solid white;
+}
+
+/* ----- Preliminary requirements ----- */
+
+/* -- Production maintenance data -- */
+table.productionMaintDataTbl {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+/* -- Required Conditions -- */
+table.reqCondGroupTbl {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+table.reqCondGroupTbl th {
+	border-bottom: 1px solid white;
+}
+
+/* -- Required Persons -- */
+table.reqPersonsTbl {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+table.reqPersonsTbl th {
+	border-bottom: 1px solid white;
+}
+
+/* -- Required technical information -- */
+table.reqTechInfoGroupTbl {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+table.reqTechInfoGroupTbl th {
+	border-bottom: 1px solid white;
+}
+
+/* -- Support | Supplies | Spares -- */
+table.supportSuppliesSparesTbl {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+table.supportSuppliesSparesTbl th {
+	border-bottom: 1px solid white;
+}
+
+/* ---- Warning & Caution ---- */
+
+table.warningBackground {
+	border: 1px solid white;
+	background: repeating-linear-gradient(135deg,#000000,#000000 40px,#FF0000 40px,#FF0000 60px);
+}
+table.cautionBackground {
+	border: 1px solid white;
+	background: repeating-linear-gradient(135deg,#000000,#000000 40px,#FFFF00 40px,#FFFF00 60px);
+}
+table.warningBody,
+table.cautionBody {
+	width: 100%;
+	background:black;
+}
+
+table.warningBody td,
+table.cautionBody td {
+	border: 1px solid black;
+}
+
+/* ---- Footer ---- */
+
+div.footer {
+	border-top:1px solid white;
+	background:black;
+}
+
+.infoText {
+	color: white;
+}

@@ -1,0 +1,739 @@
+/* ----- CSS Variables ----- */
+
+:root {
+	--color-primary: #1c1444;
+	--color-secondary: #00e5c4;
+}
+
+/* ----- Page layout ----- */
+
+body {
+	font-family: verdana, "Open Sans", verdana, Sans-Serif;
+	color: #505050;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	/*background-color: #f2f2f2;*/
+	/*background-color:yellow;*/
+	/*margin-bottom: 500px;*/
+}
+
+h1 {
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+h1.infoName {
+	font-style: italic;
+}
+
+h2 {
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	font-style: italic;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* p {
+
+	text-align: center;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+} */
+
+h3 {
+	text-align: left;
+	font-size: 16pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+h4 {
+	text-align: left;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.para0Title {
+	text-align: left;
+	font-size: 18pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	margin-top: -2px;
+	padding-top: 0px;
+	padding-bottom: 6px;
+}
+
+.subpara1 {
+	text-align: left;
+	font-size: 12pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara2 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara3 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara4 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara5 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara6 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.subpara7 {
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-style: normal;
+	margin: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.empty {
+	padding-bottom: 0px !important;
+	margin-bottom: -10px !important;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: black;
+	background-color: black;
+}
+
+ul li:last-child {
+	padding-bottom: 10px;
+}
+
+/* ----- Standard Paragraph ----- */
+
+p {
+	display: block;
+	margin: 0px;
+	padding-bottom: 10px;
+}
+
+
+
+/* Additional text formatting */
+
+.text-decoration-underline {
+	text-decoration: underline;
+}
+
+.text-decoration-overline {
+	text-decoration: overline;
+}
+
+.text-decoration-line-through {
+	text-decoration: line-through;
+}
+
+
+/* ---- Page sections ---- */
+
+.dmTitleBar {
+	background-color: #F8F8F8;
+	border-bottom: 1px solid silver;
+}
+
+.dmTitleBar h1 {
+	margin: 0px;
+	padding: 0px;
+}
+
+.idstatusTitle {
+	margin-top: 0px;
+	margin-bottom: 30px;
+}
+
+.prelreqTitle {
+	margin-top: 30px;
+}
+
+.mainDoctypeTitle {
+	margin-bottom: 30px;
+}
+
+.closeRqmtsTitle {
+	margin-top: 30px;
+}
+
+/* ----- Tables ----- */
+
+table {
+	text-align: left;
+}
+
+caption {
+	color: black;
+	font-style: italic;
+	text-align: center;
+	padding-bottom: 5px;
+	caption-side: top;
+}
+
+
+
+table.tblReferences {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.tblReferences thead th:nth-child(1) {
+	width: 50%;
+}
+
+table.tblReferences thead th {
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+table.tblReferences tbody td {
+	padding: 5px;
+}
+
+/* ----- Preliminary requirements ----- */
+
+/* -- Production maintenance data -- */
+table.productionMaintDataTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid black;
+}
+
+/* -- Required Conditions -- */
+table.reqCondGroupTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-bottom: 20px;
+}
+
+table.reqCondGroupTbl th {
+	width: 50%;
+	padding: 5px;
+	border-bottom: 1px solid black;
+}
+
+table.reqCondGroupTbl td {
+	padding: 5px;
+}
+
+/* -- Required Persons -- */
+table.reqPersonsTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin-bottom: 20px;
+}
+
+table.reqPersonsTbl th {
+	width: 20%;
+	padding: 5px;
+	border-bottom: 1px solid black;
+}
+
+table.reqPersonsTbl td {
+	padding: 5px;
+}
+
+/* -- Required technical information -- */
+table.reqTechInfoGroupTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.reqTechInfoGroupTbl th:nth-child(1) {
+	width: 30%;
+}
+
+table.reqTechInfoGroupTbl th:nth-child(2) {
+	width: 70%;
+}
+
+table.reqTechInfoGroupTbl th {
+	padding: 5px;
+	border-bottom: 1px solid black;
+}
+
+table.reqTechInfoGroupTbl td {
+	padding: 5px;
+}
+
+/* -- Support | Supplies | Spares -- */
+table.supportSuppliesSparesTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.supportSuppliesSparesTbl th {
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+table.supportSuppliesSparesTbl td:nth-child(1) {
+	width: 30%;
+	padding: 5px;
+}
+
+table.supportSuppliesSparesTbl td:nth-child(2) {
+	width: 30%;
+	padding: 5px;
+}
+
+table.supportSuppliesSparesTbl td:nth-child(3) {
+	width: 20%;
+	padding: 5px;
+}
+
+table.supportSuppliesSparesTbl td:nth-child(4) {
+	width: 20%;
+	padding: 5px;
+}
+
+/* -- Safety -- */
+table.reqSafetyTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+table.reqSafetyTbl td:nth-child(1) {
+	width: 100px;
+	text-align: left;
+}
+
+/* ---- Warning & Caution | Symbolic ---- */
+table.warningWrap,
+table.cautionWrap {
+	width: 100%;
+	padding-bottom: 10px;
+	margin: 0;
+}
+
+table.noteBackground {
+	width: 100%;
+	background: repeating-linear-gradient(135deg, #ffffff, #ffffff 40px, #00db1d 40px, #00db1d 60px);
+	border: 1px solid silver;
+	/* ---- Rounded borders | Start... ---- */
+	border-spacing: 0;
+	border-collapse: separate;
+	border-radius: 8px;
+	/* ---- ...End ---- */
+	margin-bottom: 30px;
+}
+
+
+table.warningBackground {
+	width: 100%;
+	background: repeating-linear-gradient(135deg, #ffffff, #ffffff 40px, #FF0000 40px, #FF0000 60px);
+	border: 1px solid silver;
+	margin-bottom: 30px;
+}
+
+table.cautionBackground {
+	width: 100%;
+	background: repeating-linear-gradient(135deg, #FFFF00, #FFFF00 40px, #000000 40px, #000000 60px);
+	border: 1px solid silver;
+	margin-bottom: 30px;
+}
+
+table.warningBody,
+table.cautionBody,
+table.noteBody {
+	width: 100%;
+	background: #ffffff;
+	border: 2px solid #505050;
+}
+
+/* ---- Warning & Caution | Textual ---- */
+
+.warning {
+	color: #fd0000;
+}
+
+.caution {
+	color: #ff8c00;
+}
+
+/* ---- Footnote ---- */
+
+.footnote {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+/* ---- Footer ---- */
+
+div.footer {
+	border-top: 1px solid #C0C0C0;
+	background-color: #F5F5F5;
+	margin-top: 100px;
+}
+
+img.footer {
+	margin: auto;
+	display: block;
+	text-align: center;
+	max-width: 200px;
+	padding-top: 150px;
+	padding-bottom: 600px;
+}
+
+.infoText {
+	margin: 0px;
+	padding: 0px;
+	color: silver;
+}
+
+
+/* ---- Change highlighting ---- */
+
+.change {
+	padding: 2px;
+	background-color: #ccffcc;
+}
+
+.changeMedia {
+	border: 10px solid #ccffcc;
+}
+
+.changeFig {
+	border: 10px solid #ccffcc;
+	max-width: 25%;
+	max-height: 25%;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+/* ----- Illustrations ----- */
+
+img.fig {
+	max-width: 25%;
+	max-height: 25%;
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 2px solid #efefef;
+}
+
+.mediaUnsupported {
+	font-size: 20pt;
+	color: grey;
+	width: 500px;
+	background: #efefef;
+	border: 2px solid silver;
+	margin: auto;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	margin-bottom: 20px;
+}
+
+/* ----- Symbols ----- */
+
+img.symbol {
+	max-width: 50px;
+	max-height: 50px;
+}
+
+/* ----- SVG Objects ----- */
+
+object {
+	border: 2px solid #efefef;
+	max-width: 25%;
+	max-height: 25%;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+object.changeObj {
+	border: 10px solid #ccffcc;
+	max-width: 25%;
+	max-height: 25%;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+
+
+/* ---- verbatimText ---- */
+
+.vTextInline {
+	font-family: courier;
+	font-size: 11pt;
+	padding-left: 4px;
+	padding-right: 4px;
+	border: 4px solid #efefef;
+}
+
+.vTextBlock {
+	display: block;
+	white-space: pre;
+	font-family: courier;
+	font-size: 11pt;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	border: 4px solid #efefef;
+}
+
+/* ----- Unordered List ----- */
+ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-left: 5px;
+}
+
+ul.bullet-pf01 {
+	list-style-type: none;
+	margin: 0px;
+	padding-top: 5px;
+	padding-left: 12px;
+}
+
+ul.bullet-pf02a {
+	list-style-type: '\2010';
+	margin: 0px;
+	padding-top: 5px;
+	padding-left: 12px;
+}
+
+ul.bullet-pf02b {
+	list-style-type: '\2022';
+	margin: 0px;
+	padding-left: 15px;
+}
+
+ul.bullet-pf03 {
+	list-style-type: '\2010';
+	margin: 0px;
+	padding-left: 12px;
+}
+
+ul.bullet-pf04 {
+	list-style-type: '\2299';
+	padding-left: 15px;
+}
+
+ul.bullet-pf05 {
+	list-style-type: '\25CB';
+	padding-left: 12px;
+}
+
+ul.bullet-pf06 {
+	list-style-type: '\25A1';
+	padding-left: 12px;
+}
+
+ul.bullet-pf07 {
+	list-style-type: '\2022';
+	padding-left: 12px;
+}
+
+li.title {
+	list-style-type: none;
+	margin-bottom: 20px;
+}
+
+li {
+	margin: 0px;
+	padding-left: 12px;
+}
+
+/* -- IPD -- */
+
+table.ipdTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 1px solid #505050;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl thead {
+	position: sticky;
+	top: 0;
+	color: #505050;
+}
+
+table.ipdTbl th:nth-child(1) {
+	width: 5%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(2) {
+	width: 5%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(3) {
+	width: 10%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(4) {
+	width: 10%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(5) {
+	padding: 5px;
+
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(6) {
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(7) {
+	width: 10%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl th:nth-child(8) {
+	width: 10%;
+	padding: 5px;
+	vertical-align: top;
+	border-bottom: 1px solid #505050;
+}
+
+table.ipdTbl td {
+	padding: 5px;
+	vertical-align: top;
+}
+
+table.initialProvisioningTbl {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	padding-left: 40px;
+}
+
+table.initialProvisioningTbl td:nth-child(1) {
+	width: 200px;
+	text-align: left;
+}
+
+
+/*  Crew  */
+
+.crewDrillStepIfElseIf {
+	margin-left: 36px;
+	width: calc(100% - 36px);
+}
+
+.challenge {
+	vertical-align: top;
+	background-image: url('../img/dot.png');
+	background-repeat: repeat-x;
+	background-position: top;
+}
+
+.challengeText {
+	background: white;
+	z-index: 10;
+	padding-right: 3px;
+}
+
+.response {
+	padding-left: 3px;
+}
+
+.applicIcon {
+	display: none;
+}
+
+.inlineApplicText {
+	font-style: italic;
+}

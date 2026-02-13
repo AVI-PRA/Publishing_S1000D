@@ -1,0 +1,574 @@
+
+<description>
+  <para>
+    <emphasis emphasisType="em01">
+      <emphasis emphasisType="em03">CHAPTER –
+  1</emphasis>
+    </emphasis>
+  </para>
+  <para>
+    <emphasis emphasisType="em01">
+      <emphasis emphasisType="em03">INSPECTION AND
+  MAINTENANCE ROUTINE</emphasis>
+    </emphasis>
+  </para>
+  <levelledPara id="section">
+    <title/>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="introduction">
+    <title>1.1
+      <emphasis emphasisType="em01">
+        <emphasis emphasisType="em03">INTRODUCTION</emphasis>
+      </emphasis>
+    </title>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="section-1">
+    <title/>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="the-design-of-the-brahmos-fire-control-system-mark-ii-bfcs-mk-ii-is-modular-in-nature-to-reduce-the-mttr.-various-operations-have-been-realized-by-adopting-combined-software---hardware-approach.-standard-reliable-computer-board-and-other-pcbs-modules-have-been-used-to-enhance-the-mtbf.-there-are-hardly-any-components-parts-that-need-regular-maintenance.-however-it-is-recommended-that-the-user-should-carry-out-maintenance-routines-described-in-the-succeeding-paragraphs-to-keep-the-system-operational.">
+    <title>1.1.1 The design of the BRAHMOS Fire Control System Mark-II
+  (BFCS Mk-II) is modular in nature to reduce the MTTR. Various
+  operations have been realized by adopting combined software - hardware
+  approach. Standard reliable computer board and other PCBs / modules
+  have been used to enhance the MTBF. There are hardly any components /
+  parts that need regular maintenance. However, it is recommended that
+  the user should carry out maintenance routines described in the
+  succeeding paragraphs to keep the system operational.</title>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="section-2">
+    <title/>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="following-precautions-protective-measures-are-to-be-followed-while-handling-operating-and-performing-maintenance-operation-on-the-bfcs-mk-ii">
+    <title>1.1.2 Following precautions / protective measures are to be
+  followed while handling, operating, and performing maintenance
+  operation on the BFCS Mk-II:</title>
+    <note>
+      <notePara>
+      (a) Ensure power to the unit is switched OFF while inserting or
+      removing cards / modules.
+    </notePara>
+      <notePara>
+      (b) Ensure that all the cards / modules are inserted in the
+      correct slots.
+    </notePara>
+      <notePara>
+      (c) Ensure that components mounted on cards / modules should not
+      be touched with bare hand. Always wear anti-static wrist band
+      while performing operations on these cards / modules.
+    </notePara>
+      <notePara>
+      (d) Ensure that all the cards are packed in anti-static covers.
+    </notePara>
+      <notePara>
+      (e) Ensure that all spares packed properly and kept in a dry and
+      controlled environment.
+    </notePara>
+    </note>
+    <para>
+    (f) Use appropriate tools while handling / maintenance.
+  </para>
+    <para>
+    (g) Use appropriate rating fuse.
+  </para>
+    <para>
+    (h) Use only spares supplied in On Board Spares (OBS).
+  </para>
+    <para>
+    (j) Do not connect or remove cables in power ON conditions.
+  </para>
+    <note>
+      <notePara>
+      (k) All connectors should be covered with corresponding dust caps
+      to prevent damage to the pins, when left de-mated.
+    </notePara>
+      <notePara>
+      (l) Always maintain a break of 15 minutes if the system is to be
+      powered ON again after it has been switched OFF. However, this
+      action should not be done frequently.
+    </notePara>
+      <notePara>
+      (m) Keeping the system powered ON continuously for a period of
+      more than 168 hours is not recommended.
+    </notePara>
+      <notePara>
+      (n) Exposing the cards in extreme humid conditions for long time
+      is to be avoided.
+    </notePara>
+      <notePara>
+      (p) While transporting the cards / modules, the same are to be
+      wrapped in bubble sheet over the anti-static cover and vertically
+      placed in a hard container. cards are not to be stacked.
+    </notePara>
+    </note>
+  </levelledPara>
+  <levelledPara id="maintenance-routines---periodicity-and-details">
+    <title>1.2
+      <emphasis emphasisType="em01">
+        <emphasis emphasisType="em03">MAINTENANCE
+  ROUTINES - PERIODICITY AND DETAILS</emphasis>
+      </emphasis>
+    </title>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="section-3">
+    <title/>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="periodicity-of-maintenance-routines">
+    <title>1.2.1
+      <emphasis emphasisType="em01">
+        <emphasis emphasisType="em03">Periodicity of
+  Maintenance Routines</emphasis>
+      </emphasis>
+    </title>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="section-4">
+    <title/>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="the-periodic-maintenance-routines-to-be-carried-out-on-bfcs-are-given-in-the-table-1.1.-the-maintenance-routines-are-to-be-performed-as-per-the-time-period-specified-in-the-table.">
+    <title>1.2.1.1 The periodic maintenance routines to be carried out on
+  BFCS are given in the
+      <emphasis emphasisType="em01">table 1.1</emphasis>.
+  The maintenance routines are to be performed as per the time period
+  specified in the table.
+    </title>
+    <para>
+  </para>
+  </levelledPara>
+  <levelledPara id="table-1.1---periodic-maintenance-routines">
+    <title>
+      <emphasis emphasisType="em01">Table 1.1 - Periodic Maintenance
+  Routines</emphasis>
+    </title>
+    <table>
+      <tgroup cols="3">
+        <colspec colwidth="8*" align="center"/>
+        <colspec colwidth="23*" align="left"/>
+        <colspec colwidth="68*" align="left"/>
+        <thead>
+          <row>
+            <entry><para>
+              <emphasis emphasisType="em01">Sl. No.</emphasis>
+            </para></entry>
+            <entry><para>
+              <emphasis emphasisType="em01">Periodicity</emphasis>
+            </para></entry>
+            <entry><para>
+              <emphasis emphasisType="em01">Maintenance Routine</emphasis>
+            </para></entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><para>
+            1
+          </para></entry>
+            <entry><para>
+            Weekly
+          </para></entry>
+            <entry><para>
+            Visual inspection and external cleaning of cabinets
+          </para></entry>
+          </row>
+          <row>
+            <entry><para>
+            2
+          </para></entry>
+            <entry><para>
+            Monthly
+          </para></entry>
+            <entry>
+              <para>
+              (a) Battery checks
+            </para>
+              <para>
+              (b) Functional checks
+            </para>
+            </entry>
+          </row>
+          <row>
+            <entry><para>
+            3
+          </para></entry>
+            <entry><para>
+            Quarterly
+          </para></entry>
+            <entry>
+              <para>
+              (a) Battery Keep Alive Procedure
+            </para>
+              <para>
+              (b) Insulation checks of cables
+            </para>
+              <para>
+              (c) Performance checks
+            </para>
+            </entry>
+          </row>
+          <row>
+            <entry><para>
+            4
+          </para></entry>
+            <entry><para>
+            Half Yearly
+          </para></entry>
+            <entry><para>
+            Performance checks with TEM (Technology Missile)
+          </para></entry>
+          </row>
+          <row>
+            <entry><para>
+            5
+          </para></entry>
+            <entry><para>
+            Two Yearly
+          </para></entry>
+            <entry><para>
+            Replacement of batteries used in BBC
+          </para></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+    1.2.2
+      <emphasis emphasisType="em01">
+        <emphasis emphasisType="em03">Maintenance
+    Routine - Detailed Description</emphasis>
+      </emphasis>
+    </para>
+    <para>
+    1.2.2.1
+      <emphasis emphasisType="em01">Visual Inspection and External
+    Cleaning of Cabinets</emphasis>. Carry out visual inspection and
+    cleaning of the system connectors, subunits and surrounding to
+    prevent accumulation of dust and carbon particles. During the
+    process: -
+    </para>
+    <note>
+      <notePara>
+      (a) Check for proper connectivity of all connectors;
+    </notePara>
+      <notePara>
+      (b) Visually inspect the units for any physical damage(s);
+    </notePara>
+      <notePara>
+      (c) Ensure proper cleanliness of compartment(s);
+    </notePara>
+      <notePara>
+      (d) Clean the cabinet and the display (externally) using soft dry
+      cloth.
+    </notePara>
+    </note>
+    <para>
+    1.2.2.2
+      <emphasis emphasisType="em01">Battery Checks</emphasis>. Carry out
+    following checks to maintain the battery always serviceable: -
+    </para>
+    <note>
+      <notePara>
+      (a) Check the percentage charge of the battery on the battery
+      health monitor on the BBC panel;
+    </notePara>
+      <notePara>
+      (b) If the charge is less than 90% follow the battery charging
+      procedure given in para 1.2.2.3. If the charge has gone below 60%,
+      follow the battery maintenance procedure given in para 1.2.2.4.
+    </notePara>
+    </note>
+    <para>
+    1.2.2.3
+      <emphasis emphasisType="em01">Battery Charging
+    Procedure.</emphasis> Follow step by step procedure given below for
+    charging the battery: -
+    </para>
+    <para>
+      
+        
+          <symbol infoEntityIdent="media/image1.png"/>
+        
+      
+    </para>
+    <para>
+    Fig. 1.1 - Switch Fuse Unit-3
+  </para>
+    <note>
+      <notePara>
+      (a) Ensure that 230 V AC, Hz 1Φ ship’s mains supply is switched ON
+      from the ships main and available at SFU-3. This will be indicated
+      by glowing of green lamp (bubble ‘1’ of
+        <emphasis emphasisType="em01">Fig. 1.1</emphasis>) on SFU-3.
+      </notePara>
+      <notePara>
+      (b) Ensure the heater switch (bubble ‘3’ of
+        <emphasis emphasisType="em01">Fig. 1.1</emphasis>) is in ON position. In
+      this position the SFU-3 is designed to provide mains (230 V AC, 50
+      Hz 1Φ) to the BBC through HSDB.
+      </notePara>
+      <notePara>
+      (c) Ensure that incoming power supply is available to the BBC
+      unit. This is indicated by the glowing of the green lamp (bubble
+      ‘1’ of
+        <emphasis emphasisType="em01">Fig. 1.2</emphasis>) on the BBC
+      front panel.
+      </notePara>
+      <notePara>
+      (d) Now, switch the main incomer switch (bubble ‘3’ of
+        <emphasis emphasisType="em01">Fig. 1.2</emphasis>) to OPEN position
+      which gives access to MCB located inside the main incomer switch.
+      Push the MCB to ON position and keep the power rotary switch
+      (bubble ‘4’ of
+        <emphasis emphasisType="em01">Fig. 1.2</emphasis>) in OFF
+      position for charging of the batteries.
+      </notePara>
+    </note>
+    <para>
+      
+        
+          <symbol infoEntityIdent="media/image2.png"/>
+        
+      
+    </para>
+    <para>
+    Fig. 1.2 - Battery Bank and Charger Unit
+  </para>
+    <note>
+      <notePara>
+      (e) Keep this configuration for 2-3 hours and monitor the
+      percentage of charge with the battery monitor (bubble ‘2’ of
+        <emphasis emphasisType="em01">Fig. 1.2</emphasis>), present on the front
+      panel of the BBC.
+      </notePara>
+      (f) When the battery is fully charged, the 230 V AC, 50 Hz, 1 Φ ship’s main supply may be switched OFF from the ships main, if not required for the anti-condensation heaters. Also ensure that the output power rotary switch
+(bubble ‘4’ of
+        <emphasis emphasisType="em01">Fig. 1.2</emphasis>) at the BBC remains in OFF position to prevent battery from discharging.
+      
+    </note>
+    <para>
+    1.2.2.4
+      <emphasis emphasisType="em01">Battery Maintenance
+    Procedure.</emphasis> Replace battery as per the procedure for
+    ‘Replacement of Battery’ referred herein, if it has been used for
+    more than 2 years. Otherwise follow the steps given below: -
+    </para>
+    <note>
+      <notePara>
+      (a) Ensure that the power is switched OFF from the mains
+      switchboard / ACOS as well as from SFU-3.
+    </notePara>
+      <notePara>
+      (b) Disconnect the battery terminals and put insulation tape on
+      the disconnected wire terminals. Remove the batteries from BBC.
+    </notePara>
+      <notePara>
+      (c) Check battery voltage, it should not be less than 12.5 V for
+      each battery (four batteries are connected in series - parallel
+      combination to provide 24 V at required rating).
+    </notePara>
+      <notePara>
+      (d) If terminal voltage is found less than 12.5 V then charge the
+      batteries independently for 8-10 hrs. through external charging
+      arrangements.
+    </notePara>
+      <notePara>
+      (e) Check the battery voltage for each battery again after
+      charging. If voltage is still less than 12.5 V, replace the
+      relevant battery with new one.
+    </notePara>
+      <notePara>
+      (f) When the terminal voltage is found OK, then re-install the
+      batteries, clean the wire terminals and reconnect the wire to the
+      batteries terminals.
+    </notePara>
+    </note>
+    <para>
+    1.2.2.5
+      <emphasis emphasisType="em01">Functional Checks.</emphasis> Carry
+    out the functional checks on the system as follows to ensure its
+    serviceability.
+    </para>
+    <note>
+      <notePara>
+      (a) Switch ON BFCS as per the powering ON procedure of BFCS laid
+      out in the
+        <emphasis emphasisType="em01">‘User Handbook’</emphasis>.
+      </notePara>
+      <notePara>
+      (b) Ensure that MINS (Sigma 40 through RLG-DDU) has been switched
+      ON and its feed is available on the CCU.
+    </notePara>
+      <notePara>
+      (c) Ensure that all external interfaces viz. CMS, SSR, NTP and
+      SWISS are powered ON depending on their availability.
+    </notePara>
+      <notePara>
+      (d) Carry out the system maintenance by logging in the system as a
+      maintainer as given in
+        <emphasis emphasisType="em01">Chapter-2</emphasis> of this manual.
+      </notePara>
+      <notePara>
+      (e) In case of any error, use the fault diagnosis checks given in
+        <emphasis emphasisType="em01">Chapter-4</emphasis> of this manual to
+      troubleshoot the system.
+      </notePara>
+      <notePara>
+      (f) Switch OFF the BFCS as follows: -.
+    </notePara>
+    </note>
+    <para><sequentialList>
+      <listItem>
+        <para>
+        Logout and shutdown from the CCU screen. Switch the main rotary
+        switch at SFU-3 to OFF position.
+      </para>
+      </listItem>
+      <listItem>
+        <para>
+        Switch the output power rotary switch on the BBC to OFF. Switch
+        OFF the normal and alternate supply from MSB.
+      </para>
+      </listItem>
+    </sequentialList></para>
+    <note>
+      <notePara>
+      (g) Ensure availability of 230 V AC, 50 Hz 1Φ supply for the
+      heaters (if required). Monitor the percentage charge on the
+      battery. If it is below 90%, charge the battery as per procedure
+      given in para 1.2.2.3.
+    </notePara>
+    </note>
+    <para>
+    1.2.2.6
+      <emphasis emphasisType="em01">Battery Keep Alive Maintenance
+    Procedure.</emphasis> Follow the steps given below to keep alive the
+    batteries: -
+    </para>
+    <note>
+      <notePara>
+      (a) Check the percentage of charge available on the battery. If it
+      is below 90%, charge the batteries as per the procedure given in
+      the para 1.2.2.3.
+    </notePara>
+      <notePara>
+      (b) Ensure that the power rotary switch on the BBC front panel is
+      ON.
+    </notePara>
+      <notePara>
+      (c) Switch ON CCU by pressing the system ON IPB.
+    </notePara>
+      <notePara>
+      (d) Operate BFCS on battery power for 25-30 minutes.
+    </notePara>
+      <notePara>
+      (e) Check the percentage charge of the batteries.
+    </notePara>
+      (f) Charge the batteries again as per the procedure given in the
+para 1.2.2.3.
+    </note>
+    <levelledPara id="insulation-checks.-insulation-checks-of-cables-as-per-the-following-procedure-are-to-be-carried-once-in-three-months--">
+      <title>1.2.2.7
+        <emphasis emphasisType="em01">Insulation Checks.</emphasis>
+    Insulation checks of cables, as per the following procedure, are to
+    be carried once in three months: -
+      </title>
+      <note>
+        <notePara>
+        (a) Carry out insulation checks of power supply and analog
+        signal cables running from MSU(s) to umbilical connector through
+        LJB(s), using 100 V Megger after de-mating connectors J6, J7 and
+        J8 at MSU(s) end. The insulation resistance of the cable(s)
+        should be more than 1MΩ. Missile should not be there in the
+        cell(s) during the checks.
+      </notePara>
+        (b) Carry out insulation checks of power cables running from ACOS&gt;
+SFU-3&gt;TRs / UVLM SFU using 1000 V megger after switching OFF MCCBs / switches on SFU-3 and ACOS. The insulation resistance of these power cables should be more than 10 MΩ. Use 500 V megger for insulation checks of cables carrying 230 V AC, 50 Hz 1Φ and 100 V megger for all other power cables and the insulation resistance should be more than 1 MΩ.
+      </note>
+    </levelledPara>
+    <levelledPara id="performance-checks.-performance-checks-as-given-below-are-to-be-carried-once-in-three-months--">
+      <title>1.2.2.8
+        <emphasis emphasisType="em01">Performance
+    Checks.</emphasis> Performance checks as given below are to be
+    carried once in three months: -
+      </title>
+      <note>
+        (a) Perform checks as given in
+          <emphasis emphasisType="em01">Test Nos. 1, 3, 4, 18, 6, 10</emphasis> and
+          <emphasis emphasisType="em01">11</emphasis> in
+          <emphasis emphasisType="em01">Chapter-6</emphasis> of
+          <emphasis emphasisType="em01">Technical Manual Part-III ‘Overhaul and Reconditioning Instructions’</emphasis>.
+        
+        <notePara>
+        (b) In case of any error, use the fault diagnosis checks given
+        in
+          <emphasis emphasisType="em01">Chapter-4</emphasis> of this document
+        to troubleshoot the system.
+        </notePara>
+      </note>
+    </levelledPara>
+    <levelledPara id="performance-checks-with-tem.-the-system-performance-is-to-be-checked-with-technology-missile-once-in-every-six-months-as-given-below--">
+      <title>1.2.2.9
+        <emphasis emphasisType="em01">Performance checks with
+    TEM.</emphasis> The system performance is to be checked with
+    Technology Missile once in every six months as given below:
+    -
+      </title>
+      <note>
+        <notePara>
+        (a) Perform the checks given in
+          <emphasis emphasisType="em01">Test No.
+        7</emphasis> in
+          <emphasis emphasisType="em01">Chapter-6</emphasis> of
+        the
+          <emphasis emphasisType="em01">Technical Manual Part-III ‘Overhaul
+        and Reconditioning Instructions’</emphasis>.
+        </notePara>
+        <notePara>
+        (b) In case of any error, use the fault diagnosis checks given
+        in Chapter-4 of this document to troubleshoot the system.
+      </notePara>
+      </note>
+      <para>
+        <emphasis emphasisType="em01">
+          <emphasis emphasisType="em03">Note</emphasis>:
+        </emphasis>
+      In case for any reason, performance checks cannot be carried out
+      with the TEM, the same may be carried out using MLS and MES as per
+        <emphasis emphasisType="em01">Test No. 5A</emphasis> in
+        <emphasis emphasisType="em01">Chapter-6</emphasis> of
+        <emphasis emphasisType="em01">Technical Manual Part-III ‘Overhaul and
+      Reconditioning Instructions’</emphasis>.
+      </para>
+      <para>
+      1.2.2.10
+        <emphasis emphasisType="em01">Replacement of
+      Battery.</emphasis> Perform the operation as per the
+        <emphasis emphasisType="em01">Technical Manual Part-III ‘Overhaul and
+      Reconditioning Instructions’</emphasis> for replacing the battery
+      once every two years or whenever it goes defective.
+      </para>
+      <para>
+      :-------------:
+    </para>
+      <para>
+      HATS and SATS are not yet prepared by L&amp;T, highlighted test
+      nos. may get changed in approved HATS and SATS
+    </para>
+    </levelledPara>
+  </levelledPara>
+</description>

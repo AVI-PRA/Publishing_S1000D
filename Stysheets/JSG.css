@@ -1,0 +1,404 @@
+/* Extracted/Adapted from .style PropertySets */
+
+/* ps-bold */
+.ps-bold {
+    font-weight: bold;
+}
+
+/* ps-box - from xslHtml source */
+.ps-box {
+    background-color: #F0F0F0;
+    border: 1px solid #000;
+    /* thin solid */
+    padding: 2pt;
+}
+
+/* ps-customTableTitle - BaseProperties */
+.ps-customTableTitle {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+/* ps-double-underline - from xslHtml source */
+.ps-double-underline {
+    border-bottom: 0.2em double;
+}
+
+/* ps-Footnote_font - BaseProperties (less relevant for main content, but for reference) */
+.ps-Footnote_font {
+    font-family: Serif;
+    font-style: normal;
+    /* italic="no" */
+    font-size: 12pt;
+    font-weight: normal;
+    color: #000000;
+    background-color: #FFFFFF;
+    /* shading */
+    text-transform: none;
+    /* allcaps="no", smallcaps="no" */
+    text-decoration: none;
+    /* strikeThrough="no", textUnderlineStyle="none" */
+}
+
+/* ps-italic */
+.ps-italic {
+    font-style: italic;
+}
+
+/* ps-Link - BaseProperties (browsers do this, but can be explicit) */
+.ps-Link {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+/* ps-overline - from xslHtml source */
+.ps-overline {
+    text-decoration: overline;
+}
+
+/* ps-overstrike-with-slash - HTML can only do simple strikethrough */
+.ps-overstrike-with-slash {
+    text-decoration: line-through;
+    /* The slash effect is complex and typically needs SVG or specific font support not standard in HTML/CSS */
+}
+
+/* ps-preformatted_font */
+.ps-preformatted_font {
+    font-family: monospace;
+}
+
+/* Title Property Sets - General Font */
+.ps-Title_font {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* Mapped Sanserif to a common stack */
+}
+
+/* Title Property Sets - Color (used #000000 as per most title element overrides) */
+.ps-Title_color {
+    color: #000000;
+    /* Overridden from #0000FF in most title contexts in .style */
+}
+
+/* Title Property Sets - Alignment */
+.ps-Title_alignment {
+    text-align: left;
+    /* Default, can be overridden for specific titles */
+}
+
+
+/* Specific Title Levels (example for Title_1, others would follow) */
+.ps-Title_1 {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.ps-Title_2 {
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.ps-Title_3 {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.ps-Title_4 {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.ps-Title_5,
+.ps-Title_6,
+.ps-Title_7,
+.ps-Title_8,
+.ps-Title_9 {
+    /* Grouping some */
+    font-size: 12pt;
+    font-weight: bold;
+    /* .style Title_6 is normal weight, but often overridden */
+}
+
+.ps-Title_document {
+    font-size: 24pt;
+    font-weight: bold;
+}
+
+.ps-Title_formalBlock {
+    /* For figure/table titles */
+    font-size: 12pt;
+    /* .style has 14pt, but fig/table titles in .style's element rules often use 12pt */
+    font-weight: bold;
+    text-align: center;
+    /* Common for fig/table titles */
+}
+
+/* Spacing - these are harder to apply globally, better per element type */
+/* .ps-Standard_space, .ps-List_item_space, .ps-Table_space, .ps-Title_space */
+
+/* CSS for Lists (to be refined based on specific list contexts) */
+.s1000d-ol,
+.s1000d-ul {
+    padding-left: 2.5em;
+    /* A general starting point, .style has varied indents */
+    margin-bottom: 0.5rem;
+    /* Match Bootstrap spacing */
+}
+
+/* Top-level ol/li from .style ol/li styling for (a), (b) ... */
+/* This corresponds to <xsl:template match="seqList"> directly under a proceduralStep or similar context */
+.s1000d-procedural-ol {
+    list-style-type: none;
+    counter-reset: ol-level1-proc;
+    padding-left: 0;
+    /* Reset padding, will be handled by li */
+}
+
+.s1000d-procedural-ol>li {
+    counter-increment: ol-level1-proc;
+    position: relative;
+    padding-left: 2.5em;
+    /* From .style <Numbering alignAt="1.5em" ... tabtoAfter="2.5em"> */
+    margin-bottom: 6pt;
+    /* From List_item_space */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+}
+
+.s1000d-procedural-ol>li::before {
+    content: "(" counter(ol-level1-proc, lower-alpha) ")";
+    position: absolute;
+    left: 0.75em;
+    /* To allow space for (a) before 1.5em alignAt */
+    width: 1.5em;
+    /* Based on alignAt="1.5em" */
+    text-align: right;
+    /* From .style numberAlignment="right" */
+    font-family: Arial, sans-serif;
+    /* Ensure consistency */
+    font-size: 12pt;
+    font-weight: normal;
+    /* Ensure it's not bold from li */
+}
+
+/* Top-level ul/li from .style ul/li styling for • */
+.s1000d-random-ul {
+    list-style-type: none;
+    padding-left: 0;
+    /* Reset padding */
+}
+
+.s1000d-random-ul>li {
+    position: relative;
+    padding-left: 1.25em;
+    /* From .style <Bulleting alignAt="0em" ... tabtoAfter="1.25em"> */
+    margin-bottom: 6pt;
+    /* From List_item_space */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+}
+
+.s1000d-random-ul>li::before {
+    content: "•";
+    /* From .style <Font>•</_gte:Font> */
+    position: absolute;
+    left: 0em;
+    /* Based on alignAt="0em" */
+    font-family: Arial, sans-serif;
+    /* Ensure consistency */
+    font-size: 12pt;
+    /* Or adjust for bullet size */
+    font-weight: normal;
+}
+
+/* Nested lists would require more specific selectors like: */
+/* .s1000d-procedural-ol .s1000d-procedural-ol > li::before { content: ... } */
+/* .s1000d-random-ul .s1000d-random-ul > li::before { content: "–"; } */
+
+
+/* Specific styles for S1000D elements based on .style mappings */
+.s1000d-para {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    text-align: justify;
+    line-height: 1.65em;
+    margin-top: 8pt;
+    /* From .style Standard_space optimum="8pt" */
+    margin-bottom: 6pt;
+    /* From .style <p> SpaceAfter optimum="6pt" */
+}
+
+.s1000d-para:first-child {
+    /* Often, first para in a section has less top margin */
+    margin-top: 0;
+}
+
+/* Adjust for para within list items if it's not the first block */
+.s1000d-procedural-ol>li>.s1000d-para,
+.s1000d-random-ul>li>.s1000d-para {
+    margin-top: 6pt;
+    /* From List_item_space optimum="6pt" */
+    margin-bottom: 6pt;
+}
+
+
+/* Title for procedure (Chapter title) */
+.s1000d-procedure-title {
+    font-family: 'Times New Roman', Times, serif;
+    /* from .style procedure/title */
+    font-size: 18pt;
+    /* from .style procedure/title */
+    font-weight: bold;
+    text-transform: uppercase;
+    /* from .style procedure/title allcaps="yes" */
+    color: #000000;
+    text-align: center;
+    /* from .style procedure/title */
+    margin-top: 1.5em;
+    /* from .style procedure/title SpaceBefore */
+    margin-bottom: 1em;
+    /* from .style Title_space SpaceAfter */
+    padding: 2pt;
+    /* from .style box property set */
+    /* background-color: #F0F0F0; from .style box property set - might be too much for HTML */
+    /* border: 1px solid #000;  from .style box property set - might be too much for HTML */
+}
+
+.s1000d-procedure-title-prefix {
+    display: block;
+    /* for the newline from .style _dtd:_newline */
+    margin-bottom: 0.25em;
+}
+
+/* Title for levelledPara (Section title) */
+.s1000d-levelledPara-title {
+    font-family: 'Times New Roman', Times, serif;
+    /* from .style procedure/procedure/title */
+    font-size: 16pt;
+    /* Mapped to Title_2, .style has 18pt then 16pt, etc. */
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    /* .style Title_alignment default */
+    margin-top: 12pt;
+    /* from .style procedure/procedure/title SpaceBefore */
+    margin-bottom: 6pt;
+    /* from .style procedure/procedure/title SpaceAfter */
+}
+
+.s1000d-levelledPara-title-prefix {
+    margin-right: 0.5em;
+}
+
+/* Title for Figure */
+.s1000d-figure-title {
+    font-family: Arial, sans-serif;
+    /* from .style fig/title */
+    font-size: 12pt;
+    /* from .style fig/title */
+    font-weight: bold;
+    /* from .style fig/title */
+    color: #000000;
+    text-align: center;
+    /* from .style fig/title */
+    margin-top: 3pt;
+    /* from .style fig/title SpaceBefore */
+    margin-bottom: 3pt;
+    /* from .style fig/title SpaceAfter */
+    font-style: normal;
+    /* Overriding Bootstrap's .figure-caption italic */
+}
+
+.s1000d-figure-title-prefix {
+    margin-right: 0.25em;
+}
+
+/* Title for Table */
+.s1000d-table-title {
+    font-family: Arial, sans-serif;
+    /* from .style table/title */
+    font-size: 12pt;
+    /* from .style table/title */
+    font-weight: bold;
+    /* from .style table/title */
+    color: #000000;
+    text-align: center;
+    /* from .style table/title */
+    margin-top: 3pt;
+    /* from .style table/title SpaceBefore */
+    margin-bottom: 3pt;
+    /* from .style table/title SpaceAfter */
+    font-style: normal;
+    /* Overriding Bootstrap's .caption-top or default caption italic */
+}
+
+.s1000d-table-title-prefix {
+    margin-right: 0.25em;
+}
+
+
+/* Note styling */
+.s1000d-note {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    line-height: 1.65em;
+    text-align: justify;
+    /* Bootstrap 'alert' provides padding and border,
+       we can augment if .ps-box is very different */
+    /* background-color: #F0F0F0; /* from .ps-box */
+    /* border: 1px solid #000;   /* from .ps-box */
+    /* padding: 2pt; */
+    /* from .ps-box, Bootstrap has more */
+    margin-top: 8pt;
+    margin-bottom: 6pt;
+}
+
+.s1000d-note .s1000d-para {
+    /* Paragraphs inside notes might need specific spacing */
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    /* Small space between paras in a note */
+}
+
+.s1000d-note .s1000d-para:last-child {
+    margin-bottom: 0;
+}
+
+.s1000d-note-prefix {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+/* Cover page title from .style coverpage/title */
+.s1000d-coverpage-title {
+    font-family: Arial, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+    color: #000000;
+}
+
+/* Table entry styling from .style entry */
+.s1000d-table td,
+.s1000d-table th {
+    /* Apply to a wrapper class for tables if needed */
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    text-align: left;
+    /* Default, can be overridden */
+    line-height: 1.65em;
+    padding-top: 3pt;
+    /* From SpaceBefore optimum="3pt" */
+    padding-bottom: 3pt;
+    /* From SpaceAfter optimum="3pt" */
+    vertical-align: top;
+    /* Common for tech docs */
+}
+
+.s1000d-table thead th {
+    font-weight: bold;
+    /* from .style thead */
+}

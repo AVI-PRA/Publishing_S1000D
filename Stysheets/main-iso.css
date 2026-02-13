@@ -1,0 +1,593 @@
+.bootstrap-iso {
+  /* ----- CSS Variables ----- */
+  /* ----- Page layout ----- */
+  /* ----- Standard Paragraph ----- */
+  /* Additional text formatting */
+  /* ---- Page sections ---- */
+  /* ----- Tables ----- */
+  /* ----- Preliminary requirements ----- */
+  /* -- Production maintenance data -- */
+  /* -- Required Conditions -- */
+  /* -- Required Persons -- */
+  /* -- Required technical information -- */
+  /* -- Support | Supplies | Spares -- */
+  /* -- Safety -- */
+  /* ---- Warning & Caution | Symbolic ---- */
+  /* ---- Warning & Caution | Textual ---- */
+  /* ---- Footnote ---- */
+  /* ---- Footer ---- */
+  /* ---- Change highlighting ---- */
+  /* ----- Illustrations ----- */
+  /* ----- Symbols ----- */
+  /* ----- SVG Objects ----- */
+  /* ---- verbatimText ---- */
+  /* ----- Unordered List ----- */
+  /* -- IPD -- */
+  /*  Crew  */
+}
+.bootstrap-iso :root {
+  --color-primary: #1c1444;
+  --color-secondary: #00e5c4;
+}
+.bootstrap-iso body {
+  font-family: verdana, "Open Sans", verdana, Sans-Serif;
+  color: #505050;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  /*background-color: #f2f2f2;*/
+  /*background-color:yellow;*/
+  /*margin-bottom: 500px;*/
+}
+.bootstrap-iso h1 {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso h1.infoName {
+  font-style: italic;
+}
+.bootstrap-iso h2 {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso h3 {
+  text-align: left;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso h4 {
+  text-align: left;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.bootstrap-iso .para0Title {
+  text-align: left;
+  font-size: 18pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  margin-top: -2px;
+  padding-top: 0px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1 {
+  text-align: left;
+  font-size: 12pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara2 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara3 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara4 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara5 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara6 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara7 {
+  text-align: left;
+  font-size: 10pt;
+  font-weight: bold;
+  font-style: normal;
+  margin: 0px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .empty {
+  padding-bottom: 0px !important;
+  margin-bottom: -10px !important;
+}
+.bootstrap-iso hr {
+  border: none;
+  height: 1px;
+  color: black;
+  background-color: black;
+}
+.bootstrap-iso ul li:last-child {
+  padding-bottom: 10px;
+}
+.bootstrap-iso p {
+  display: block;
+  margin: 0px;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .text-decoration-underline {
+  text-decoration: underline;
+}
+.bootstrap-iso .text-decoration-overline {
+  text-decoration: overline;
+}
+.bootstrap-iso .text-decoration-line-through {
+  text-decoration: line-through;
+}
+.bootstrap-iso .dmTitleBar {
+  background-color: #F8F8F8;
+  border-bottom: 1px solid silver;
+}
+.bootstrap-iso .dmTitleBar h1 {
+  margin: 0px;
+  padding: 0px;
+}
+.bootstrap-iso .idstatusTitle {
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+.bootstrap-iso .prelreqTitle {
+  margin-top: 30px;
+}
+.bootstrap-iso .mainDoctypeTitle {
+  margin-bottom: 30px;
+}
+.bootstrap-iso .closeRqmtsTitle {
+  margin-top: 30px;
+}
+.bootstrap-iso table {
+  text-align: left;
+}
+.bootstrap-iso caption {
+  color: black;
+  font-style: italic;
+  text-align: center;
+  padding-bottom: 5px;
+  caption-side: top;
+}
+.bootstrap-iso table.tblReferences {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.tblReferences thead th:nth-child(1) {
+  width: 50%;
+}
+.bootstrap-iso table.tblReferences thead th {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+.bootstrap-iso table.tblReferences tbody td {
+  padding: 5px;
+}
+.bootstrap-iso table.productionMaintDataTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid black;
+}
+.bootstrap-iso table.reqCondGroupTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.reqCondGroupTbl th {
+  width: 50%;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.reqCondGroupTbl td {
+  padding: 5px;
+}
+.bootstrap-iso table.reqPersonsTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.reqPersonsTbl th {
+  width: 20%;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.reqPersonsTbl td {
+  padding: 5px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl th:nth-child(1) {
+  width: 30%;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl th:nth-child(2) {
+  width: 70%;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl th {
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl td {
+  padding: 5px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl th {
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl td:nth-child(1) {
+  width: 30%;
+  padding: 5px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl td:nth-child(2) {
+  width: 30%;
+  padding: 5px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl td:nth-child(3) {
+  width: 20%;
+  padding: 5px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl td:nth-child(4) {
+  width: 20%;
+  padding: 5px;
+}
+.bootstrap-iso table.reqSafetyTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.bootstrap-iso table.reqSafetyTbl td:nth-child(1) {
+  width: 100px;
+  text-align: left;
+}
+.bootstrap-iso table.warningWrap,
+.bootstrap-iso table.cautionWrap {
+  width: 100%;
+  padding-bottom: 10px;
+  margin: 0;
+}
+.bootstrap-iso table.warningBackground {
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #ffffff, #ffffff 40px, #FF0000 40px, #FF0000 60px);
+  border: 1px solid silver;
+  margin-bottom: 30px;
+}
+.bootstrap-iso table.cautionBackground {
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #FFFF00, #FFFF00 40px, #000000 40px, #000000 60px);
+  border: 1px solid silver;
+  margin-bottom: 30px;
+}
+.bootstrap-iso table.warningBody,
+.bootstrap-iso table.cautionBody {
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #505050;
+}
+.bootstrap-iso .warning {
+  color: #fd0000;
+}
+.bootstrap-iso .caution {
+  color: #ff8c00;
+}
+.bootstrap-iso .footnote {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.bootstrap-iso div.footer {
+  border-top: 1px solid #C0C0C0;
+  background-color: #F5F5F5;
+  margin-top: 100px;
+}
+.bootstrap-iso img.footer {
+  margin: auto;
+  display: block;
+  text-align: center;
+  max-width: 200px;
+  padding-top: 150px;
+  padding-bottom: 600px;
+}
+.bootstrap-iso .infoText {
+  margin: 0px;
+  padding: 0px;
+  color: silver;
+}
+.bootstrap-iso .change {
+  padding: 2px;
+  background-color: #ccffcc;
+}
+.bootstrap-iso .changeMedia {
+  border: 10px solid #ccffcc;
+}
+.bootstrap-iso .changeFig {
+  border: 10px solid #ccffcc;
+  max-width: 25%;
+  max-height: 25%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.bootstrap-iso img.fig {
+  max-width: 25%;
+  max-height: 25%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 2px solid #efefef;
+}
+.bootstrap-iso .mediaUnsupported {
+  font-size: 20pt;
+  color: grey;
+  width: 500px;
+  background: #efefef;
+  border: 2px solid silver;
+  margin: auto;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin-bottom: 20px;
+}
+.bootstrap-iso img.symbol {
+  max-width: 50px;
+  max-height: 50px;
+}
+.bootstrap-iso object {
+  border: 2px solid #efefef;
+  max-width: 25%;
+  max-height: 25%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.bootstrap-iso object.changeObj {
+  border: 10px solid #ccffcc;
+  max-width: 25%;
+  max-height: 25%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.bootstrap-iso .vTextInline {
+  font-family: courier;
+  font-size: 11pt;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 4px solid #efefef;
+}
+.bootstrap-iso .vTextBlock {
+  display: block;
+  white-space: pre;
+  font-family: courier;
+  font-size: 11pt;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border: 4px solid #efefef;
+}
+.bootstrap-iso ol {
+    margin-top: 0px;
+    margin-bottom: 0px;
+	list-style: auto !important;
+}
+.bootstrap-iso ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 5px;
+}
+.bootstrap-iso ul.bullet-pf01 {
+  list-style-type: none;
+  margin: 0px;
+  padding-top: 5px;
+  padding-left: 12px;
+}
+.bootstrap-iso ul.bullet-pf02a {
+  list-style-type: '\2010';
+  margin: 0px;
+  padding-top: 5px;
+  padding-left: 12px;
+}
+.bootstrap-iso ul.bullet-pf02b {
+  list-style-type: '\2022';
+  margin: 0px;
+  padding-left: 15px;
+}
+.bootstrap-iso ul.bullet-pf03 {
+  list-style-type: '\2010';
+  margin: 0px;
+  padding-left: 12px;
+}
+.bootstrap-iso ul.bullet-pf04 {
+  list-style-type: '\2299';
+  padding-left: 15px;
+}
+.bootstrap-iso ul.bullet-pf05 {
+  list-style-type: '\25CB';
+  padding-left: 12px;
+}
+.bootstrap-iso ul.bullet-pf06 {
+  list-style-type: '\25A1';
+  padding-left: 12px;
+}
+.bootstrap-iso ul.bullet-pf07 {
+  list-style-type: '\2022';
+  padding-left: 12px;
+}
+.bootstrap-iso li.title {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+.bootstrap-iso li {
+  margin: 0px;
+  padding-left: 12px;
+}
+.bootstrap-iso table.ipdTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl thead {
+  position: sticky;
+  top: 0;
+  color: #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(1) {
+  width: 5%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(2) {
+  width: 5%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(3) {
+  width: 10%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(4) {
+  width: 10%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(5) {
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(6) {
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(7) {
+  width: 10%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl th:nth-child(8) {
+  width: 10%;
+  padding: 5px;
+  vertical-align: top;
+  border-bottom: 1px solid #505050;
+}
+.bootstrap-iso table.ipdTbl td {
+  padding: 5px;
+  vertical-align: top;
+}
+.bootstrap-iso table.initialProvisioningTbl {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  padding-left: 40px;
+}
+.bootstrap-iso table.initialProvisioningTbl td:nth-child(1) {
+  width: 200px;
+  text-align: left;
+}
+.bootstrap-iso .crewDrillStepIfElseIf {
+  margin-left: 36px;
+  width: calc(100% - 36px);
+}
+.bootstrap-iso .challenge {
+  vertical-align: top;
+  background-image: url('../img/dot.png');
+  background-repeat: repeat-x;
+  background-position: top;
+}
+.bootstrap-iso .challengeText {
+  background: white;
+  z-index: 10;
+  padding-right: 3px;
+}
+.bootstrap-iso .response {
+  padding-left: 3px;
+}
+.bootstrap-iso .applicIcon {
+  display: none;
+}
+.bootstrap-iso .inlineApplicText {
+  font-style: italic;
+}

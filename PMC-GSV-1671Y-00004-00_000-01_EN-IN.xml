@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE pm [
+<!-- Begin Document Specific Declarations -->
+<!ENTITY % ISOEntities PUBLIC "ISO 8879-1986//ENTITIES ISO Character Entities 20030531//EN//XML" "http://www.s1000d.org/S1000D_4-2/ent/ISOEntities">
+%ISOEntities;
+<!-- End Document Specific Declarations -->
+
+]>
+<pm xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/pm.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <identAndStatusSection>
+    <pmAddress>
+      <pmIdent>
+        <pmCode modelIdentCode="GSV" pmIssuer="1671Y" pmNumber="00004" pmVolume="00" />
+        <language countryIsoCode="IN" languageIsoCode="en" />
+        <issueInfo issueNumber="000" inWork="01" />
+      </pmIdent>
+      <pmAddressItems>
+        <issueDate year="2024" month="12" day="14" />
+        <pmTitle>UNIVERSAL VERTICAL LAUNCHER MODULE-8</pmTitle>
+        <shortPmTitle>UVLM_P17A</shortPmTitle>
+      </pmAddressItems>
+    </pmAddress>
+    <pmStatus>
+      <security securityClassification="03" />
+      <responsiblePartnerCompany enterpriseCode="1671Y">
+        <enterpriseName>LNTDEFENCE</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="1671Y">
+        <enterpriseName>LNTDEFENCE</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>APPLIC</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MM" systemDiffCode="A" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="000" infoCodeVariant="A" itemLocationCode="A" />
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified />
+      </qualityAssurance>
+    </pmStatus>
+  </identAndStatusSection>
+  <content>
+    <pmEntry>
+      <pmEntryTitle>User Data</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>IRLDatacore</techName>
+              <infoName>Purpose of System</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>IRL Launch Module</techName>
+              <infoName>IRL System Features</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>IRL System Architecture</techName>
+              <infoName>System Chart</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Convey or Feature Set</techName>
+              <infoName>Specification of the Conveyor</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Launcher Tech Spec</techName>
+              <infoName>System Specification</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>HoistProfile</techName>
+              <infoName>Specification of Hoist</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="07" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Hydraulic Power Data</techName>
+              <infoName>Hydraulic Power</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="08" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Electric Power Report</techName>
+              <infoName>Electric Power</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="09" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Remote Operation Config</techName>
+              <infoName>Modes of Operation</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="C0" assyCode="56" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="10" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="IN"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>LocalModeProfile</techName>
+              <infoName>Local Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="02"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+  </content>
+</pm>

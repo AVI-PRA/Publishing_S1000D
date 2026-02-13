@@ -1,0 +1,2451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE pm [
+<!-- Begin Document Specific Declarations -->
+<!ENTITY % ISOEntities PUBLIC "ISO 8879-1986//ENTITIES ISO Character Entities 20030531//EN//XML" "http://www.s1000d.org/S1000D_4-2/ent/ISOEntities">
+%ISOEntities;
+<!-- End Document Specific Declarations -->
+]>
+<pm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:noNamespaceSchemaLocation="http://www.s3.org/2001/XMLSchema-instance">
+  <identAndStatusSection>
+    <pmAddress>
+      <pmIdent>
+        <pmCode modelIdentCode="P15B" pmIssuer="1671Y" pmNumber="00000" pmVolume="00"/>
+        <language countryIsoCode="IN" languageIsoCode="en"/>
+        <issueInfo issueNumber="001" inWork="01"/>
+      </pmIdent>
+      <pmAddressItems>
+        <issueDate year="2025" month="10" day="20"/>
+        <pmTitle>Ship installed Chemical Agent Detection system</pmTitle>
+        <shortPmTitle>SICADS</shortPmTitle>
+      </pmAddressItems>
+    </pmAddress>
+    <pmStatus>
+      <security securityClassification="03"/>
+      <responsiblePartnerCompany enterpriseCode="1671Y">
+        <enterpriseName>LT</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="1671Y">
+        <enterpriseName>LT</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>APPLIC</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="MM" systemDiffCode="A" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="000" infoCodeVariant="A" itemLocationCode="A"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </pmStatus>
+  </identAndStatusSection>
+  <content>
+    <pmEntry>
+      <pmEntryTitle>Fault Diagnosis</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="03" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="340" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Precuation</techName>
+              <infoName>Safety Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="03" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="400" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>General Description Of Fault Diagnosis</techName>
+              <infoName>Fault Diagnosis</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="03" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="421" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Tree Chart</techName>
+              <infoName>Fault Diagnosis Flowchart</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="03" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="421" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Tree Chart</techName>
+              <infoName>Fault Diagnosis Flowchart</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Installation</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Sicad</techName>
+              <infoName>INSPECTION ON RECEIPT, HANDLING AND STORAGE</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="800" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>General Precaution</techName>
+              <infoName>Handling Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="012" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Workplace Safety Guidelines</techName>
+              <infoName>Do’s and don’ts</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="10" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>General Instruction</techName>
+              <infoName>POWER REQUIREMENTS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="10" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="054" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>UPS Backup System</techName>
+              <infoName>Power Requirements</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation of SICADS.</techName>
+              <infoName>INSTALLATION REQUIREMENTS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="012" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation</techName>
+              <infoName>Safety Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Data Center Management</techName>
+              <infoName>General Installation Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="723" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Checklist</techName>
+              <infoName>Pre-installation checks</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Location Sub-System</techName>
+              <infoName>On-board location</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Size Specification</techName>
+              <infoName>Dimensions and weight</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="11" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Electrical Grounding</techName>
+              <infoName>Grounding Requirements</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="12" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Electrical Installation Materials</techName>
+              <infoName>INSTALLATION MATERIALS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="12" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Materials</techName>
+              <infoName>List of Installation Materials</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="12" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="056" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Tools</techName>
+              <infoName>Tools for Installation</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="12" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="033" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ship Ideal Condition</techName>
+              <infoName>Service Requirements from Ship</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="13" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Layout</techName>
+              <infoName>LAYOUT OF EQUIPMENT AND INSTALLATION</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="13" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Installation Procedure</techName>
+              <infoName>Installation Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="13" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="333" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Outboard FCAD Mounting</techName>
+              <infoName>Installation of Outboard FCAD:</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="13" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="333" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>MCU_RDAU_installation</techName>
+              <infoName>Installation of MCU and RDAU</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="13" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="333" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Procedure</techName>
+              <infoName>Installation of UPS with Battery Box</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="14" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ship Interface Connection Architecture (SICA)</techName>
+              <infoName>EQUIPMENT CONNECTIONS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Maintenance</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="00" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>System Maintenance</techName>
+              <infoName>Importance of Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Cleaning Protocol</techName>
+              <infoName>Preventive Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Replacement Procedure</techName>
+              <infoName>Replacement Procedure</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Molecular Sieve Block</techName>
+              <infoName>MSB Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Reset</techName>
+              <infoName>MSB Reset</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Replacement And Installation Of Power Adapter</techName>
+              <infoName>Power Adapter Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="01" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Replacement And Installation Of Desplay</techName>
+              <infoName>Display Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Cleaning Protocol</techName>
+              <infoName>Preventive Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Removed Parts Replacement Procedure</techName>
+              <infoName>REPLACEMENT PROCEDURE</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Replacement Procedure For MSB</techName>
+              <infoName>MSB Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Reset</techName>
+              <infoName>MSB Reset</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Power Adapter</techName>
+              <infoName>Power Adapter Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Display Replacement Procedure</techName>
+              <infoName>Display Replacement</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="24" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Maintenance details</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="24" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Typical Data</techName>
+              <infoName>General</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Maintenance Steps</techName>
+              <infoName>Maintenance Procedures</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Wire Inspection</techName>
+              <infoName>Inspection of External Wiring for Wear and Cuts</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Clean-up</techName>
+              <infoName>Cleaning of Equipment</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Cable Maintenance in DC UPS</techName>
+              <infoName>Maintenance of Cable Glands (in DC UPS)</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Electrical Check for Batteries</techName>
+              <infoName>Batteries of DC UPS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Eath Connection Check</techName>
+              <infoName>Earth Connections</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="07" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Shock Mounts Inspection Checklist</techName>
+              <infoName>Shock Mounts</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="09" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Fiber Optic Cable Maintenance</techName>
+              <infoName>Cleaning Fiber Optic Cables and Connectors</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="25" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="10" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Electromechanical Labeling</techName>
+              <infoName>Status of Necessary Informative Designations</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="26" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="010" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Maintenance Work</techName>
+              <infoName>General Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="27" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Cleaning Protocol</techName>
+              <infoName>Preventive Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="27" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Daily System Check</techName>
+              <infoName>Daily Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="27" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="913" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Cable Maintenance every Month</techName>
+              <infoName>Monthly Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="28" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Miscellaneous Description</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="28" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Shipset Equipment and Accessories</techName>
+              <infoName>Station List</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="28" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>User Maintenance Tools</techName>
+              <infoName>List of Tools for User Maintenance</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Operation</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="02" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Simulant</techName>
+              <infoName>TEST EQUIPMENT</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="02" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="340" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Material Testing</techName>
+              <infoName>Simulant Test</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="18" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="280" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>Initial Inspection:</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="18" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>Setting Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="18" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="131" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>S1000D</techName>
+              <infoName>Restoring Procedure</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>OPERATING INSTRUCTIONS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Description Data</techName>
+              <infoName>Setting Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>steps to operate</techName>
+              <infoName>Operating Procedure</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Operational Steps</techName>
+              <infoName>Switching ON Procedure</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Operating steps</techName>
+              <infoName>Switching OFF Procedure</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Operating Sequence</techName>
+              <infoName>Sequence of operation</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Monitoring Details</techName>
+              <infoName>Remote Monitoring</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="23" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Sub-system Functioning</techName>
+              <infoName>Simulant</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="30" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="951" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Operational Functions</techName>
+              <infoName>Principle of Operation</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>Packing and Un-Packing</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="800" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Packing and unpacking Instruction</techName>
+              <infoName>Packing and unpacking Details</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="280" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Inspection</techName>
+              <infoName>Inspection on Receipt</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="280" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Inspection Protocol</techName>
+              <infoName>Inspection after unpacking</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="09" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="800" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment</techName>
+              <infoName>Storage</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="17" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="800" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Packaging</techName>
+              <infoName>Unpacking Details</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="17" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="300" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Inventory Check</techName>
+              <infoName>Initial Checks</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="17" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS (presumably Ship Integrated Combat Automation System) is the primary technology, but since it's a system, I'd suggest focusing on one part of it: :dm-title: Preservation During Long Layoff/ Long Refit</techName>
+              <infoName>SICADS (presumably Ship Integrated Combat Automation System) is the primary technology, but since it's a system, I'd suggest focusing on one part of it: :dm-title: Preservation During Long Layoff/ Long Refit</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="17" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Warehouse Preservation</techName>
+              <infoName>Preservation at Warehouse:</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="18" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="28" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Handling Procvedure</techName>
+              <infoName>Handling and Packaging Instruction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="28" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS Storage Instructions</techName>
+              <infoName>Storage and Transportation Instructions</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+    <pmEntry>
+      <pmEntryTitle>User's General data</pmEntryTitle>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="00" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Equipment Maintenance</techName>
+              <infoName>INTRODUCTION</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="04" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Description</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="04" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Alarm Hazard Level Description</techName>
+              <infoName>Alarm Levels</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="04" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD opperation Moad</techName>
+              <infoName>FCAD Bars and Buzzers</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="05" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ship Systems Overhaul</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="06" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Preventive Maintenance</techName>
+              <infoName>INTRODUCTION</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="07" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS SPECIAL COMPONENTS Description</techName>
+              <infoName>SPECIFICATION OF SPECIAL COMPONENTS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="07" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Test Equipment</techName>
+              <infoName>SPECIAL TEST EQUIPMENT/ RIGS/ JIGS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="07" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ni63 Handling</techName>
+              <infoName>Protective Measures for Handling Ni63 Source</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="08" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>System Description</techName>
+              <infoName>GENERAL INFORMATION</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="08" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Installation Manual</techName>
+              <infoName>Purpose of Installation Manual</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="08" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="020" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Air Monitoring System</techName>
+              <infoName>System Configuration</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="08" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="056" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SUB-SYSTEMS Description</techName>
+              <infoName>IMPORTANT SUB-SYSTEMS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="18"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="14" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ship Power System</techName>
+              <infoName>Inter-connection details of Sub-systems</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="018" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Ship Installed Chemical Agent Detection System (SICADS)</techName>
+              <infoName>Introduction</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>Features</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>System Composition</techName>
+              <infoName>Systems Composition</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>Dimensions and Weight</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>UPS System</techName>
+              <infoName>...</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="15" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD System</techName>
+              <infoName>Functional Block Diagram</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>SICADS</techName>
+              <infoName>System Description</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Inboard FCAD</techName>
+              <infoName>Brief Description of Sub-systems</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Inboard FCAD</techName>
+              <infoName>Inboard FCAD</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Outboard FCAD</techName>
+              <infoName>Outboard FCAD</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Main Control Unit</techName>
+              <infoName>Main Control Unit (MCU)</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Remote Display Unit</techName>
+              <infoName>Remote Display and Alarm Unit</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="16" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>UPS System</techName>
+              <infoName>Uninterrupt i ble P ower S upply (UPS) with Battery Box</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD</techName>
+              <infoName>Elements, Controls and indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="C" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Caps</techName>
+              <infoName>Inboard FCAD Caps</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="D" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD</techName>
+              <infoName>...</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>CAD Elements</techName>
+              <infoName>FCAD Elements and Controls</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Indicators</techName>
+              <infoName>FCAD Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD</techName>
+              <infoName>FCAD Initialization</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Wait Mode</techName>
+              <infoName>...</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Ready Mode</techName>
+              <infoName>FCAD Ready Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="07" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Buzzer OFF</techName>
+              <infoName>FCAD Buzzer OFF</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="08" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Buzzer</techName>
+              <infoName>CAD Buzzer ON</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="09" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Bars in 'G' Mode</techName>
+              <infoName>FCAD Bars in ‘ G ’ Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="10" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Bars</techName>
+              <infoName>FCAD Bars in ‘H’ Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="11" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>CAD</techName>
+              <infoName>FCAD CWA Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="12" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD-TIC</techName>
+              <infoName>FCAD TIC Mode</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="13" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>FCAD Indicators</techName>
+              <infoName>FCAD Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="19" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="14" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>CwaTicAlarmLevelsDisplay</techName>
+              <infoName>...</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="20" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>MCU Controls</techName>
+              <infoName>MCU Controls</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="20" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>MCU Keypad</techName>
+              <infoName>MCU Keypad</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="20" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Connectors description</techName>
+              <infoName>MCU Connectors</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="20" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Illustration</techName>
+              <infoName>MCU Elements</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="20" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Details of Attributes</techName>
+              <infoName>MCU Elements and Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Illustration</techName>
+              <infoName>RDAU Elements and Controls</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>RDAU Illustration</techName>
+              <infoName>RDAU Keypad</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Connectors Illustration</techName>
+              <infoName>RDAU Connector</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="04" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Illustration</techName>
+              <infoName>RDAU Elements</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="05" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Details of Attributes</techName>
+              <infoName>RDAU Elements and Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Indicators General Data</techName>
+              <infoName>MCU and RDAU Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="21" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="06" disassyCodeVariant="B" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Details of the indicators</techName>
+              <infoName>MCU and RDAU Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="22" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Graphical representation</techName>
+              <infoName>UPS Controls and Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="22" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Graphical Representation</techName>
+              <infoName>UPS Controls</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="22" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Details of the attributes</techName>
+              <infoName>UPS Elements and Indicators</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="10" day="20"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="29" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="011" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Principle of the system</techName>
+              <infoName>Purpose</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="29" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="033" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Characteristics of the System</techName>
+              <infoName>Features</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="29" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="054" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Supply requisites</techName>
+              <infoName>Power Requirements</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="29" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="03" disassyCodeVariant="A" infoCode="009" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Characteristics</techName>
+              <infoName>System Specifications</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="31" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Types of CWA Agents</techName>
+              <infoName>Detail Description of Chemical Warfare Agent (CWA)</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="31" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="015" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Specifications</techName>
+              <infoName>Details of CWA</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="32" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="00" disassyCodeVariant="A" infoCode="040" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Categorization</techName>
+              <infoName>Brief Description of Sub-Systems of SICADS</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="32" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="01" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Sub-system description</techName>
+              <infoName>Inboard FCAD</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+      <pmEntry>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="P15B" systemDiffCode="000" systemCode="N4" assyCode="32" itemLocationCode="D" subSystemCode="0" subSubSystemCode="0" disassyCode="02" disassyCodeVariant="A" infoCode="042" infoCodeVariant="A"/>
+            <issueInfo issueNumber="001" inWork="00"/>
+            <language languageIsoCode="en" countryIsoCode="US"/>
+          </dmRefIdent>
+          <dmRefAddressItems>
+            <dmTitle>
+              <techName>Sub-system Description</techName>
+              <infoName>Outboard FCAD</infoName>
+            </dmTitle>
+            <issueDate year="2025" month="09" day="26"/>
+          </dmRefAddressItems>
+        </dmRef>
+      </pmEntry>
+    </pmEntry>
+  </content>
+</pm>

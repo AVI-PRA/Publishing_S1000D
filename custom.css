@@ -1,0 +1,57 @@
+/* 
+Xignal Viewer - CSS Stylesheet Customization 
+
+Customer:   Docuneering
+Version:    1.0
+
+*/
+
+
+body {
+	font-family:verdana;
+	font-size:10pt;
+	color:#505050;
+}
+
+.dmTitleBar {
+	color:#505050;
+	background-color:#F5F5F5;
+}
+
+.idstatusTitle {
+	color:#505050;
+	background-color:white;
+}
+
+.prelreqTitle {
+	color:#505050;
+	background-color:white;
+}
+
+.mainProcedureTitle {
+	color:#505050;
+	background-color:white;
+}
+
+.closeRqmtsTitle {
+	color:#505050;
+	background-color:white;
+}
+
+/* ---- Standard text ---- */
+a {
+	color:#0066FF;
+}
+a:hover {
+	color:#FF4B4B;
+	text-decoration:underline;
+}
+
+caption {
+	color:#505050;
+}
+
+thead th,
+thead td {
+	background-color:#F5F5F5;
+}

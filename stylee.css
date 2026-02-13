@@ -1,0 +1,53 @@
+body {
+	font-family: sans-serif;
+}
+
+.error {
+	color: red;
+}
+
+.menu-float {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5%;
+	width: 100%;
+	overflow: scroll;
+}
+
+.pub-toc {
+	position: absolute;
+	top: 5%;
+	left: 0;
+	width: 25%;
+	height: 95%;
+	overflow: scroll;
+}
+
+.main-float {
+	position: absolute;
+	top: 5%;
+	left: 25%;
+	height: 95%;
+	width: 75%;
+	overflow: scroll;
+}
+
+.definition-list th, .definition-list td {
+	vertical-align: top;
+}
+
+.prelim-rqmts-table, .prelim-rqmts-table tr, .prelim-rqmts-table th, .prelim-rqmts-table td {
+	border-collapse: collapse;
+	border: solid 1px black;
+}
+
+.prelim-rqmts-table th, .prelim-rqmts-table td {
+	text-align: left;
+	vertical-align: top;
+	padding: 0.25em;
+}
+
+*:target {
+	background-color: #ffa;
+}

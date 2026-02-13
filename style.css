@@ -1,0 +1,647 @@
+/* Generated CSS from Arbortext .style file */
+/* NOTE: This is a best-effort conversion. Some Arbortext features, */
+/* especially print-specific ones (keeps, complex spacing, scripts), */
+/* may not have direct CSS equivalents or perfect translations. */
+
+/* === Property Sets === */
+
+.bold {
+    font-weight: bold;
+  }
+  
+  .box {
+    background-color: #F0F0F0;
+    border: thin solid black; /* 'thin solid' mapped from base + edited source */
+    padding: 2pt;
+    /* Note: The complex APP script logic for boxing isn't directly replicable in CSS */
+    /* This provides the basic visual appearance from the XSL/HTML sources. */
+  }
+  
+  .customTableTitle {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+  
+  .double-underline {
+    /* From BaseProperties (approximated) and EditedSource */
+    text-decoration: underline; /* Base approximation */
+    text-decoration-style: double; /* Modern CSS */
+    border-bottom: 0.2em double; /* From HTML EditedSource - more reliable */
+  }
+  
+  .Footnote_font {
+    font-family: Serif;
+    font-style: normal; /* italic="no" */
+    font-size: 12pt;
+    font-weight: normal;
+    color: #000000;
+    background-color: #FFFFFF; /* shading */
+    text-transform: none; /* allcaps="no", smallcaps="no" */
+    text-decoration: none; /* strikeThrough="no", textUnderlineStyle="none" */
+  }
+  
+  .Index_grouphead_space {
+    margin-bottom: 0.5pc; /* optimum */
+    /* min/max/precedence not directly mappable */
+  }
+  
+  .Index_group_space {
+    margin-top: 1.5pc; /* optimum */
+    /* min/max/precedence not directly mappable */
+  }
+  
+  .italic {
+    font-style: italic;
+  }
+  
+  .Link {
+    color: #0000FF;
+    text-decoration: underline;
+  }
+  
+  .List_item_space {
+    margin-top: 6pt; /* optimum */
+    margin-bottom: 6pt; /* optimum */
+    display: block; /* Breaks blockOrInline="block" */
+    /* conditionality/min/max/precedence not directly mappable */
+  }
+  
+  .overline {
+    text-decoration: overline; /* From EditedSource */
+  }
+  
+  .overstrike-with-slash {
+    text-decoration: line-through; /* From BaseProperties & HTML limitation */
+    /* The specific slash character strike-through is print-specific */
+    /* and not standard in CSS. */
+  }
+  
+  .preformatted_font {
+    font-family: monospace;
+  }
+  
+  .Standard_space {
+    margin-top: 8pt; /* optimum */
+    /* conditionality/min/max/precedence not directly mappable */
+  }
+  
+  .Table_space {
+    margin-top: 1.2em; /* optimum */
+    /* min/max/precedence not directly mappable */
+  }
+  
+  .Title_1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+  
+  .Title_2 {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+  
+  .Title_3 {
+    font-size: 16pt;
+    font-weight: bold;
+  }
+  
+  .Title_4 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+  
+  .Title_5 {
+    font-size: 12pt;
+    font-weight: bold;
+  }
+  
+  .Title_6 {
+    font-size: 12pt;
+    font-weight: normal; /* Default */
+  }
+  
+  .Title_7,
+  .Title_8,
+  .Title_9 {
+    font-size: 12pt;
+    font-weight: bold;
+  }
+  
+  .Title_alignment {
+    text-align: left;
+    text-align-last: initial; /* 'relative' is not a direct CSS value */
+  }
+  
+  .Title_color {
+    color: #0000FF;
+  }
+  
+  .Title_document {
+    font-size: 24pt;
+    font-weight: bold;
+  }
+  
+  .Title_font {
+    font-family: sans-serif; /* Sanserif */
+  }
+  
+  .Title_formalBlock {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+  
+  .Title_keeps {
+    /* keep properties are primarily for print/pagination, limited CSS support */
+     /* hyphens: none; / * CSS for hyphenate="no" */
+     /* break-inside: avoid-column; / * Approximation for keep together */
+     /* break-after: avoid-column; / * Approximation for keep with next */
+     white-space: nowrap; /* Simpler way to prevent breaks within */
+  }
+  
+  .Title_space {
+    line-height: 1.1em;
+    margin-top: 1.5em;    /* optimum */
+    margin-bottom: 1.0em; /* optimum */
+    /* min/max/precedence not directly mappable */
+  }
+  
+  .Title_TOC {
+    font-size: 18pt;
+    font-weight: bold;
+  }
+  
+  
+  /* === Element Styles === */
+  
+  /* Generated Text Wrappers (Usually not styled directly in CSS) */
+  _sfe_BeforeOrAfterText, _sfe_CollectionItem, _sfe_CrossReference,
+  _sfe_CrossReferenceTitle, _sfe_Gentext, _sfe_IndexAlphaGroup_Main_Index,
+  _sfe_IndexEndPage_Main_Index, _sfe_IndexEntry_Main_Index,
+  _sfe_IndexGroupHead_Main_Index, _sfe_IndexHeading_Main_Index,
+  _sfe_IndexLocators_Main_Index, _sfe_IndexPage_Main_Index,
+  _sfe_IndexPostGroup_Main_Index, _sfe_IndexPreGroup_Main_Index,
+  _sfe_IndexRangeGroup_Main_Index, _sfe_IndexSeeAlso_Main_Index,
+  _sfe_IndexSee_Main_Index, _sfe_IndexSubGroupHead_Main_Index,
+  _sfe_Index_Main_Index, _sfe_RepeatingTitle, _sfe_RepeatingTitleBottom,
+  _sfe_TocEntry1_List_of_Figures, _sfe_TocEntry1_List_of_Tables,
+  _sfe_TocEntry1_Main_TOC, _sfe_TocEntry2_List_of_Figures,
+  _sfe_TocEntry2_List_of_Tables, _sfe_TocEntry2_Main_TOC,
+  _sfe_TocEntry3_List_of_Figures, _sfe_TocEntry3_List_of_Tables,
+  _sfe_TocEntry3_Main_TOC, _sfe_TocEntry4_List_of_Figures,
+  _sfe_TocEntry4_List_of_Tables, _sfe_TocEntry4_Main_TOC,
+  _sfe_TocEntry5_List_of_Figures, _sfe_TocEntry5_List_of_Tables,
+  _sfe_TocEntry5_Main_TOC, _sfe_TocLabel_List_of_Figures,
+  _sfe_TocLabel_List_of_Tables, _sfe_TocLabel_Main_TOC,
+  _sfe_TocList_of_Figures, _sfe_TocList_of_Tables, _sfe_TocMain_TOC,
+  _sfe_TocPage_List_of_Figures, _sfe_TocPage_List_of_Tables,
+  _sfe_TocPage_Main_TOC, _sfe_TocTitle_List_of_Figures,
+  _sfe_TocTitle_List_of_Tables, _sfe_TocTitle_Main_TOC {
+    /* Generally, these wrappers inherit or are styled by their content/purpose */
+  }
+  
+  _sfe_ExternalLink,
+  _sfe_InternalLink,
+  link {
+    color: #0000FF;
+    text-decoration: underline;
+  }
+  
+  FlattenedMap,
+  linktext,
+  navtitle,
+  titlealts {
+    display: none; /* Hidden */
+  }
+  
+  _sfe_HeaderOrFooter,
+  _sfe_Index,
+  RDStyle,
+  ResolvedMap {
+    display: block;
+    margin-top: 0; /* HeaderOrFooter specific */
+  }
+  
+  /* Index Specific Styling - Approximations */
+  _sfe_IndexAlphaGroup_Main_Index,
+  _sfe_IndexPostGroup_Main_Index,
+  _sfe_IndexPreGroup_Main_Index,
+  _sfe_IndexRangeGroup_Main_Index {
+    display: block;
+    margin-top: 1.5pc; /* From Index_group_space */
+  }
+  
+  _sfe_IndexEntry_Main_Index { display: block; margin-left: 0.5em; text-indent: -0.5em; margin-right: 2pc; }
+  _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index { margin-left: 1em; text-indent: -0.5em; margin-right: 0; }
+  _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index { margin-left: 1em; text-indent: -0.5em; }
+  _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index _sfe_IndexEntry_Main_Index { margin-left: 1em; text-indent: -0.5em; }
+  
+  _sfe_IndexGroupHead_Main_Index {
+    display: block;
+    font-family: Sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 0.5pc;
+  }
+  
+  _sfe_IndexEndPage_Main_Index::before {
+    content: "–"; /* From GeneratedText */
+  }
+  
+  _sfe_IndexPage_Main_Index + _sfe_IndexPage_Main_Index::before {
+    content: ", "; /* From GeneratedText */
+  }
+  
+  _sfe_IndexLocators_Main_Index::before {
+     content: ""; /* Leader difficult in CSS, add space? */
+     padding-left: 3em; /* Approximate leader space */
+     /* A flex/grid layout on the parent IndexEntry might achieve better alignment */
+  }
+  
+  _sfe_IndexSee_Main_Index::before {
+     content: ", See ";
+     font-style: italic;
+  }
+  _sfe_IndexSeeAlso_Main_Index {
+     display: block; /* Or inline-block depending on context */
+     margin-left: 3em;
+     text-indent: -1.5em; /* Negative indent for hanging */
+  }
+  _sfe_IndexSeeAlso_Main_Index::before {
+     content: "See also ";
+     font-style: italic;
+  }
+  
+  /* TOC Specific Styling - Approximations */
+  _sfe_TocEntry1_List_of_Figures, _sfe_TocEntry1_List_of_Tables, _sfe_TocEntry1_Main_TOC { display: block; padding-left: 4em; text-indent: -4em; margin-right: 2pc; }
+  _sfe_TocEntry2_List_of_Figures, _sfe_TocEntry2_List_of_Tables, _sfe_TocEntry2_Main_TOC { display: block; padding-left: 6em; text-indent: -6em; margin-right: 2pc; }
+  _sfe_TocEntry3_List_of_Figures, _sfe_TocEntry3_List_of_Tables, _sfe_TocEntry3_Main_TOC { display: block; padding-left: 8em; text-indent: -8em; margin-right: 2pc; }
+  _sfe_TocEntry4_List_of_Figures, _sfe_TocEntry4_List_of_Tables, _sfe_TocEntry4_Main_TOC { display: block; padding-left: 10em; text-indent: -10em; margin-right: 2pc; }
+  _sfe_TocEntry5_List_of_Figures, _sfe_TocEntry5_List_of_Tables, _sfe_TocEntry5_Main_TOC { display: block; padding-left: 12em; text-indent: -12em; margin-right: 2pc; }
+  
+  _sfe_TocPage_List_of_Figures,
+  _sfe_TocPage_List_of_Tables,
+  _sfe_TocPage_Main_TOC {
+    display: none; /* Hidden by default for web */
+  }
+  @media print {
+    _sfe_TocPage_List_of_Figures,
+    _sfe_TocPage_List_of_Tables,
+    _sfe_TocPage_Main_TOC {
+      display: inline; /* Visible in print */
+      /* Add leader dots - often requires wrapper spans and careful styling or flexbox */
+      /* Basic idea: */
+      /* float: right; */
+    }
+    _sfe_TocPage_List_of_Figures::before,
+    _sfe_TocPage_List_of_Tables::before,
+    _sfe_TocPage_Main_TOC::before {
+       /* content: leader(dotted); / * Not widely supported */
+       /* Alternative: use a background image or pseudo-elements */
+       content: " ................................................... "; /* Poor man's leader */
+       white-space: nowrap;
+       overflow: hidden;
+       display: inline-block;
+       vertical-align: bottom;
+       width: auto; /* Needs refinement */
+    }
+  
+  }
+  
+  /* General Elements */
+  abstract, body, colspec, dlentry, draft-comment, fig, keyword, lq, ol, p, ph, pre, procedure, procsteps, procsubsteps, reltable, row, simpletable, sl, sli, table, tbody, tgroup, thead, toc, ul {
+    display: block;
+  }
+  
+  /* Elements styled inline or unstyled */
+  action_desc, addressdetails, administrativearea, alt, anchor, anchorid, anchorkey, anchorref, audience, author, authorinformation, b, brand, category, cite, component, contactnumber, contactnumbers, contentref, contentstatus, copyrholder, copyright, copyryear, country, created, critdates, data, dd, ddhd, desc, division, dl, dlhead, dt, dthd, emailaddress, emailaddresses, entry, exportanchors, featnum, figurelist, finished_action, firstname, fn, foldout, generationidentifier, goto_action, honorific, image, index, index-see, index-see-also, index-sort-as, indexterm, keydef, keywords, lastname, li, lines, linkpool, locality, localityname, longdescref, longquoteref, map, mapref, metadata, middlename, modelno, namedetails, navref, next_action, note, number, numberlist, numberrange, object, organizationinfo, organizationname, organizationnamedetails, otherinfo, othermeta, param, partno, permissions, personinfo, personname, plate, platform, postalcode, procbody, procinfo, procresult, prodinfo, prodname, productgraphic, prognum, publisher, q, related-links, relcell, relcolspec, relheader, relrow, resourceid, revised, screen, searchtitle, serialno, series, shortdesc, source, state, stentry, sthead, strow, subtitle, sup, tablelist, techinfomap, techinfometa, techinfoparam, techinfoparams, term, text, thoroughfare, title, tm, topicgroup, topichead, topicmeta, topicref, u, url, urls, vrm, vrmlist, xref {
+    /* Default display depends on element type (inline/block), */
+    /* specific contexts below override where needed */
+  }
+  
+  b { font-weight: bold; }
+  u { text-decoration: underline; }
+  sup { vertical-align: super; font-size: smaller; } /* Approximation */
+  
+  /* Paragraphs and similar */
+  p, dlentry, lq, sl, sli, note, draft-comment {
+    margin-top: 8pt; /* Standard_space */
+    margin-bottom: 6pt; /* Default paragraph spacing or specific */
+    font-family: Arial;
+    font-size: 12pt;
+    text-align: justify;
+    line-height: 1.65em;
+  }
+  /* Override for specific contexts */
+  li > p:first-child,
+  procstep > p:first-child,
+  procsubstep > p:first-child,
+  li > note:first-child,
+  procstep > note:first-child,
+  procsubstep > note:first-child,
+  li > lq:first-child,
+  li > sl:first-child {
+    display: inline; /* Inline within list item */
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  li > p:not(:first-child),
+  procstep > p:not(:first-child),
+  procsubstep > p:not(:first-child),
+  li > note:not(:first-child),
+  procstep > note:not(:first-child),
+  procsubstep > note:not(:first-child),
+  li > lq:not(:first-child),
+  li > sl:not(:first-child) {
+    display: block; /* Block for subsequent elements */
+    margin-top: 6pt; /* List_item_space */
+    margin-bottom: 6pt; /* List_item_space */
+  }
+  
+  abstract > p {
+    font-family: Arial;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+  }
+  abstract > p[outputclass="right align"] {
+    font-size: 12pt;
+    font-weight: normal;
+    text-align: right;
+  }
+  p[outputclass="Hide"] {
+    color: #FFFFFF; /* Or visibility: hidden; or display: none; */
+  }
+  
+  lq {
+    font-family: Arial;
+    font-size: 22pt; /* Typo in style? 22? */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  note {
+    border: thin solid black;
+    background-color: #F0F0F0;
+    padding: 2pt;
+    margin-top: 8pt; /* Standard_space */
+    margin-bottom: 6pt;
+  }
+  note::before {
+    content: "NOTE "; /* Generated Text */
+    font-weight: bold;
+    display: block; /* Or inline depending on desired layout */
+    margin-bottom: 0.2em;
+  }
+  
+  lines, pre {
+    font-family: monospace;
+    white-space: pre;
+    text-align: left; /* preformatted */
+  }
+  
+  image {
+    display: block;
+    text-align: center; /* Alignment */
+    margin-top: 8pt; /* Standard_space */
+  }
+  
+  keyword {
+    font-family: Arial;
+    font-size: 20pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+  }
+  
+  /* Lists */
+  ol, ul {
+      margin-top: 8pt; /* Standard_space */
+      padding-left: 40px; /* Default padding for lists */
+  }
+  li {
+      margin-top: 6pt; /* List_item_space */
+      margin-bottom: 6pt; /* List_item_space */
+      font-family: Arial;
+      font-size: 12pt;
+      line-height: 1.65em;
+  }
+  
+  /* Specific List Item Styles */
+  ol > li { list-style-type: lower-alpha; list-style-position: outside; padding-left: 0; margin-left: 2.5em; text-indent: -2.5em; } /* (a) */
+  ol ol > li { list-style-type: lower-roman; list-style-position: outside; padding-left: 0; margin-left: 0; } /* (i) - Adjust margin based on parent */
+  ol ol ol > li { list-style-type: lower-roman; list-style-position: outside; padding-left: 0; margin-left: 3em; text-indent: -3em; } /* i. */
+  ol ol ol ol > li { list-style-type: decimal; list-style-position: outside; padding-left: 0; margin-left: 2.5em; text-indent: -2.5em; } /* 1) */
+  
+  ul > li { list-style-type: disc; list-style-position: outside; padding-left: 0; margin-left: 1.25em; text-indent: -1.25em; } /* • */
+  ul > li[outputclass="Red Arrow & Font"] {
+      list-style: none; /* Remove default bullet */
+      color: #FF0000;
+      margin-left: 15pt;
+      text-indent: -15pt;
+  }
+  ul > li[outputclass="Red Arrow & Font"]::before {
+      content: "Ø"; /* Wingdings bullet */
+      font-family: Wingdings, 'Zapf Dingbats', serif; /* Specify Wingdings with fallbacks */
+      color: red;
+      display: inline-block;
+      width: 15pt; /* Match indent */
+      text-align: left; /* Or center depending on look */
+      margin-right: 5pt; /* Space after bullet */
+  }
+  ul ul > li { list-style-type: none; list-style-position: outside; padding-left: 0; margin-left: 1.25em; text-indent: -1.25em; }
+  ul ul > li::before { content: "– "; display: inline-block; width: 1.25em; margin-left: -1.25em; } /* – */
+  ul ul ul > li { list-style-type: none; list-style-position: outside; padding-left: 0; margin-left: 1.25em; text-indent: -1.25em; }
+  ul ul ul > li::before { content: "♦ "; display: inline-block; width: 1.25em; margin-left: -1.25em; } /* ♦ */
+  
+  /* Procedure Steps (Uses ol/li styling above, specialized for procstep) */
+  procsteps { counter-reset: procstep; }
+  procsteps > procstep {
+      display: list-item;
+      list-style: none; /* Use ::before for custom numbering */
+      margin-left: 2.5em;
+      text-indent: -2.5em;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+      font-family: Arial;
+      font-size: 12pt;
+      line-height: 1.65em;
+  }
+  procsteps > procstep::before {
+      counter-increment: procstep;
+      content: "(" counter(procstep, lower-alpha) ") ";
+      display: inline-block;
+      width: 2.5em; /* Match indent */
+      text-align: right;
+      padding-right: 0.5em; /* Space after number */
+      margin-left: -2.5em;
+  }
+  
+  procsubsteps { counter-reset: procsubstep; }
+  procsubsteps > procsubstep {
+      display: list-item;
+      list-style: none;
+      margin-left: 2.5em; /* Needs to be relative to parent step */
+      text-indent: -2.5em;
+      margin-top: 6pt;
+      margin-bottom: 6pt;
+      line-height: 1.65em;
+  }
+  procsubsteps > procsubstep::before {
+      counter-increment: procsubstep;
+      content: "(" counter(procsubstep, lower-roman) ") ";
+      display: inline-block;
+      width: 2.5em;
+      text-align: right;
+      padding-right: 0.5em;
+      margin-left: -2.5em;
+  }
+  
+  
+  /* Tables */
+  table, simpletable, reltable {
+      border-collapse: collapse; /* Common table setting */
+      width: auto; /* Or 100% */
+      margin-top: 1.2em; /* Table_space */
+      margin-bottom: 1.2em; /* Add some bottom space */
+  }
+  th, td, entry, stentry, relcell {
+      border: 1px solid #ccc; /* Basic border, style might differ */
+      padding: 3pt 5pt; /* Some padding */
+      font-family: Arial;
+      font-size: 12pt;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.65em;
+  }
+  thead th, thead entry, sthead stentry, relheader relcolspec {
+      font-weight: bold;
+      text-align: center; /* Common for headers */
+      background-color: #eee; /* Slight background for headers */
+  }
+  
+  /* Titles */
+  title, screen {
+    display: block;
+    font-family: Sans-serif; /* Title_font */
+    color: #0000FF; /* Title_color */
+    text-align: left; /* Title_alignment */
+    line-height: 1.1em; /* Title_space */
+    margin-top: 1.5em;  /* Title_space */
+    margin-bottom: 1.0em; /* Title_space */
+    /* keep properties approximated */
+    white-space: nowrap;
+  }
+  /* Specific Title Levels */
+  techinfomap > title { font-size: 24pt; font-weight: bold; color: #000000; } /* Title_document */
+  procedure > title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18pt;
+      font-weight: bold;
+      color: #000000;
+      text-transform: uppercase;
+      text-align: center; /* Override */
+      background-color: #F0F0F0; /* box */
+      border: thin solid black; /* box */
+      padding: 2pt;             /* box */
+      /* Numbering handled via counters if needed */
+  }
+  procedure > procedure > title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 18pt;
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+      padding-left: 35pt;
+      text-indent: -35pt;
+      /* Numbering */
+  }
+  procedure > procedure[outputclass="Hide"] > title {
+      color: #FFFFFF;
+  }
+  procedure > procedure > procedure > title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 16pt;
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+      /* Numbering */
+  }
+  procedure > procedure > procedure > procedure > title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 14pt;
+      font-weight: bold;
+      color: #000000;
+      text-align: left;
+      /* Numbering */
+  }
+  
+  fig > title, table > title {
+    font-family: Arial;
+    font-size: 12pt;
+    font-weight: normal; /* Overridden from base Title_formalBlock */
+    color: #000000; /* Override */
+    text-align: center; /* Override */
+    /* Numbering requires counters */
+  }
+  fig > title { font-weight: bold; } /* Specific fig/title style */
+  
+  toc > title, figurelist > title, tablelist > title {
+    font-family: Arial;
+    font-size: 14pt; /* From Generated Text */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center; /* Override */
+    color: #000000; /* Override */
+  }
+  
+  coverpage > title {
+    font-family: Arial;
+    font-size: 14pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+    color: #000000;
+  }
+  
+  /* Cross References */
+  xref {
+      color: #0000FF; /* Base color */
+      /* Generated text (Label_Number_Text) needs JS or server-side processing */
+      /* Simple link appearance */
+      text-decoration: underline;
+      cursor: pointer;
+  }
+  
+  /* Cover Page / Page Breaks (Approximation for web) */
+  coverpage {
+      /* In web, page breaks are less relevant */
+      /* Could add significant margin or style distinctively */
+       border: 1px dashed #ccc;
+       padding: 2em;
+       margin: 2em 0;
+       background-color: #f9f9f9;
+  }
+  
+  /* Conditional Page Breaks for Print */
+  @media print {
+      coverpage { break-before: right; } /* oddPage */
+      coverpage[outputclass="Annexure"] { break-before: left; } /* evenPage */
+      coverpage[outputclass="First Anciliary"] { break-before: right; } /* oddPage */
+      coverpage[outputclass="CoverPage"] { break-before: right; } /* oddPage */
+  
+      fig[outputclass="A4 Landscape"],
+      procedure[outputclass="A4 Landscape"] {
+          break-before: page;
+          /* CSS doesn't easily handle changing page orientation */
+          /* @page { size: landscape; } might work but applies broadly */
+      }
+      procedure { break-before: right; } /* Default start on odd page */
+      index { break-before: page; columns: 2; } /* spanInto="2" */
+      figurelist, tablelist, toc { break-before: right; } /* oddPage */
+  }

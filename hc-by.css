@@ -1,0 +1,147 @@
+/* 
+Xignal Viewer - CSS Stylesheet Customization 
+
+Customer:   High Contrast - Black on yellow
+Version:    1.0
+
+*/
+
+
+body {
+	font-family:verdana;
+	font-size:10pt;
+	color:black;
+	background-color:yellow;
+}
+
+.dmTitleBar {
+	color:black;
+	background-color:yellow;
+}
+
+.idstatusTitle {
+	color:black;
+	background-color:yellow;
+}
+
+.prelreqTitle {
+	color:black;
+	background-color:yellow;
+}
+
+.mainProcedureTitle {
+	color:black;
+	background-color:yellow;
+}
+
+.closeRqmtsTitle {
+	color:black;
+	background-color:yellow;
+}
+
+/* ---- Standard text ---- */
+a {
+	color:blue;
+}
+a:hover {
+	color:red;
+	text-decoration:underline;
+}
+
+/* ----- Tables ----- */
+
+caption {
+	color:black;
+}
+
+thead th,
+thead td {
+	background-color:yellow;
+}
+
+
+table.tblReferences {
+	border-bottom: 1px solid black;
+}
+table.tblReferences thead th {
+	border-bottom: 1px solid black;
+}
+
+/* ----- Preliminary requirements ----- */
+
+/* -- Production maintenance data -- */
+table.productionMaintDataTbl {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+/* -- Required Conditions -- */
+table.reqCondGroupTbl {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.reqCondGroupTbl th {
+	border-bottom: 1px solid black;
+}
+
+/* -- Required Persons -- */
+table.reqPersonsTbl {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.reqPersonsTbl th {
+	border-bottom: 1px solid black;
+}
+
+/* -- Required technical information -- */
+table.reqTechInfoGroupTbl {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+table.reqTechInfoGroupTbl th {
+	border-bottom: 1px solid black;
+}
+
+/* -- Support | Supplies | Spares -- */
+table.supportSuppliesSparesTbl {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+table.supportSuppliesSparesTbl th {
+	border-bottom: 1px solid black;
+}
+
+/* ---- Warning & Caution ---- */
+
+table.warningBackground {
+	border: 1px solid black;
+	background: repeating-linear-gradient(135deg,#000000,#000000 40px,#FF0000 40px,#FF0000 60px);
+}
+table.cautionBackground {
+	border: 1px solid black;
+	background: repeating-linear-gradient(135deg,#000000,#000000 40px,#FFFF00 40px,#FFFF00 60px);
+}
+table.warningBody,
+table.cautionBody {
+	width: 100%;
+	background:yellow;
+}
+
+table.warningBody td,
+table.cautionBody td {
+	border: 1px solid yellow;
+}
+
+/* ---- Footer ---- */
+
+div.footer {
+	border-top:1px solid black;
+	background-color:yellow;
+}
+
+.infoText {
+	color: black;
+}

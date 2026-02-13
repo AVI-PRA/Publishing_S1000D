@@ -1,0 +1,767 @@
+.bootstrap-iso {
+  /* 
+Xignal Viewer - Text Stylesheet
+
+Version 1.0
+*/
+  /* ----- CSS Variables ----- */
+  /* ---- Font family: A2 ---- */
+  /* ---- Font family: Segoe UI ---- */
+  /* ---- Standard text ---- */
+  /* ---- Tables ---- */
+  /* ---- References  ---- */
+  /* ---- Rounded borders | Start... ---- */
+  /* ---- ...End | Rounded borders ---- */
+  /* ----- Preliminary requirements ----- */
+  /* -- Production maintenance data -- */
+  /* -- Required Conditions -- */
+  /* -- Required Persons -- */
+  /* -- Required technical information -- */
+  /* -- Support | Supplies | Spares -- */
+  /* ---- Warning & Caution | Symbolic ---- */
+  /* ---- Change highlighting ---- */
+  /* ----- Illustrations ----- */
+  /* ----- Figure ----- */
+  /* ----- Video ----- */
+  /* ----- SVG Objects ----- */
+  /*  Crew  */
+  /*  Frontmatter  */
+  /* Original CSS
+.FM-shortPmTitle {
+	text-align:center;
+	font-size:14pt;
+}
+.FM-pmCode {
+	text-align:center;
+	font-size:16pt;
+	padding-top:50px;
+}
+*/
+  /* Original CSS
+img.FM-symbol {
+
+}
+*/
+}
+.bootstrap-iso :root {
+  --color-primary: #1c1444;
+  --color-secondary: #00e5c4;
+}
+@font-face {
+  font-family: 'A2-ExtraBold';
+  src: url('../assets/fonts/A2-ExtraBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'A2-SemiBold';
+  src: url('../assets/fonts/A2-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 200;
+  src: local("Segoe UI Light");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 300;
+  src: local("Segoe UI Semilight");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 400;
+  src: local("Segoe UI");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 600;
+  src: local("Segoe UI Semibold");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 700;
+  src: local("Segoe UI Bold");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Segoe UI Italic");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Segoe UI Bold Italic");
+}
+.bootstrap-iso body {
+  font-family: A2-SemiBold;
+  font-size: 13pt;
+  color: black;
+}
+.bootstrap-iso .para0Title {
+  position: relative;
+  top: 7px;
+  font-size: 18pt;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso .para0Text {
+  position: relative;
+  top: -4px;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.bootstrap-iso .para0TextNotFirst {
+  text-align: left;
+  margin-left: 0px;
+  padding-top: 6px;
+  padding-bottom: 25px;
+}
+.bootstrap-iso .subparaTitleNo {
+  font-weight: bold;
+  text-align: left;
+  margin-left: 66px;
+  padding-top: 6px;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .subparaTitle {
+  font-weight: bold;
+  text-align: left;
+  margin-left: 30px;
+  padding-top: 6px;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .subparaNo {
+  text-align: left;
+  margin-left: 66px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subparaText {
+  font-weight: normal;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 6px;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .para0TextDescript {
+  font-weight: normal;
+  text-align: left;
+  margin-left: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subparaTextDescript {
+  font-weight: normal;
+  text-align: left;
+  margin-left: 20px;
+  /*20px*/
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .para0Indent {
+  text-align: left;
+  margin-left: 66px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1Indent {
+  text-align: left;
+  margin-left: 98px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara2Indent {
+  text-align: left;
+  margin-left: 112px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara3Indent {
+  text-align: left;
+  margin-left: 125px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara4Indent {
+  text-align: left;
+  margin-left: 138px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara5Indent {
+  text-align: left;
+  margin-left: 152px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara6Indent {
+  text-align: left;
+  margin-left: 164px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara7Indent {
+  text-align: left;
+  margin-left: 178px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1 {
+  text-align: left;
+  margin-left: 50px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1No {
+  font-size: 18pt;
+  text-align: left;
+  margin-left: 80px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1Title {
+  text-align: left;
+  margin-left: 80px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .subpara1Text {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.bootstrap-iso .xignal {
+  background: #57E4C3;
+}
+.bootstrap-iso .btn-xignal {
+  background-color: #57E4C3;
+  border-color: #57E4C3;
+}
+.bootstrap-iso .btn-xignal:hover {
+  background-color: #57E4C3;
+  border-color: #57E4C3;
+}
+.bootstrap-iso .btn-xignal:focus,
+.bootstrap-iso .btn-xignal.focus {
+  background-color: #57E4C3;
+  border-color: #57E4C3;
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+.bootstrap-iso .dmTitleBar {
+  color: #505050;
+  background-color: #F5F5F5;
+}
+.bootstrap-iso .idstatusTitle {
+  margin-top: 20px;
+  text-align: center;
+}
+.bootstrap-iso .mainDoctypeTitle {
+  color: #1C1543;
+}
+.bootstrap-iso .roundedBullet {
+  position: relative;
+  left: -6px;
+  font-size: 12pt;
+  height: 46px;
+  width: 46px;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* ---- ...End ---- */
+  border: 6px solid white;
+  background-color: #1c1444;
+  color: #ffffff;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.bootstrap-iso .levelOneBar {
+  vertical-align: top;
+  background-image: url('../img/vLine.png');
+  background-repeat: repeat-y;
+  background-position: left;
+}
+.bootstrap-iso a {
+  color: #505050;
+  text-decoration: underline;
+}
+.bootstrap-iso a:hover {
+  color: #00e5c4;
+  text-decoration: underline;
+}
+.bootstrap-iso table thead tr th,
+.bootstrap-iso table thead tr td {
+  background-color: #F9FAFB;
+  /* F9FAFB */
+}
+.bootstrap-iso .sourceTableTGroup {
+  border: 0px !important;
+  /* #E7E7E7 */
+}
+.bootstrap-iso .sourceTableTGroup thead th,
+.bootstrap-iso .sourceTableTGroup thead td {
+  border: 0px !important;
+  /* #D2D5DB */
+}
+.bootstrap-iso table.sourceTableNestedTable {
+  width: 100%;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0 !important;
+  border-collapse: separate !important;
+  border-radius: 8px !important;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7 !important;
+  /* #E7E7E7 */
+}
+.bootstrap-iso table.sourceTableNestedTable thead td {
+  border-bottom: 1px solid #D2D5DB !important;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.sourceTableNestedTable thead td:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.sourceTableNestedTable thead td:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.sourceTableNestedTable td {
+  padding: 12px;
+}
+.bootstrap-iso table.sourceTableNestedTable > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.tblReferences {
+  width: 100%;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7;
+  /* #E7E7E7 */
+}
+.bootstrap-iso table.tblReferences thead th {
+  border-bottom: 1px solid #D2D5DB;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.tblReferences th:first-child {
+  -khtml-border-radius: 8px 0px 0px 0px;
+  -moz-border-radius: 8px 0px 0px 0px;
+  -ms-border-radius: 8px 0px 0px 0px;
+  -o-border-radius: 8px 0px 0px 0px;
+  -webkit-border-radius: 8px 0px 0px 0px;
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.tblReferences th:last-child {
+  -khtml-border-radius: 0px 8px 0px 0px;
+  -moz-border-radius: 0px 8px 0px 0px;
+  -ms-border-radius: 0px 8px 0px 0px;
+  -o-border-radius: 0px 8px 0px 0px;
+  -webkit-border-radius: 0px 8px 0px 0px;
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.tblReferences tbody td {
+  padding: 12px;
+}
+.bootstrap-iso table.tblReferences > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.productionMaintDataTbl {
+  border-top: 1px solid #D2D5DB;
+  border-bottom: 1px solid #D2D5DB;
+}
+.bootstrap-iso table.reqCondGroupTbl {
+  width: 100%;
+  text-align: left;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.reqCondGroupTbl thead th {
+  border-bottom: 1px solid #D2D5DB;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.reqCondGroupTbl th:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.reqCondGroupTbl th:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.reqCondGroupTbl td {
+  padding: 12px;
+}
+.bootstrap-iso table.reqCondGroupTbl > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.reqPersonsTbl {
+  width: 100%;
+  text-align: left;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.reqPersonsTbl thead th {
+  border-bottom: 1px solid #D2D5DB;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.reqPersonsTbl th:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.reqPersonsTbl th:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.reqPersonsTbl td {
+  padding: 12px;
+}
+.bootstrap-iso table.reqPersonsTbl > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl {
+  width: 100%;
+  text-align: left;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl thead th {
+  border-bottom: 1px solid #D2D5DB;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl th:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl th:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl td {
+  padding: 12px;
+}
+.bootstrap-iso table.reqTechInfoGroupTbl > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl {
+  width: 100%;
+  text-align: left;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  border: 1px solid #E7E7E7;
+  margin-bottom: 20px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl thead th {
+  border-bottom: 1px solid #D2D5DB;
+  /* #D2D5DB */
+  padding: 12px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl th:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl th:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl td {
+  padding: 12px !important;
+}
+.bootstrap-iso table.supportSuppliesSparesTbl > tbody > tr:not(:last-child) > td {
+  border-bottom: 1px solid #E7E7E7;
+}
+.bootstrap-iso table.warningBackground {
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #ffffff, #ffffff 40px, #FF0000 40px, #FF0000 60px);
+  border: 1px solid silver;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  margin-bottom: 30px;
+}
+.bootstrap-iso table.cautionBackground {
+  width: 100%;
+  background: repeating-linear-gradient(135deg, #FFFF00, #FFFF00 40px, #000000 40px, #000000 60px);
+  border: 1px solid silver;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+  margin-bottom: 30px;
+}
+.bootstrap-iso table.warningBody,
+.bootstrap-iso table.cautionBody {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid silver;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 8px;
+  /* ---- ...End ---- */
+}
+.bootstrap-iso .change {
+  padding: 2px;
+  background-color: #ccffcc;
+}
+.bootstrap-iso img.fig {
+  max-width: 25%;
+  max-height: 25%;
+  padding: 10px;
+  border: 2px solid #efefef;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+  margin-bottom: 6px;
+}
+.bootstrap-iso .changeFig {
+  border: 10px solid #ccffcc;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+  max-width: 25%;
+  max-height: 25%;
+  padding: 10px;
+}
+.bootstrap-iso video {
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+}
+.bootstrap-iso .changeMedia {
+  border: 10px solid #ccffcc;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+}
+.bootstrap-iso object {
+  border: 2px solid #efefef;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+  max-width: 25%;
+  max-height: 25%;
+  padding: 10px;
+  margin: 0px;
+}
+.bootstrap-iso object.changeObj {
+  border: 10px solid #ccffcc;
+  max-width: 25%;
+  max-height: 25%;
+  padding: 10px;
+  margin: 0px;
+}
+.bootstrap-iso .mediaUnsupported {
+  font-size: 20pt;
+  color: grey;
+  width: 500px;
+  background: #efefef;
+  border: 1px solid silver;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  margin-bottom: 6px;
+}
+.bootstrap-iso .inlineApplic {
+  display: inline;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid silver;
+  background-color: #efefef;
+  margin-bottom: 0px;
+}
+.bootstrap-iso .inlineApplicText {
+  display: inline;
+  font-size: 11pt;
+  font-style: italic;
+}
+.bootstrap-iso .applicIcon {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 4px;
+  padding-right: 4px;
+}
+.bootstrap-iso .icn {
+  display: inline;
+  font-size: 11pt;
+  margin: 0px;
+  padding: 2px 4px 2px 4px;
+  border: 1px solid silver;
+  background-color: #efefef;
+}
+.bootstrap-iso .challenge {
+  padding-bottom: 20px;
+}
+.bootstrap-iso .crewDrillStepIfElseIf td {
+  padding-bottom: 10px;
+}
+.bootstrap-iso .FM-productIntroName {
+  text-align: center;
+  font-size: 16pt;
+  padding-bottom: 20px;
+}
+.bootstrap-iso .FM-pmTitle {
+  text-align: center;
+  font-size: 36pt;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .FM-shortPmTitle {
+  text-align: center;
+  font-size: 16pt;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+.bootstrap-iso .FM-pmCode {
+  visibility: hidden;
+  text-align: center;
+  font-size: 0pt;
+  padding-top: 0px;
+}
+.bootstrap-iso .FM-issueInfo {
+  text-align: center;
+  font-size: 16pt;
+}
+.bootstrap-iso img.FM-fig {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #efefef;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+  max-width: 75%;
+  max-height: 75%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.bootstrap-iso .changeFM-fig {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 10px solid #ccffcc;
+  /* ---- Rounded borders | Start... ---- */
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: 15px;
+  /* ---- ...End ---- */
+  max-width: 75%;
+  max-height: 75%;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.bootstrap-iso .FM-copyright {
+  text-align: left;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-responsiblePartnerCompany-Title {
+  text-align: center;
+  /* Here */
+  font-size: 16pt;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso img.FM-symbol {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bootstrap-iso .FM-enterpriseSpec-Title {
+  text-align: left;
+  font-size: 16pt;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+.bootstrap-iso .FM-enterpriseName {
+  text-align: center;
+  /* Here */
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 0px;
+}
+.bootstrap-iso .FM-businessUnit-Title {
+  text-align: left;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.bootstrap-iso .FM-businessUnitName {
+  text-align: left;
+  font-size: 12pt;
+  padding-top: 0px;
+}
+.bootstrap-iso .FM-address {
+  text-align: left;
+  font-size: 12pt;
+  padding-top: 0px;
+}
+.bootstrap-iso .FM-policyStatement {
+  text-align: left;
+  padding-top: 40px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-dataConds {
+  text-align: left;
+  padding-top: 20px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-dataDistribution {
+  text-align: left;
+  padding-top: 40px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-exportControl {
+  text-align: left;
+  padding-top: 20px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-dataHandling {
+  text-align: left;
+  padding-top: 20px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-dataDestruction {
+  text-align: left;
+  padding-top: 20px;
+  font-size: 12pt;
+}
+.bootstrap-iso .FM-dataDisclosure {
+  text-align: left;
+  padding-top: 20px;
+  font-size: 12pt;
+}
