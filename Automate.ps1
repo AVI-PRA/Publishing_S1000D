@@ -1,6 +1,6 @@
 # --- Configuration ---
 $saxonJar = "saxon9he.jar"
-$xslStylesheet = "ciws.xsl"
+$xslStylesheet = "Brahmos.xsl"
 $inputDir = "csdb"
 $outputDir = "CSDBB" # Outputting to the same directory
 $xmlFilter = "DMC-*.XML"

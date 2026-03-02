@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dmodule [
+<!NOTATION PNG SYSTEM "PNG">
+<!ENTITY ICN-001-001 SYSTEM "ICN-001-001.png" NDATA PNG>
+]>
+<dmodule xmlns:dc="http://www.purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_4-2/xml_schema_flat/descript.xsd">
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="DEMO" systemDiffCode="000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="01" disassyCode="0A" disassyCodeVariant="A" infoCode="02A" infoCodeVariant="A" itemLocationCode="A"/>
+        <language languageIsoCode="en" countryIsoCode="IN"/>
+        <issueInfo issueNumber="001" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2025" month="09" day="02"/>
+        <dmTitle>
+          <techName>Sample System Widget Task</techName>
+          <infoName>Performing the Widget Calibration Procedure</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="1671Y">
+        <enterpriseName>LNTDEFENCE</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="1671Y">
+        <enterpriseName>LNTDEFENCE</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>All applicable units and serial numbers.</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="S1000D" systemDiffCode="H" systemCode="041" subSystemCode="1" subSubSystemCode="0" assyCode="0301" disassyCode="00" disassyCodeVariant="A" infoCode="022" infoCodeVariant="A" itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+      <reasonForUpdate id="rfu-0001" updateHighlight="1" updateReasonType="urt02">
+        <simplePara>Initial draft for demonstration purposes.</simplePara>
+      </reasonForUpdate>
+    </dmStatus>
+  </identAndStatusSection>
+  <content>
+    <description>
+      <levelledPara id="_this_is_the_demo">
+        <title>This is the demo</title>
+        <para>This shows how the Docx is Coverted to the S1000D effortlessly.This is
+      very efficient very smeeless way u can convert.Refer this
+          <dmRef>
+            <dmRefIdent>
+              <dmCode modelIdentCode="MDL" systemDiffCode="000" systemCode="00" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="01" disassyCodeVariant="A" infoCode="010" infoCodeVariant="A" itemLocationCode="D"/>
+            </dmRefIdent>
+          </dmRef>.
+        </para>
+        <para>list of the features:</para>
+        <para>
+          <sequentialList>
+            <listItem>
+              <para>Effortless conversion from Docx to S1000D.</para>
+            </listItem>
+            <listItem>
+              <para>Efficient and seamless process.</para>
+            </listItem>
+            <listItem>
+              <para>User-friendly interface for easy navigation.</para>
+            </listItem>
+          </sequentialList>
+        </para>
+        <figure>
+          <title>Img-0</title>
+          <graphic infoEntityIdent="ICN-001-001"/>
+        </figure>
+        <para>
+          <sequentialList>
+            <listItem>
+              <para>Comprehensive documentation for reference and support.</para>
+            </listItem>
+            <listItem>
+              <para>Regular updates to ensure compatibility with the latest standards.</para>
+            </listItem>
+          </sequentialList>
+        </para>
+      </levelledPara>
+    </description>
+  </content>
+</dmodule>

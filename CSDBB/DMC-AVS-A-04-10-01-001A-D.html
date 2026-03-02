@@ -1,0 +1,185 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sample System Widget Task –
+         Performing the Widget Calibration Procedure
+      </title>
+      <link rel="stylesheet" href="xignal/assets/bootstrap/4.6.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../main.css"><style>
+                    .prelim-req-table { margin-bottom: 1.5rem; }
+                    .fault-procedure-list { margin-top: 2rem; padding-left: 1rem; }
+                    [id] { scroll-margin-top: 70px; }
+                    .hidden-by-applic { display: none !important; }
+                    .para0Indent { width: 40px; flex-shrink: 0; }
+                    /* Fix for list numbering with figures */
+                    ol li { list-style-position: outside; }
+                    ol li .figure-in-list { display: block; margin: 10px 0; }
+                    /* Continuous list numbering across separate lists */
+                    .levelOneBar, .levelTwoBar, .levelThreeBar, .levelFourBar, .levelFiveBar { counter-reset: continuous-list; }
+                    .sequential-list-continuous { list-style: none !important; }
+                    .sequential-list-continuous > li::before { 
+                        counter-increment: continuous-list; 
+                        content: counter(continuous-list) ". "; 
+                        margin-left: -1.5em; 
+                        margin-right: 0.5em; 
+                        font-weight: inherit; 
+                    }
+                </style></head>
+   <body>
+      <div class="dmTitleBar bg-light p-3 mb-3">
+         <h1 class="text-center">Sample System Widget Task –
+            Performing the Widget Calibration Procedure
+         </h1>
+      </div>
+      <div class="modal fade" id="idstatusModal" tabindex="-1" aria-labelledby="idstatusModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="idstatusModalLabel">Data Module Identification and Status</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button></div>
+               <div class="modal-body">
+                  <div class="container-fluid">
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">DMC:</div>
+                        <div class="col-sm-9">DEMO-000-00-00-01-0AA-02AA-A</div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Language:</div>
+                        <div class="col-sm-9">en/
+                           IN
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Issue No.:</div>
+                        <div class="col-sm-9">001 (
+                           00)
+                           
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Issue Date:</div>
+                        <div class="col-sm-9">2025-
+                           09-
+                           02
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Title:</div>
+                        <div class="col-sm-9">Sample System Widget Task –
+                           Performing the Widget Calibration Procedure
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Security:</div>
+                        <div class="col-sm-9">Unclassified</div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">RPC:</div>
+                        <div class="col-sm-9">LNTDEFENCE (
+                           1671Y)
+                           
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Originator:</div>
+                        <div class="col-sm-9">LNTDEFENCE (
+                           1671Y)
+                           
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Applicability:</div>
+                        <div class="col-sm-9">
+                           <p>All applicable units and serial numbers.</p>
+                        </div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">BREX:</div>
+                        <div class="col-sm-9"><a href="DMC-S1000D-H-041-10-0301-00A-022A-D.html">S1000D-H-041-10-0301-00A-022A-D</a></div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">QA:</div>
+                        <div class="col-sm-9">Unverified</div>
+                     </div>
+                     <div class="row pb-2">
+                        <div class="col-sm-3 font-weight-bold">Reason for Update:</div>
+                        <div class="col-sm-9">
+                           <p>Initial draft for demonstration purposes.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container-fluid"></div>
+      <div id="s1000d-content">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-12">
+                  <div class="levelOneBar mb-3 rounded">
+                     <div class="d-flex">
+                        <div class="para0Title"><span class="text-decoration-underline">This is the demo</span></div>
+                     </div>
+                     <div class="d-flex">
+                        <div class="para0Indent"></div>
+                        <div class="para0TextDescription flex-grow-1 pb-3"><span id="" class="m-0 pb-2">This shows how the Docx is Coverted to the S1000D effortlessly.This is
+                              very efficient very smeeless way u can convert.Refer this
+                              <a href="DMC-MDL-000-00-00-00-01A-010A-D.html">MDL-000-00-00-00-01A-010A-D</a>.
+                              </span></div>
+                     </div>
+                     <div class="d-flex">
+                        <div class="para0Indent"></div>
+                        <div class="para0TextDescription flex-grow-1 pb-3"><span id="" class="m-0 pb-2">list of the features:</span></div>
+                     </div>
+                     <div class="d-flex">
+                        <div class="para0Indent"></div>
+                        <div class="para0TextDescription flex-grow-1 pb-3"><span id="" class="m-0 pb-2">
+                              <div class="d-flex">
+                                 <div class="para0TextDescription flex-grow-1 pb-3">
+                                    <ol class="sequential-list-continuous">
+                                       <li class="m-0 pb-2"><span id="" class="m-0 pb-2">Effortless conversion from Docx to S1000D.</span></li>
+                                       <li class="m-0 pb-2"><span id="" class="m-0 pb-2">Efficient and seamless process.</span></li>
+                                       <li class="m-0 pb-0"><span id="" class="m-0 pb-2">User-friendly interface for easy navigation.</span></li>
+                                    </ol>
+                                 </div>
+                              </div></span></div>
+                     </div>
+                     <div class="row" id="">
+                        <div class="col-12">
+                           <div class="d-flex">
+                              <div class="para0Indent"></div>
+                              <div class="para0TextDescription flex-grow-1 pb-3">
+                                 <div class="text-center font-italic mt-2 mb-1" id="fig-d1e128">
+                                    Fig
+                                    1-Img-0
+                                 </div>
+                                 <div class="text-center">
+                                    <div class="container-fluid m-0 pb-4"><img type="image/png" class="img-fluid fig" src="illustrations/ICN-001-001.png" alt="Img-0" title="ICN-001-001"><button class="btn btn-sm btn-secondary mb-1 icn-link">View</button><br></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="d-flex">
+                        <div class="para0Indent"></div>
+                        <div class="para0TextDescription flex-grow-1 pb-3"><span id="" class="m-0 pb-2">
+                              <div class="d-flex">
+                                 <div class="para0TextDescription flex-grow-1 pb-3">
+                                    <ol class="sequential-list-continuous">
+                                       <li class="m-0 pb-2"><span id="" class="m-0 pb-2">Comprehensive documentation for reference and support.</span></li>
+                                       <li class="m-0 pb-0"><span id="" class="m-0 pb-2">Regular updates to ensure compatibility with the latest standards.</span></li>
+                                    </ol>
+                                 </div>
+                              </div></span></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div><script src="xignal/assets/jquery/3.7.1/jquery-slim-min.js"></script><script src="xignal/assets/bootstrap/4.6.2/js/bootstrap.min.js"></script><script src="../js/applic.js"></script></body>
+</html>
