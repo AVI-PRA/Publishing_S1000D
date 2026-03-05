@@ -260,6 +260,7 @@
     </xsl:template>
     <xsl:template match="*[local-name()='levelledPara']">
         <xsl:variable name="hasTitle" select="*[local-name()='title']"/>
+        <xsl:variable name="isNested" select="parent::*[local-name()='levelledPara']"/>
         <div class="row">
             <div class="col-12">
                 <div class="levelOneBar mb-3 rounded">
@@ -267,18 +268,36 @@
                     <xsl:choose>
                         <!-- Condition 1: Has a Title -->
                         <xsl:when test="$hasTitle">
-                            <div class="d-flex">
-                                <div class="roundedBullet">
-                                    <xsl:number level="multiple" count="*[local-name()='levelledPara']" format="1.1"/>
-                                </div>
-                                <div class="para0Title">
-                                    <span class="text-decoration-underline">
-                                        <xsl:apply-templates select="*[local-name()='title']" mode="inline"/>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- Process children normally (indentation logic applied) -->
-                            <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']"/>
+                            <xsl:choose>
+                                <!-- Nested levelledPara with title -->
+                                <xsl:when test="$isNested">
+                                    <div class="d-flex">
+                                        <div class="subparaTitleNo">
+                                            <xsl:number level="multiple" count="*[local-name()='levelledPara']" format="1.1"/>
+                                        </div>
+                                        <div class="subparaTitle">
+                                            <xsl:apply-templates select="*[local-name()='title']" mode="inline"/>
+                                        </div>
+                                    </div>
+                                    <!-- Process children normally (indentation logic applied) -->
+                                    <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']"/>
+                                </xsl:when>
+                                <!-- Top-level levelledPara with title -->
+                                <xsl:otherwise>
+                                    <div class="d-flex">
+                                        <!-- <div class="roundedBullet">
+                                          <xsl:number level="multiple" count="*[local-name()='levelledPara']" format="1.1"/>
+                                      </div> -->
+                                        <div class="para0Title">
+                                            <span class="text-decoration-underline">
+                                                <xsl:apply-templates select="*[local-name()='title']" mode="inline"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- Process children normally (indentation logic applied) -->
+                                    <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
                         </xsl:when>
                         <!-- Condition 2: No Title -->
                         <xsl:otherwise>
@@ -763,53 +782,56 @@
         <xsl:variable name="title-node" select="*[local-name()='title'][1]"/>
         <div class="row" id="{@id}">
             <div class="col-12">
-                <!-- MODIFICATION 1: Remove levelOneBar for nested steps -->
-                <xsl:variable name="step-wrapper-class">
+                <div class="levelOneBar">
                     <xsl:choose>
-                        <xsl:when test="$is-nested">step-content-only</xsl:when>
-                        <xsl:otherwise>levelOneBar</xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
-                <div class="{$step-wrapper-class}">
-                    <div class="d-flex">
-                        <div class="step-number-container">
-                            <xsl:choose>
-                                <xsl:when test="$is-nested">
-                                    <div class="subparaNo">
-                                        <xsl:number level="multiple" count="*[local-name()='proceduralStep']" format="1.1"/>
-                                    </div >
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <div class="roundedBullet">
-                                        <xsl:number level="single" count="*[local-name()='proceduralStep'][not(parent::*[local-name()='proceduralStep'])]" format="1"/>
-                                    </div>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </div>
-                        <xsl:choose>
-                            <!-- Case 1: Has a <title> (e.g., PURPOSE) -->
-                            <xsl:when test="$title-node">
-                                <!-- Only output the title here. -->
-                                <div class="para0Title flex-grow-1">
-                                    <xsl:apply-templates select="$title-node"/>
-                                </div>
-                            </xsl:when>
-                            <!-- Case 2: No <title> (e.g., FUNCTIONS) -->
-                            <xsl:otherwise>
-                                <!-- Put ALL content (all children) here -->
+                        <!-- Case 1: Has a <title> -->
+                        <xsl:when test="$title-node">
+                            <div class="d-flex">
+                                <xsl:choose>
+                                    <xsl:when test="$is-nested">
+                                        <div class="subparaTitleNo">
+                                            <xsl:number level="multiple" count="*[local-name()='proceduralStep']" format="1.1"/>
+                                        </div>
+                                        <div class="subparaTitle">
+                                            <xsl:apply-templates select="$title-node" mode="inline"/>
+                                        </div>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <div class="roundedBullet">
+                                            <xsl:number level="single" count="*[local-name()='proceduralStep'][not(parent::*[local-name()='proceduralStep'])]"/>
+                                        </div>
+                                        <div class="para0Title flex-grow-1">
+                                            <xsl:apply-templates select="$title-node" mode="inline"/>
+                                        </div>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </div>
+                            <!-- Content below the title -->
+                            <div class="step-content-wrapper" style="margin-left: 45px; margin-top: 10px;">
+                                <xsl:apply-templates select="*[not(local-name()='title')]"/>
+                            </div>
+                        </xsl:when>
+                        <!-- Case 2: No <title> -->
+                        <xsl:otherwise>
+                            <div class="d-flex">
+                                <xsl:choose>
+                                    <xsl:when test="$is-nested">
+                                        <div class="subparaNo">
+                                            <xsl:number level="multiple" count="*[local-name()='proceduralStep']" format="1.1"/>
+                                        </div>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <div class="roundedBullet">
+                                            <xsl:number level="single" count="*[local-name()='proceduralStep'][not(parent::*[local-name()='proceduralStep'])]"/>
+                                        </div>
+                                    </xsl:otherwise>
+                                </xsl:choose>
                                 <div class="flex-grow-1">
                                     <xsl:apply-templates select="*"/>
-                                </div >
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </div>
-                    <!-- Only output step-content-wrapper if we had a <title> in the step -->
-                    <xsl:if test="$title-node">
-                        <div class="step-content-wrapper" style="margin-left: 45px; margin-top: 10px;">
-                            <!-- MODIFICATION 2: Apply templates to all children *excluding* the title node -->
-                            <xsl:apply-templates select="*[not(self::title)]"/>
-                        </div>
-                    </xsl:if>
+                                </div>
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </div>
             </div>
         </div>
@@ -836,6 +858,9 @@
         <p class="mb-2 font-weight-bold">
             <xsl:apply-templates/>
         </p>
+    </xsl:template>
+    <xsl:template match="*[local-name()='proceduralStep']/*[local-name()='title']" mode="inline">
+        <xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="*[local-name()='randomList']">
         <ul class="mb-2">
