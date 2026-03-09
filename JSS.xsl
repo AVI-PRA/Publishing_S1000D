@@ -1,40 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:jss="http://www.example.com/jss-custom-functions"
-
-                exclude-result-prefixes="xs jss"
-                version="2.0">
+                version="1.0">
     <xsl:output method="html" doctype-system="about:legacy-compat" encoding="UTF-8" indent="yes"/>
     <!-- Parameters -->
-    <xsl:param name="numbered-titles" select="true()"/>
+    <xsl:param name="numbered-titles" select="false()"/>
     <xsl:param name="show-references-table" select="true()"/>
     <xsl:param name="reference-resolver" select="false()"/>
     <xsl:param name="extra-header-tags" select="false()"/>
     <xsl:param name="bootstrap-css-path" select="'xignal/assets/bootstrap/4.6.2/css/bootstrap.min.css'"/>
     <xsl:param name="custom-css-path" select="'../main.css'"/>
-    <!-- Link to your JSS-derived CSS -->
     <xsl:param name="jquery-js-path" select="'xignal/assets/jquery/3.7.1/jquery-slim-min.js'"/>
     <xsl:param name="bootstrap-js-path" select="'xignal/assets/bootstrap/4.6.2/js/bootstrap.min.js'"/>
+    <xsl:param name="applic-js-path" select="'../js/applic.js'"/>
+    <xsl:param name="csdb-path" select="'csdb/'"/>
     <xsl:key name="ids" match="*[@id]" use="@id"/>
-    <!-- JSS Custom Function for Alpha List Markers -->
-    <xsl:function name="jss:get-jss-alpha-char" as="xs:string">
-        <xsl:param name="position" as="xs:integer"/>
-        <!-- UPDATE THIS based on JSS 0251 rules! This one skips 'i' and 'o'. -->
-        <xsl:variable name="jss_alphabet_level1" 
-            select="('a','b','c','d','e','f','g','h','j','k','l','m','n','p','q','r','s','t','u','v','w','x','y','z')"/>
+    <!-- Helper templates for applicability (from new version) -->
+    <xsl:template name="generate-applic-string">
+        <xsl:param name="applicNode" select="."/>
+        <xsl:if test="$applicNode/*[local-name()='evaluate']">
+            <xsl:variable name="eval" select="$applicNode/*[local-name()='evaluate'][1]"/>
+            <xsl:value-of select="translate($eval/@andOr, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"/>
+            <xsl:for-each select="$eval/*[local-name()='assert']">
+                <xsl:text>;</xsl:text>
+                <xsl:value-of select="@applicPropertyIdent"/>
+                <xsl:text>=</xsl:text>
+                <xsl:value-of select="@applicPropertyValues"/>
+            </xsl:for-each>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="get-product-display-text">
+        <xsl:param name="applicNode" />
         <xsl:choose>
-            <xsl:when test="$position > 0 and $position
-                &lt;= count($jss_alphabet_level1)">
-                <xsl:sequence select="$jss_alphabet_level1[$position]"/>
+            <xsl:when test="$applicNode/*[local-name()='displayText']/*[local-name()='simplePara']">
+                <xsl:value-of select="$applicNode/*[local-name()='displayText']/*[local-name()='simplePara']"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:sequence select="concat('errPos(', xs:string($position), ')')"/>
-                <!-- Error/fallback marker -->
+                <xsl:for-each select="$applicNode/*[local-name()='evaluate']/*[local-name()='assert']">
+                    <xsl:value-of select="@applicPropertyIdent"/>:
+                    <xsl:value-of select="@applicPropertyValues"/>
+                    <xsl:if test="position() != last()">
+                        <xsl:text>, </xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:function>
+    </xsl:template>
+    <xsl:template name="add-applic-attribute">
+        <xsl:if test="*[local-name()='applic']">
+            <xsl:attribute name="data-applic">
+                <xsl:call-template name="generate-applic-string">
+                    <xsl:with-param name="applicNode" select="*[local-name()='applic']"/>
+                </xsl:call-template>
+            </xsl:attribute>
+        </xsl:if>
+    </xsl:template>
     <!-- Root Template -->
     <xsl:template match="/">
         <html lang="en">
@@ -43,96 +63,702 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <title>
-                    <xsl:apply-templates select="//identAndStatusSection/dmAddress/dmAddressItems/dmTitle"/>
+                    <xsl:apply-templates select="//*[local-name()='identAndStatusSection']//*[local-name()='dmTitle']"/>
                 </title>
                 <link rel="stylesheet" href="{$bootstrap-css-path}" />
                 <xsl:if test="$custom-css-path != ''">
                     <link rel="stylesheet" href="{$custom-css-path}" />
                 </xsl:if>
-                <style> /* Basic table style for prelim reqs, can be enhanced by custom CSS */
+                <style>
                     .prelim-req-table { margin-bottom: 1.5rem; }
-                    .prelim-req-table th, .prelim-req-table td { vertical-align: top; padding: 0.5rem; }
+                    .fault-procedure-list { margin-top: 2rem; padding-left: 1rem; }
+                    [id] { scroll-margin-top: 70px; }
+                    .hidden-by-applic { display: none !important; }
+                    .para0Indent { width: 40px; flex-shrink: 0; }
                 </style>
             </head>
-            <xsl:choose>
-                <xsl:when test="/dmodule">
-                    <xsl:apply-templates select="/dmodule/identAndStatusSection" mode="page-setup"/>
-                    <xsl:apply-templates select="/dmodule/content"/>
-                </xsl:when>
-                <xsl:when test="/preliminaryRqmts">
-                    <body>
+            <body>
+                <xsl:choose>
+                    <xsl:when test="/*[local-name()='dmodule']">
+                        <xsl:apply-templates select="/*[local-name()='dmodule']/*[local-name()='identAndStatusSection']" mode="page-setup"/>
+                        <div id="s1000d-content">
+                            <xsl:apply-templates select="/*[local-name()='dmodule']/*[local-name()='content']"/>
+                        </div>
+                        <script src="{$jquery-js-path}"></script>
+                        <script src="{$bootstrap-js-path}"></script>
+                        <script src="{$applic-js-path}"></script>
+                    </xsl:when>
+                    <xsl:when test="/*[local-name()='preliminaryRqmts']">
                         <div class="container-fluid">
                             <xsl:apply-templates select="."/>
                         </div>
                         <script src="{$jquery-js-path}"></script>
                         <script src="{$bootstrap-js-path}"></script>
-                    </body>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:apply-templates/>
-                </xsl:otherwise>
-            </xsl:choose>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </body>
         </html>
     </xsl:template>
-    <!-- Page Setup Mode for dmodule -->
-    <xsl:template match="identAndStatusSection" mode="page-setup">
-        <body>
-            <xsl:call-template name="generate-title-bar">
-                <xsl:with-param name="identSection" select="."/>
-            </xsl:call-template>
-            <div class="container-fluid idstatusTitle">
-                <button type="button" class="btn btn-primary mt-1 mb-3" data-toggle="modal" data-target="#idstatusModal">View Identification and Status</button>
+    <!-- Page Setup (from new version) -->
+    <xsl:template match="*[local-name()='identAndStatusSection']" mode="page-setup">
+        <xsl:call-template name="generate-title-bar">
+            <xsl:with-param name="identSection" select="."/>
+        </xsl:call-template>
+        <div class="container-fluid idstatusTitle">
+            <button type="button" class="btn btn-primary mt-1 mb-3" data-toggle="modal" data-target="#idstatusModal">View Identification and Status</button>
+        </div>
+        <xsl:call-template name="generate-id-status-modal">
+            <xsl:with-param name="identSection" select="."/>
+        </xsl:call-template>
+        <xsl:variable name="all_references_in_dm" select="ancestor::*[local-name()='dmodule'][1]//*[local-name()='dmRef' or local-name()='externalPubRef' or local-name()='pmRef'][ancestor::*[local-name()='content'] or ancestor::*[local-name()='refs']]"/>
+        <xsl:if test="$show-references-table">
+            <div class="container-fluid">
+                <h2 id="tblReferences" class="ps-Title_font ps-Title_2 ps-Title_color">References</h2>
+                <table class="tblReferences mb-5 table table-borderless prelim-req-table s1000d-table">
+                    <caption class="italic spaceAfter-sm s1000d-table-title">Table 1-References</caption>
+                    <thead>
+                        <tr>
+                            <th>Data module/Technical publication</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <xsl:choose>
+                            <xsl:when test="$all_references_in_dm">
+                                <xsl:apply-templates select="$all_references_in_dm" mode="refs"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <tr>
+                                    <td colspan="2" class="text-center">None</td>
+                                </tr>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </tbody>
+                </table>
             </div>
-            <xsl:call-template name="generate-id-status-modal">
-                <xsl:with-param name="identSection" select="."/>
-            </xsl:call-template>
-            <xsl:if test="$show-references-table and (ancestor::dmodule/refs/dmRef or ancestor::dmodule/refs/externalPubRef)">
-                <div class="container-fluid">
-                    <h2 id="tblReferences" class="ps-Title_font ps-Title_2 ps-Title_color">References</h2>
-                    <xsl:apply-templates select="ancestor::dmodule/refs" mode="table"/>
-                </div>
-            </xsl:if>
-            <xsl:if test="$show-references-table and not(ancestor::dmodule/refs/dmRef or ancestor::dmodule/refs/externalPubRef)">
-                <div class="container-fluid">
-                    <h2 id="tblReferences" class="ps-Title_font ps-Title_2 ps-Title_color">References</h2>
-                    <table class="tblReferences mb-5 table table-borderless prelim-req-table s1000d-table">
-                        <caption class="italic spaceAfter-sm s1000d-table-title">Table 1  References</caption>
+        </xsl:if>
+    </xsl:template>
+    <!-- Content processing -->
+    <xsl:template match="*[local-name()='content']">
+        <div class="container-fluid">
+            <xsl:apply-templates select="*[local-name()='description'] | *[local-name()='procedure'] | *[local-name()='faultIsolation'] | *[local-name()='preliminaryRqmts'] | *[local-name()='illustratedPartsCatalog']"/>
+        </div>
+    </xsl:template>
+    <!-- IPD (Illustrated Parts Data) TEMPLATES -->
+    <xsl:template match="*[local-name()='illustratedPartsCatalog']">
+        <xsl:apply-templates select="*[local-name()='figure']"/>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Catalog sequence numbers</h3>
+                    <table class="ipdTbl table table-hover table-borderless">
                         <thead>
                             <tr>
-                                <th>Data module/Technical publication</th>
-                                <th>Title</th>
+                                <th>Fig</th>
+                                <th>Item</th>
+                                <th>Units per assembly / Unit of issue</th>
+                                <th>CAGE</th>
+                                <th>Part No.
+                                    <br/>NATO Stock No.
+                                </th>
+                                <th class="description-cell">Description</th>
+                                <th>
+                                    <span style="font-size:8px;">🞷</span> Usable on
+                                    <br/>code assy
+                                    <br/>• MV/ Effect
+                                </th>
+                                <th>ICY</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2">None</td>
-                            </tr>
+                            <xsl:apply-templates select="*[local-name()='catalogSeqNumber']"/>
                         </tbody>
                     </table>
                 </div>
-            </xsl:if>
-        </body>
+            </div>
+        </div>
     </xsl:template>
-    <!-- Main Content Processing -->
-    <xsl:template match="content">
+    <xsl:template match="*[local-name()='illustratedPartsCatalog']/*[local-name()='figure']">
         <div class="container-fluid">
-            <xsl:apply-templates select="description | procedure | preliminaryRqmts"/>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Illustrated Parts Data (IPD)</h2>
+                    <div class="text-center font-italic mt-2 mb-1">
+                        Fig
+                        <xsl:number count="figure" level="any"/>&#160;
+                        <xsl:value-of select="title"/>
+                    </div>
+                    <div class="text-center">
+                        <xsl:for-each select="graphic">
+                            <span class="font-italic">Sheet
+                                <xsl:value-of select="position()"/> of
+                                <xsl:value-of select="last()"/>
+                            </span>
+                            <div class="container-fluid m-0 pb-4">
+                                <xsl:apply-templates select="."/>
+                                <button class="btn btn-sm btn-secondary mb-1 icn-link">View</button>
+                                <!-- <br/> -->
+                                <div class="icn mb-2">
+                                    <xsl:value-of select="@infoEntityIdent"/>
+                                </div>
+                            </div>
+                        </xsl:for-each>
+                    </div>
+                </div>
+            </div>
         </div>
-        <xsl:if test="ancestor::dmodule and not(ancestor::dmodule/identAndStatusSection)">
-            <script src="{$jquery-js-path}"></script>
-            <script src="{$bootstrap-js-path}"></script>
-        </xsl:if>
     </xsl:template>
-    <!-- Title Bar Generation -->
-    <xsl:template name="generate-title-bar">
-        <xsl:param name="identSection"/>
-        <div class="dmTitleBar bg-light p-3 mb-3">
-            <h1 class="text-center ps-Title_font ps-Title_document ps-Title_color">
-                <xsl:apply-templates select="$identSection/dmAddress/dmAddressItems/dmTitle"/>
-            </h1>
+    <xsl:template match="*[local-name()='catalogSeqNumber']">
+        <xsl:for-each select="*[local-name()='itemSeqNumber']">
+            <tr>
+                <td>
+                    <xsl:if test="position() = 1">
+                        <xsl:value-of select="../@figureNumber"/>
+                    </xsl:if>
+                </td>
+                <td>
+                    <xsl:if test="position() = 1">
+                        <xsl:value-of select="../@item"/>
+                    </xsl:if>
+                </td>
+                <td>
+                    <xsl:value-of select="*[local-name()='quantityPerNextHigherAssy']"/>
+                </td>
+                <td>
+                    <xsl:value-of select="*[local-name()='partRef']/@manufacturerCodeValue"/>
+                </td>
+                <td>
+                    <xsl:value-of select="*[local-name()='partRef']/@partNumberValue"/>
+                </td>
+                <td class="description-cell">
+                    <xsl:if test="../@indenture > 1">
+                        <xsl:text>• </xsl:text>
+                    </xsl:if>
+                    <xsl:value-of select="*[local-name()='partSegment']/*[local-name()='itemIdentData']/*[local-name()='descrForPart']"/>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </xsl:for-each>
+    </xsl:template>
+    <!-- Standard Content Templates -->
+    <xsl:template match="*[local-name()='description'] | *[local-name()='procedure']">
+        <xsl:call-template name="add-applic-attribute"/>
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='description']/*[local-name()='title'] | *[local-name()='procedure']/*[local-name()='title']">
+        <div class="row">
+            <div class="col-md-12 mainDoctypeTitle">
+                <h2 id="{generate-id()}">
+                    <xsl:apply-templates/>
+                </h2>
+            </div>
         </div>
     </xsl:template>
-    <!-- ID Status Modal (functional, styling is via Bootstrap and general CSS) -->
+    <xsl:template match="*[local-name()='levelledPara']">
+        <xsl:variable name="hasTitle" select="*[local-name()='title']"/>
+        <xsl:variable name="isNested" select="parent::*[local-name()='levelledPara']"/>
+        <div class="row">
+            <div class="col-12">
+                <div class="levelOneBar mb-3 rounded">
+                    <xsl:call-template name="add-applic-attribute"/>
+                    <xsl:choose>
+                        <!-- Condition 1: Has a Title -->
+                        <xsl:when test="$hasTitle">
+                            <xsl:choose>
+                                <!-- Nested levelledPara with title -->
+                                <xsl:when test="$isNested">
+                                    <div class="d-flex">
+                                        <div class="subparaTitleNo">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='levelledPara']" level="multiple" from="*[local-name()='description' or local-name()='procedure']" format="1.1"/>
+                                        </div>
+                                        <div class="subparaTitle">
+                                            <xsl:apply-templates select="*[local-name()='title']" mode="inline"/>
+                                        </div>
+                                    </div>
+                                    <!-- Process children normally (indentation logic applied) -->
+                                    <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']"/>
+                                </xsl:when>
+                                <!-- Top-level levelledPara with title -->
+                                <xsl:otherwise>
+                                    <div class="d-flex">
+                                        <div class="roundedBullet">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='levelledPara' and not(parent::*[local-name()='levelledPara'])]" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
+                                        </div>
+                                        <div class="para0Title">
+                                            <span class="text-decoration-underline">
+                                                <xsl:apply-templates select="*[local-name()='title']" mode="inline"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- Process children normally (indentation logic applied) -->
+                                    <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:when>
+                        <!-- Condition 2: No Title -->
+                        <xsl:otherwise>
+                            <div class="d-flex">
+                                <div class="subparaNo">
+                                    <xsl:call-template name="get-chapter-number">
+                                        <xsl:with-param name="node" select="."/>
+                                    </xsl:call-template>
+                                    <xsl:text>.</xsl:text>
+                                    <xsl:number count="*[local-name()='levelledPara']" level="multiple" from="*[local-name()='description' or local-name()='procedure']" format="1.1"/>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <!-- Use a special mode to avoid adding the default para indent/d-flex here -->
+                                    <xsl:apply-templates select="*[local-name()='para'] | *[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']" mode="no-title-content"/>
+                                </div>
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
+            </div>
+        </div>
+    </xsl:template>
+    <!-- Handle para when inside a levelledPara with no title -->
+    <xsl:template match="*[local-name()='para']" mode="no-title-content">
+        <span id="{@id}" class="m-0 pb-2">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <!-- Fallback for other elements in no-title mode -->
+    <xsl:template match="*[local-name()='figure'] | *[local-name()='note'] | *[local-name()='seqList'] | *[local-name()='randomList'] | *[local-name()='table'] | *[local-name()='levelledPara']" mode="no-title-content">
+        <xsl:apply-templates select="."/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='levelledPara']/*[local-name()='title']" mode="inline">
+        <xsl:apply-templates/>
+    </xsl:template>
+    <!-- Helper template to get chapter number -->
+    <xsl:template name="get-chapter-number">
+        <xsl:param name="node" select="."/>
+        <xsl:variable name="mainSection" select="$node/ancestor-or-self::*[local-name()='description' or local-name()='procedure'][1]"/>
+        <xsl:choose>
+            <xsl:when test="$mainSection">
+                <xsl:for-each select="$mainSection">
+                    <xsl:number count="*[local-name()='description' or local-name()='procedure']" level="any" from="*[local-name()='content']"/>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>1</xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="*[local-name()='externalPubRef']">
+        <a target="_blank" rel="noopener noreferrer">
+            <xsl:attribute name="href">
+                <xsl:value-of select="@xlink:href"/>
+            </xsl:attribute>
+            <xsl:apply-templates select=".//*[local-name()='externalPubTitle'] | .//*[local-name()='externalPubCode']"/>
+        </a>
+    </xsl:template>
+    <xsl:template match="*[local-name()='para']">
+        <xsl:choose>
+            <xsl:when test="parent::*[local-name()='listItem']">
+                <span id="{@id}" class="m-0 pb-2">
+                    <xsl:apply-templates/>
+                </span>
+            </xsl:when>
+            <xsl:when test="parent::*[local-name()='levelledPara'] | parent::*[local-name()='note']">
+                <div class="d-flex">
+                    <xsl:call-template name="add-applic-attribute"/>
+                    <div class="para0Indent"/>
+                    <div class="para0TextDescription flex-grow-1 pb-3">
+                        <span  id="{@id}" class="m-0 pb-2">
+                            <xsl:apply-templates/>
+                        </span>
+                    </div>
+                </div>
+            </xsl:when>
+            <xsl:when test="parent::*[local-name()='listItemDefinition']">
+                <dd>
+                    <xsl:call-template name="add-applic-attribute"/>
+                    <xsl:apply-templates/>
+                </dd>
+            </xsl:when>
+            <xsl:otherwise>
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            <xsl:call-template name="add-applic-attribute"/>
+                            <xsl:apply-templates/>
+                        </p>
+                    </div>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="*[local-name()='sequentialList'] | *[local-name()='seqList']">
+        <div class="d-flex">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="para0TextDescription flex-grow-1 pb-3">
+                <xsl:choose>
+                    <!-- Check if this list is nested inside another sequentialList -->
+                    <xsl:when test="ancestor::*[local-name()='sequentialList'] or ancestor::*[local-name()='seqList']">
+                        <ol style="list-style-type: none; counter-reset: item;">
+                            <xsl:apply-templates select="*[local-name()='listItem']" mode="roman-list"/>
+                        </ol>
+                    </xsl:when>
+                    <!-- Top-level sequential list uses alpha -->
+                    <xsl:otherwise>
+                        <ol style="list-style-type: none; counter-reset: item;">
+                            <xsl:apply-templates select="*[local-name()='listItem']" mode="alpha-list"/>
+                        </ol>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </div>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='randomList']">
+        <div class="d-flex">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="para0TextDescription flex-grow-1 pb-3">
+                <ul>
+                    <xsl:apply-templates select="*[local-name()='listItem']"/>
+                </ul>
+            </div>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='listItem']">
+        <li class="m-0 pb-2">
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:if test="position() = last()">
+                <xsl:attribute name="class">m-0 pb-0</xsl:attribute>
+            </xsl:if>
+            <xsl:choose>
+                <xsl:when test="*[local-name()='para']">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span id="{@id}" class="m-0 p-0">
+                        <xsl:apply-templates/>
+                    </span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </li>
+    </xsl:template>
+    <!-- Alpha list template (excluding i, o, v, x) -->
+    <xsl:template match="*[local-name()='listItem']" mode="alpha-list">
+        <li class="m-0 pb-2" style="counter-increment: item;">
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:if test="position() = last()">
+                <xsl:attribute name="style">counter-increment: item; margin: 0; padding-bottom: 0;</xsl:attribute>
+            </xsl:if>
+            <xsl:variable name="alpha-letter">
+                <xsl:call-template name="get-alpha-letter">
+                    <xsl:with-param name="num" select="position()"/>
+                </xsl:call-template>
+            </xsl:variable>
+            <span style="display: inline-block; min-width: 2em;">
+                <xsl:value-of select="$alpha-letter"/>.
+            </span>
+            <xsl:choose>
+                <xsl:when test="*[local-name()='para']">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span id="{@id}">
+                        <xsl:apply-templates/>
+                    </span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </li>
+    </xsl:template>
+    <!-- Roman list template (for nested sequential lists) -->
+    <xsl:template match="*[local-name()='listItem']" mode="roman-list">
+        <li class="m-0 pb-2" style="counter-increment: item;">
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:if test="position() = last()">
+                <xsl:attribute name="style">counter-increment: item; margin: 0; padding-bottom: 0;</xsl:attribute>
+            </xsl:if>
+            <span style="display: inline-block; min-width: 2em;">
+                <xsl:number value="position()" format="i"/>.
+            </span>
+            <xsl:choose>
+                <xsl:when test="*[local-name()='para']">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span id="{@id}">
+                        <xsl:apply-templates/>
+                    </span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </li>
+    </xsl:template>
+    <!-- Template to convert position to alpha (excluding i, o, v, x) -->
+    <!-- Single letters: a-z (22 letters) -->
+    <!-- Double letters: aa-az, ba-bz... za-zz (484 more combinations) -->
+    <xsl:template name="get-alpha-letter">
+        <xsl:param name="num"/>
+        <xsl:choose>
+            <!-- Single letters (positions 1-22) -->
+            <xsl:when test="$num = 1">a</xsl:when>
+            <xsl:when test="$num = 2">b</xsl:when>
+            <xsl:when test="$num = 3">c</xsl:when>
+            <xsl:when test="$num = 4">d</xsl:when>
+            <xsl:when test="$num = 5">e</xsl:when>
+            <xsl:when test="$num = 6">f</xsl:when>
+            <xsl:when test="$num = 7">g</xsl:when>
+            <xsl:when test="$num = 8">h</xsl:when>
+            <xsl:when test="$num = 9">j</xsl:when>
+            <xsl:when test="$num = 10">k</xsl:when>
+            <xsl:when test="$num = 11">l</xsl:when>
+            <xsl:when test="$num = 12">m</xsl:when>
+            <xsl:when test="$num = 13">n</xsl:when>
+            <xsl:when test="$num = 14">p</xsl:when>
+            <xsl:when test="$num = 15">q</xsl:when>
+            <xsl:when test="$num = 16">r</xsl:when>
+            <xsl:when test="$num = 17">s</xsl:when>
+            <xsl:when test="$num = 18">t</xsl:when>
+            <xsl:when test="$num = 19">u</xsl:when>
+            <xsl:when test="$num = 20">w</xsl:when>
+            <xsl:when test="$num = 21">y</xsl:when>
+            <xsl:when test="$num = 22">z</xsl:when>
+            <!-- Double letters (positions 23+) -->
+            <xsl:when test="$num &gt; 22">
+                <!-- Calculate first letter (0-based: 0=a, 1=b... 21=z) -->
+                <xsl:variable name="first-index" select="floor(($num - 23) div 22)"/>
+                <!-- Calculate second letter (0-based) -->
+                <xsl:variable name="second-index" select="($num - 23) mod 22"/>
+                <!-- Get first letter -->
+                <xsl:call-template name="get-alpha-letter">
+                    <xsl:with-param name="num" select="$first-index + 1"/>
+                </xsl:call-template>
+                <!-- Get second letter -->
+                <xsl:call-template name="get-alpha-letter">
+                    <xsl:with-param name="num" select="$second-index + 1"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>?</xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="*[local-name()='note']">
+        <div class="row">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="col-12">
+                <table class="noteBackground">
+                    <tbody>
+                        <tr>
+                            <td class="text-center p-4">
+                                <table class="noteBody">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center font-weight-bold p-4">
+                                                <div class="h6 font-weight-bold">Note</div>
+                                                <div class="font-weight-bold">
+                                                    <p class="pb-0 m-0">
+                                                        <xsl:apply-templates/>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </xsl:template>
+    <!-- Preliminary Requirements Templates -->
+    <xsl:template match="*[local-name()='preliminaryRqmts']">
+        <div class="preliminary-requirements-section mt-4 mb-4 p-3 border rounded">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h3 id="{@id}" class="mb-3">Preliminary Requirements</h3>
+            <xsl:apply-templates/>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqCondGroup']">
+        <div class="req-cond-group mt-3">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h4 class="mb-2">Required Conditions</h4>
+            <table class="tblReferences table-bordered table-sm table-striped prelim-req-table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Action / Condition</th>
+                        <th>Data Module / Technical Publication</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <xsl:choose>
+                        <xsl:when test="*[local-name()='reqCondPm'] | *[local-name()='reqCondDm'] | *[local-name()='reqCondNoRef']">
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <tr>
+                                <td colspan="2" class="text-center">None</td>
+                            </tr>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tbody>
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqPersons']">
+        <div class="req-persons mt-3">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h4 class="mb-2">Required Personnel</h4>
+            <table class="tblReferences table-bordered table-sm table-striped prelim-req-table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Persons</th>
+                        <th>Category</th>
+                        <th>Skill Level</th>
+                        <th>Trade</th>
+                        <th>Est. Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <xsl:choose>
+                        <xsl:when test="*[local-name()='person']">
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <tr>
+                                <td colspan="5" class="text-center">None</td>
+                            </tr>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tbody>
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqSupportEquips'] | *[local-name()='reqSupplies'] | *[local-name()='reqSpares']">
+        <div class="mt-3">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h4 id="{@id}" class="mb-2">
+                <xsl:choose>
+                    <xsl:when test="local-name()='reqSupportEquips'">Support Equipment</xsl:when>
+                    <xsl:when test="local-name()='reqSupplies'">Consumables, materials and expendables</xsl:when>
+                    <xsl:when test="local-name()='reqSpares'">Spares</xsl:when>
+                </xsl:choose>
+            </h4>
+            <xsl:apply-templates select="*"/>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='supportEquipDescrGroup'] | *[local-name()='supplyDescrGroup'] | *[local-name()='spareDescrGroup']">
+        <table class="tblReferences table-bordered table-sm table-striped prelim-req-table">
+            <xsl:call-template name="add-applic-attribute"/>
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Manufacturer / Part No.</th>
+                    <th>Quantity</th>
+                    <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <xsl:choose>
+                    <xsl:when test="*[local-name()='supportEquipDescr'] | *[local-name()='supplyDescr'] | *[local-name()='spareDescr']">
+                        <xsl:apply-templates/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <tr>
+                            <td colspan="4" class="text-center">None</td>
+                        </tr>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </tbody>
+        </table>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqSupportEquips']/*[not(local-name()='supportEquipDescrGroup')] | *[local-name()='reqSupplies']/*[not(local-name()='supplyDescrGroup')] | *[local-name()='reqSpares']/*[not(local-name()='spareDescrGroup')]">
+        <table class="tblReferences table-bordered table-sm table-striped prelim-req-table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Manufacturer / Part No.</th>
+                    <th>Quantity</th>
+                    <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" class="text-center">None</td>
+                </tr>
+            </tbody>
+        </table>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqSafety']">
+        <div class="req-safety mt-3">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h4 id="{@id}" class="mb-2">Safety Requirements</h4>
+            <xsl:choose>
+                <xsl:when test="*[local-name()='safetyRqmts']/*">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <p>None</p>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='supportEquipDescr'] | *[local-name()='supplyDescr'] | *[local-name()='spareDescr']">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:value-of select="*[local-name()='name']"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='identNumber']/*[local-name()='manufacturerCode']"/>
+                <xsl:if test="*[local-name()='identNumber']/*[local-name()='manufacturerCode'] and *[local-name()='identNumber']/*[local-name()='partAndSerialNumber']/*[local-name()='partNumber']"> / </xsl:if>
+                <xsl:value-of select="*[local-name()='identNumber']/*[local-name()='partAndSerialNumber']/*[local-name()='partNumber']"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='reqQuantity']"/>
+                <xsl:if test="local-name()='supplyDescr' and *[local-name()='reqQuantity']/@unitOfMeasure">
+                    <xsl:value-of select="*[local-name()='reqQuantity']/@unitOfMeasure"/>
+                </xsl:if>
+            </td>
+            <td>
+                <xsl:apply-templates select="*[local-name()='remarks']/*[local-name()='simplePara']/node()"/>
+            </td>
+        </tr>
+    </xsl:template>
+    <xsl:template match="*[local-name()='person']">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:value-of select="@man"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='personCategory']/@personCategoryCode"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='personSkill']/@skillLevelCode"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='trade']"/>
+            </td>
+            <td>
+                <xsl:value-of select="*[local-name()='estimatedTime']"/>
+                <xsl:value-of select="*[local-name()='estimatedTime']/@unitOfMeasure"/>
+            </td>
+        </tr>
+    </xsl:template>
+    <xsl:template match="*[local-name()='reqCondPm'] | *[local-name()='reqCondDm'] | *[local-name()='reqCondNoRef']">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:apply-templates select="*[local-name()='reqCond']/node()"/>
+            </td>
+            <td>
+                <xsl:apply-templates select="*[local-name()='pmRef'] | *[local-name()='dmRef']"/>
+                <xsl:if test="not(*[local-name()='pmRef']) and not(*[local-name()='dmRef'])">N/A</xsl:if>
+            </td>
+        </tr>
+    </xsl:template>
     <xsl:template name="generate-id-status-modal">
         <xsl:param name="identSection"/>
         <div class="modal fade" id="idstatusModal" tabindex="-1" aria-labelledby="idstatusModalLabel" aria-hidden="true">
@@ -149,97 +775,105 @@
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">DMC:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmAddress/dmAddressItems/dmIdent"/>
+                                    <xsl:apply-templates select="$identSection//*[local-name()='dmIdent']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Language:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmAddress/dmAddressItems/language"/>
+                                    <xsl:apply-templates select="$identSection//*[local-name()='language']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Issue No.:</div>
                                 <div class="col-sm-9">
-                                    <xsl:value-of select="$identSection/dmAddress/dmAddressItems/issueInfo/@issueNumber"/> (
-                                    <xsl:value-of select="$identSection/dmAddress/dmAddressItems/issueInfo/@inWork"/>)
+                                    <xsl:value-of select="$identSection//*[local-name()='issueInfo']/@issueNumber"/> (
+                                    <xsl:value-of select="$identSection//*[local-name()='issueInfo']/@inWork"/>)
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Issue Date:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmAddress/dmAddressItems/issueDate"/>
+                                    <xsl:apply-templates select="$identSection//*[local-name()='issueDate']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Title:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmAddress/dmAddressItems/dmTitle"/>
+                                    <xsl:apply-templates select="$identSection//*[local-name()='dmTitle']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Security:</div>
                                 <div class="col-sm-9">
                                     <xsl:call-template name="decodeSecurity">
-                                        <xsl:with-param name="code" select="$identSection/dmStatus/security/@securityClassification"/>
+                                        <xsl:with-param name="code" select="$identSection/*[local-name()='dmStatus']/*[local-name()='security']/@securityClassification"/>
                                     </xsl:call-template>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">RPC:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmStatus/responsiblePartnerCompany"/>
+                                    <xsl:apply-templates select="$identSection/*[local-name()='dmStatus']/*[local-name()='responsiblePartnerCompany']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Originator:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmStatus/originator"/>
+                                    <xsl:apply-templates select="$identSection/*[local-name()='dmStatus']/*[local-name()='originator']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">Applicability:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmStatus/applic/displayText/simplePara"/>
+                                    <xsl:apply-templates select="$identSection/*[local-name()='dmStatus']/*[local-name()='applic']/*[local-name()='displayText']/*[local-name()='simplePara']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">BREX:</div>
                                 <div class="col-sm-9">
-                                    <xsl:apply-templates select="$identSection/dmStatus/brexDmRef/dmRef"/>
+                                    <xsl:apply-templates select="$identSection/*[local-name()='dmStatus']/*[local-name()='brexDmRef']/*[local-name()='dmRef']"/>
                                 </div>
                             </div>
                             <div class="row pb-2">
                                 <div class="col-sm-3 font-weight-bold">QA:</div>
                                 <div class="col-sm-9">
                                     <xsl:choose>
-                                        <xsl:when test="$identSection/dmStatus/qualityAssurance/unverified">Unverified</xsl:when>
-                                        <xsl:when test="$identSection/dmStatus/qualityAssurance/firstVerification">First Verification
-                                            <xsl:value-of select="$identSection/dmStatus/qualityAssurance/firstVerification/@verificationType"/>
+                                        <xsl:when test="$identSection/*[local-name()='dmStatus']/*[local-name()='qualityAssurance']/*[local-name()='unverified']">Unverified</xsl:when>
+                                        <xsl:when test="$identSection/*[local-name()='dmStatus']/*[local-name()='qualityAssurance']/*[local-name()='firstVerification']">First Verification
+                                            <xsl:value-of select="$identSection/*[local-name()='dmStatus']/*[local-name()='qualityAssurance']/*[local-name()='firstVerification']/@verificationType"/>
                                         </xsl:when>
                                         <xsl:otherwise>N/A</xsl:otherwise>
                                     </xsl:choose>
                                 </div>
                             </div>
-                            <xsl:if test="$identSection/dmStatus/reasonForUpdate">
+                            <xsl:if test="$identSection/*[local-name()='dmStatus']/*[local-name()='reasonForUpdate']">
                                 <div class="row pb-2">
                                     <div class="col-sm-3 font-weight-bold">Reason for Update:</div>
                                     <div class="col-sm-9">
-                                        <xsl:apply-templates select="$identSection/dmStatus/reasonForUpdate/simplePara"/>
+                                        <xsl:apply-templates select="$identSection/*[local-name()='dmStatus']/*[local-name()='reasonForUpdate']/*[local-name()='simplePara']"/>
                                     </div>
                                 </div>
                             </xsl:if>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
         </div>
     </xsl:template>
-    <xsl:template match="simplePara">
-        <xsl:apply-templates/>
+    <xsl:template name="generate-title-bar">
+        <xsl:param name="identSection"/>
+        <div class="dmTitleBar bg-light p-3 mb-3">
+            <h1 class="text-center">
+                <xsl:apply-templates select="$identSection//*[local-name()='dmTitle']"/>
+            </h1>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='simplePara']">
+        <p>
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:apply-templates/>
+        </p>
     </xsl:template>
     <xsl:template name="decodeSecurity">
         <xsl:param name="code"/>
@@ -254,9 +888,8 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <!-- References Table -->
-    <xsl:template match="refs" mode="table">
-        <table class="tblReferences mb-5 table table-sm table-striped prelim-req-table s1000d-table">
+    <xsl:template match="*[local-name()='refs']" mode="table">
+        <table class="tblReferences mb-5 table table-sm table-striped prelim-req-table">
             <caption class="sr-only">References</caption>
             <thead class="thead-light">
                 <tr>
@@ -265,245 +898,497 @@
                 </tr>
             </thead>
             <tbody>
-                <xsl:apply-templates select="dmRef | externalPubRef" mode="refs"/>
+                <xsl:apply-templates select="*[local-name()='dmRef'] | *[local-name()='externalPubRef']" mode="refs"/>
             </tbody>
         </table>
     </xsl:template>
-    <!-- Main Content Element Templates -->
-    <xsl:template match="description | procedure">
-        <xsl:apply-templates select="title"/>
-        <xsl:apply-templates select="preliminaryRqmts | mainProcedure | closeRqmts"/>
-        <xsl:apply-templates select="levelledPara | para | figure | note | sequentialList | randomList | table | symbol"/>
-    </xsl:template>
-    <xsl:template match="procedure/title">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 id="{generate-id()}" class="s1000d-procedure-title">
-                    <xsl:if test="$numbered-titles">
-                        <span class="s1000d-procedure-title-prefix">CHAPTER
-                            <xsl:number count="procedure" level="single" from="content" format="1"/>
-                        </span>
-                    </xsl:if>
-                    <xsl:apply-templates/>
-                </h2>
-            </div>
-        </div>
-    </xsl:template>
-    <xsl:template match="description/title">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 id="{generate-id()}" class="mt-4 mb-3 ps-Title_font ps-Title_1 ps-Title_color">
-                    <xsl:apply-templates/>
-                </h2>
-            </div>
-        </div>
-    </xsl:template>
-    <xsl:template match="mainProcedure">
+    <xsl:template match="*[local-name()='mainProcedure']">
         <div class="main-procedure-section mt-4">
-            <xsl:apply-templates select="proceduralStep"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="proceduralStep">
-        <div class="procedural-step mb-3 p-3 border rounded" id="{@id}">
+            <xsl:call-template name="add-applic-attribute"/>
             <xsl:apply-templates/>
         </div>
     </xsl:template>
-    <xsl:template match="closeRqmts">
-        <div class="closeout-requirements-section mt-4">
-            <h3 id="{@id}" class="mb-3 ps-Title_font ps-Title_3 ps-Title_color">Closeout Requirements</h3>
-            <xsl:apply-templates select="reqCondGroup"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="levelledPara">
-        <div class="levelled-para-container mb-3" id="{@id}">
-            <xsl:if test="title">
-                <h4 class="s1000d-levelledPara-title" id="{generate-id(title)}">
-                    <xsl:if test="$numbered-titles">
-                        <xsl:variable name="procAncestor" select="ancestor::procedure[1]"/>
-                        <xsl:variable name="descAncestor" select="ancestor::description[1]"/>
-                        <xsl:choose>
-                            <xsl:when test="$procAncestor">
-                                <span class="s1000d-levelledPara-title-prefix">
-                                    <xsl:number count="procedure" level="single" from="content" format="1"/>.
-                                    <xsl:number count="levelledPara" level="multiple" from="procedure" format="1"/>
-                                </span>
-                            </xsl:when>
-                            <xsl:when test="$descAncestor">
-                                <span class="s1000d-levelledPara-title-prefix">
-                                    <xsl:number count="levelledPara" level="multiple" from="description" format="1"/>
-                                </span>
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:if>
-                    <xsl:apply-templates select="title" mode="inline"/>
-                </h4>
-            </xsl:if>
-            <div class="levelled-para-content">
-                <xsl:apply-templates select="para | figure | note | sequentialList | randomList | table | levelledPara | symbol"/>
+    <!-- Procedural Step Templates -->
+    <xsl:template match="*[local-name()='proceduralStep']">
+        <xsl:variable name="is-nested" select="parent::*[local-name()='proceduralStep']"/>
+        <xsl:variable name="title-node" select="*[local-name()='title'][1]"/>
+        <div class="row" id="{@id}">
+            <div class="col-12">
+                <div class="levelOneBar">
+                    <xsl:choose>
+                        <!-- Case 1: Has a <title> -->
+                        <xsl:when test="$title-node">
+                            <div class="d-flex">
+                                <xsl:choose>
+                                    <xsl:when test="$is-nested">
+                                        <div class="subparaTitleNo">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='proceduralStep']" level="multiple" from="*[local-name()='description' or local-name()='procedure']" format="1.1"/>
+                                        </div>
+                                        <div class="subparaTitle">
+                                            <xsl:apply-templates select="$title-node" mode="inline"/>
+                                        </div>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <div class="roundedBullet">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='proceduralStep' and not(parent::*[local-name()='proceduralStep'])]" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
+                                        </div>
+                                        <div class="para0Title flex-grow-1">
+                                            <xsl:apply-templates select="$title-node" mode="inline"/>
+                                        </div>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </div>
+                            <!-- Content below the title -->
+                            <div class="step-content-wrapper" style="margin-left: 45px; margin-top: 10px;">
+                                <xsl:apply-templates select="*[not(local-name()='title')]"/>
+                            </div>
+                        </xsl:when>
+                        <!-- Case 2: No <title> -->
+                        <xsl:otherwise>
+                            <div class="d-flex">
+                                <xsl:choose>
+                                    <xsl:when test="$is-nested">
+                                        <div class="subparaNo">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='proceduralStep']" level="multiple" from="*[local-name()='description' or local-name()='procedure']" format="1.1"/>
+                                        </div>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <div class="roundedBullet">
+                                            <xsl:call-template name="get-chapter-number">
+                                                <xsl:with-param name="node" select="."/>
+                                            </xsl:call-template>
+                                            <xsl:text>.</xsl:text>
+                                            <xsl:number count="*[local-name()='proceduralStep' and not(parent::*[local-name()='proceduralStep'])]" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
+                                        </div>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                                <div class="flex-grow-1">
+                                    <xsl:apply-templates select="*"/>
+                                </div>
+                            </div>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
             </div>
         </div>
     </xsl:template>
-    <xsl:template match="levelledPara/title" mode="inline">
+    <!-- All other templates from the previous response should remain as they are: -->
+    <xsl:template match="*[local-name()='proceduralStep']/*[local-name()='para']">
+        <!-- Check if the <para> contains ONLY a list element (and ignore whitespace text nodes) -->
+        <xsl:variable name="is-only-list" 
+        select="*[local-name()='randomList' or local-name()='sequentialList'] 
+                and count(*[not(self::text() and normalize-space()='')])=1"/>
+        <xsl:choose>
+            <xsl:when test="$is-only-list">
+                <!-- If only a list, apply templates directly to the list to skip the <p> tag -->
+                <xsl:apply-templates/>
+            </xsl:when>
+            <xsl:otherwise>
+                <p class="mb-2">
+                    <xsl:apply-templates/>
+                </p>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <xsl:template match="*[local-name()='proceduralStep']/*[local-name()='title']">
+        <p class="mb-2 font-weight-bold">
+            <xsl:apply-templates/>
+        </p>
+    </xsl:template>
+    <xsl:template match="*[local-name()='proceduralStep']/*[local-name()='title']" mode="inline">
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="para">
-        <p class="s1000d-para">
+    <xsl:template match="*[local-name()='randomList']">
+        <ul class="mb-2">
             <xsl:apply-templates/>
-        </p>
-    </xsl:template>
-    <xsl:template match="listItem/para[1][parent::ol[contains(@class, 'jss-custom-alpha-list')]]" mode="firstParaInListItemInJssList">
-        <span class="s1000d-para">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    <xsl:template match="listItem/para[1][parent::ol[not(contains(@class, 'jss-custom-alpha-list'))]]">
-        <span class="s1000d-para">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    <xsl:template match="listItem/para[position() > 1]">
-        <p class="s1000d-para">
-            <xsl:apply-templates/>
-        </p>
-    </xsl:template>
-    <xsl:template match="reqCond/text() | reqCond/internalRef">
-        <xsl:apply-imports/>
-    </xsl:template>
-    <xsl:template match="sequentialList">
-        <!-- **** CHANGE sequentialList to your actual S1000D element name **** -->
-        <xsl:variable name="listClass">
-            <xsl:choose>
-                <!-- Primary condition for JSS custom alpha list -->
-                <xsl:when test="not(parent::listItem) and 
-                                (ancestor::proceduralStep or 
-                                 ancestor::mainProcedure or 
-                                 ancestor::levelledPara or 
-                                 ancestor::note[not(ancestor::safetyRqmts)] or 
-                                 ancestor::entry)">
-                    s1000d-procedural-ol jss-custom-alpha-list
-                </xsl:when>
-                <!-- Condition for nested list (e.g., roman numerals) -->
-                <xsl:when test="parent::listItem[parent::ol[tokenize(@class, '\s+') = 'jss-custom-alpha-list']]">
-                    s1000d-procedural-ol jss-nested-roman-list
-                </xsl:when>
-                <!-- Fallback for other ordered lists -->
-                <xsl:otherwise>s1000d-procedural-ol s1000d-generic-ol</xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <ol class="{$listClass} mb-2">
-            <xsl:apply-templates select="listItem"/>
-        </ol>
-    </xsl:template>
-    <xsl:template match="randomList">
-        <xsl:variable name="listClass">
-            <xsl:choose>
-                <xsl:when test="ancestor::proceduralStep or ancestor::mainProcedure or ancestor::levelledPara or ancestor::note or ancestor::entry">s1000d-random-ul</xsl:when>
-                <xsl:otherwise>s1000d-generic-ul</xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <ul class="{$listClass} mb-2">
-            <xsl:apply-templates select="listItem"/>
         </ul>
     </xsl:template>
-    <xsl:template match="listItem[parent::ol[tokenize(@class, '\s+') = 'jss-custom-alpha-list']]" priority="10">
-        <xsl:comment>DEBUG: Matched JSS custom alpha listItem template</xsl:comment>
-        <li class="jss-custom-alpha-li">
-            <xsl:variable name="raw_position" select="count(preceding-sibling::listItem) + 1"/>
-            <span class="jss-list-marker">
-                 (
-                <xsl:value-of select="jss:get-jss-alpha-char($raw_position)"/>)
-            </span>
-            <div class="jss-list-item-content">
-                <!-- Process first para to be potentially inline, others as blocks -->
-                <xsl:apply-templates select="para[1]" mode="listItemFirstPara"/>
-                <xsl:apply-templates select="node()[not(self::para[1])]"/>
-            </div>
+    <xsl:template match="*[local-name()='randomList']/*[local-name()='listItem']">
+        <li class="m-0 pb-2">
+            <xsl:apply-templates/>
         </li>
     </xsl:template>
-    <xsl:template match="listItem[parent::ol[tokenize(@class, '\s+') = 'jss-nested-roman-list']]" priority="9">
-        <xsl:comment>DEBUG: Matched JSS nested roman listItem template</xsl:comment>
-        <li class="jss-nested-roman-li">
-            <div class="jss-list-item-content">
-                <xsl:apply-templates select="para[1]" mode="listItemFirstPara"/>
-                <xsl:apply-templates select="node()[not(self::para[1])]"/>
-            </div>
-        </li>
+    <xsl:template match="*[local-name()='randomList']/*[local-name()='listItem']/*[local-name()='para']">
+        <span id="{@id}" class="m-0 pb-2">
+            <xsl:apply-templates/>
+        </span>
     </xsl:template>
-    <xsl:template match="listItem" priority="1">
-        <xsl:comment>DEBUG: Matched GENERIC listItem template</xsl:comment>
-        <li class="mb-1">
-            <xsl:apply-templates select="para[1]" mode="listItemFirstPara"/>
-            <xsl:apply-templates select="node()[not(self::para[1])]"/>
-        </li>
-    </xsl:template>
-    <xsl:template match="note[not(ancestor::safetyRqmts)]">
-        <div class="alert alert-secondary s1000d-note ps-box" id="{@id}">
-            <span class="s1000d-note-prefix">NOTE
-                <xsl:if test="$numbered-titles and (count(preceding-sibling::note[not(ancestor::safetyRqmts)]) + count(following-sibling::note[not(ancestor::safetyRqmts)])) > 0">
-                    <xsl:text> </xsl:text>
-                    <xsl:number level="any" count="note[not(ancestor::safetyRqmts)]" from="*[self::content or self::procedure or self::description or self::mainProcedure or self::levelledPara or self::proceduralStep or self::entry or self::listItem]"/>
-                </xsl:if>:
-            </span>
-            <xsl:apply-templates select="para | sequentialList | randomList | node()[self::text() and normalize-space()]"/>
+    <!-- Closeout Requirements -->
+    <xsl:template match="*[local-name()='closeRqmts']">
+        <div class="closeout-requirements-section mt-4 mb-2">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h2 id="{@id}" class="container-fluid closeRqmtsTitle mb-3">Closeout Requirements</h2>
+            <xsl:apply-templates/>
         </div>
     </xsl:template>
-    <xsl:template match="emphasis">
-        <span class="font-weight-bold">
+    <!-- Fault Isolation Templates -->
+    <xsl:template match="*[local-name()='faultDescrGroup']">
+        <div class="fault-codes-section mt-4">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h3 class="mb-2">Fault Codes</h3>
+            <table class="table table-bordered table-sm prelim-req-table">
+                <caption class="sr-only">Fault Codes</caption>
+                <thead class="thead-light">
+                    <tr>
+                        <th>Fault code</th>
+                        <th>Fault description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <xsl:choose>
+                        <xsl:when test="*[local-name()='faultDescr']">
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <tr>
+                                <td colspan="2" class="text-center">None</td>
+                            </tr>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tbody>
+            </table>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='faultDescr']">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:value-of select="*[local-name()='faultCode']"/>
+            </td>
+            <td>
+                <xsl:apply-templates select="*[local-name()='faultDescrText']/*[local-name()='simplePara']/node()"/>
+            </td>
+        </tr>
+    </xsl:template>
+    <xsl:template match="*[local-name()='faultIsolationProcedure'] | *[local-name()='isolationProcedure']">
+        <xsl:call-template name="add-applic-attribute"/>
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='isolationMainProcedure']">
+        <div class="fault-procedure-list">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h3 class="mt-4 mb-3">Fault Isolation Procedure</h3>
+            <ol>
+                <xsl:apply-templates/>
+            </ol>
+        </div>
+    </xsl:template>
+    <xsl:template match="*[local-name()='isolationStep']">
+        <li id="{@id}">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="fault-step-content">
+                <xsl:if test="*[local-name()='action']">
+                    <xsl:apply-templates select="*[local-name()='action']"/>
+                    <br/>
+                </xsl:if>
+                <xsl:apply-templates/>
+            </div>
+        </li>
+    </xsl:template>
+    <xsl:template match="*[local-name()='isolationProcedureEnd']">
+        <li id="{@id}">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="fault-step-content">
+                <xsl:apply-templates select="*[local-name()='action']"/>
+            </div>
+            <div class="fault-closeout-link">
+                <xsl:variable name="closeoutId" select="ancestor::*[local-name()='faultIsolation' or local-name()='isolationProcedure'][1]/*[local-name()='closeRqmts']/@id"/>
+                <xsl:if test="$closeoutId">
+                    <a href="#{$closeoutId}">Go to Requirements after job completion.</a>
+                </xsl:if>
+            </div>
+        </li>
+    </xsl:template>
+    <xsl:template match="*[local-name()='action'] | *[local-name()='isolationStepQuestion']">
+        <xsl:call-template name="add-applic-attribute"/>
+        <xsl:apply-templates/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='isolationStepAnswer']">
+        <ul class="fault-answers">
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:apply-templates select="*[local-name()='yesNoAnswer']/*"/>
+        </ul>
+    </xsl:template>
+    <xsl:template match="*[local-name()='yesAnswer'] | *[local-name()='noAnswer']">
+        <li>
+            <xsl:variable name="targetId" select="@nextActionRefId"/>
+            <xsl:variable name="targetNode" select="key('ids', $targetId)"/>
+            <xsl:variable name="targetNumber" select="count($targetNode/preceding-sibling::*[local-name()='isolationStep' or local-name()='isolationProcedureEnd']) + 1"/>
+            <xsl:choose>
+                <xsl:when test="local-name()='yesAnswer'">Yes: </xsl:when>
+                <xsl:otherwise>No: </xsl:otherwise>
+            </xsl:choose>
+            <a href="#{$targetId}">Go to Step
+                <xsl:value-of select="$targetNumber"/>.
+            </a>
+        </li>
+    </xsl:template>
+    <!--
+    ==========================================================================================
+    START: NEW GENERIC PARSER FOR ESCAPED TAGS IN TEXT
+    This entire block replaces the previous text() and parse-escaped-refs templates.
+    It can handle any escaped tag by dispatching it to a dedicated handler template.
+    ==========================================================================================
+    -->
+    <!-- STEP 1: THE GENERIC RECURSIVE PARSER -->
+    <xsl:template match="text()">
+        <xsl:call-template name="parse-escaped-xml">
+            <xsl:with-param name="text" select="."/>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template name="parse-escaped-xml">
+        <xsl:param name="text"/>
+        <xsl:choose>
+            <xsl:when test="contains($text, '&lt;') and contains($text, '&gt;')">
+                <xsl:value-of select="substring-before($text, '&lt;')"/>
+                <xsl:variable name="afterLt" select="substring-after($text, '&lt;')"/>
+                <xsl:variable name="tagContent" select="substring-before($afterLt, '&gt;')"/>
+                <xsl:variable name="remainingAfterTag" select="substring-after($afterLt, '&gt;')"/>
+                <xsl:variable name="tagName">
+                    <xsl:choose>
+                        <xsl:when test="contains($tagContent, ' ')">
+                            <xsl:value-of select="substring-before($tagContent, ' ')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="translate($tagContent, '/', '')"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:choose>
+                    <!-- TYPE A: Self-closing tags -->
+                    <xsl:when test="$tagName = 'symbol' or $tagName = 'graphic'">
+                        <xsl:call-template name="handle-generic-symbol">
+                            <xsl:with-param name="attributes" select="$tagContent"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="parse-escaped-xml">
+                            <xsl:with-param name="text" select="$remainingAfterTag"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <!-- TYPE B: Paired tags (Added dmRef here) -->
+                    <xsl:when test="$tagName = 'internalRef' or $tagName = 'emphasis' or $tagName = 'verbatimText' or $tagName = 'externalPubRef' or $tagName = 'dmRef' or $tagName = 'superScript' or $tagName = 'subScript'">
+                        <xsl:variable name="closingTag" select="concat('&lt;/', $tagName, '&gt;')"/>
+                        <xsl:call-template name="handle-paired-tag">
+                            <xsl:with-param name="tagName" select="$tagName"/>
+                            <xsl:with-param name="tagContent" select="substring-before($afterLt, $closingTag)"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="parse-escaped-xml">
+                            <xsl:with-param name="text" select="substring-after($text, $closingTag)"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:text>&lt;</xsl:text>
+                        <xsl:call-template name="parse-escaped-xml">
+                            <xsl:with-param name="text" select="$afterLt"/>
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$text"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+    <!-- HANDLER: Generic Symbol/Graphic -->
+    <xsl:template name="handle-generic-symbol">
+        <xsl:param name="attributes"/>
+        <xsl:variable name="icn">
+            <xsl:call-template name="extract-attribute">
+                <xsl:with-param name="attrName" select="'infoEntityIdent='"/>
+                <xsl:with-param name="text" select="$attributes"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <img type="image/png" class="symbol" src="illustrations/{$icn}.png" alt="{$icn}" title="{$icn}"/>
+    </xsl:template>
+    <!-- HANDLER: Paired Tags (internalRef/emphasis) -->
+    <!-- HANDLER: Paired Tags (internalRef/emphasis/dmRef) -->
+    <!-- HANDLER: Paired Tags (Updated to fetch Titles for dmRef) -->
+    <xsl:template name="handle-paired-tag">
+        <xsl:param name="tagName"/>
+        <xsl:param name="tagContent"/>
+        <xsl:choose>
+            <!-- CASE FOR dmRef: Now fetches the actual Title from the XML file -->
+            <xsl:when test="$tagName = 'dmRef'">
+                <!-- 1. Extract all DMC parts from the escaped string -->
+                <xsl:variable name="mic" select="substring-before(substring-after($tagContent, 'modelIdentCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="sdc" select="substring-before(substring-after($tagContent, 'systemDiffCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="sc" select="substring-before(substring-after($tagContent, 'systemCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="ssc" select="substring-before(substring-after($tagContent, 'subSystemCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="sssc" select="substring-before(substring-after($tagContent, 'subSubSystemCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="assy" select="substring-before(substring-after($tagContent, 'assyCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="disassy" select="substring-before(substring-after($tagContent, 'disassyCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="disassyVar" select="substring-before(substring-after($tagContent, 'disassyCodeVariant=&quot;'), '&quot;')"/>
+                <xsl:variable name="ic" select="substring-before(substring-after($tagContent, 'infoCode=&quot;'), '&quot;')"/>
+                <xsl:variable name="icVar" select="substring-before(substring-after($tagContent, 'infoCodeVariant=&quot;'), '&quot;')"/>
+                <xsl:variable name="ilc" select="substring-before(substring-after($tagContent, 'itemLocationCode=&quot;'), '&quot;')"/>
+                <!-- 2. Construct the DMC string for the Link and Filename -->
+                <xsl:variable name="dmc" select="concat($mic, '-', $sdc, '-', $sc, '-', $ssc, $sssc, '-', $assy, '-', $disassy, $disassyVar, '-', $ic, $icVar, '-', $ilc)"/>
+                <!-- 3. Attempt to fetch the Title from the actual XML file -->
+                <xsl:variable name="ref-xml-path" select="concat($csdb-path, 'DMC-', $dmc, '.xml')"/>
+                <xsl:variable name="referenced-doc" select="document($ref-xml-path)"/>
+                <!-- Navigate to the Title elements inside the external XML -->
+                <xsl:variable name="titleNode" select="$referenced-doc/*[local-name()='dmodule']/*[local-name()='identAndStatusSection']/*[local-name()='dmAddress']/*[local-name()='dmAddressItems']/*[local-name()='dmTitle']"/>
+                <xsl:variable name="techName" select="$titleNode/*[local-name()='techName']"/>
+                <!-- <xsl:variable name="infoName" select="$titleNode/*[local-name()='infoName']"/> -->
+                <!-- 4. Output the HTML Link -->
+                <a href="DMC-{$dmc}.html">
+                    <xsl:choose>
+                        <!-- If we found names in the referenced XML, display "TechName - InfoName" -->
+                        <xsl:when test="normalize-space($techName) ">
+                            <xsl:value-of select="$techName"/>
+                            <xsl:if test="normalize-space($techName) ">
+                                <xsl:text>  </xsl:text>
+                            </xsl:if>
+                            <!-- <xsl:value-of select="$infoName"/> -->
+                        </xsl:when>
+                        <!-- Otherwise fallback to displaying the DMC Code -->
+                        <xsl:otherwise>
+                            <xsl:value-of select="$dmc"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </a>
+            </xsl:when>
+            <!-- Handling other tags like externalPubRef, internalRef, emphasis -->
+            <xsl:when test="$tagName = 'externalPubRef'">
+                <xsl:variable name="href">
+                    <xsl:call-template name="extract-attribute">
+                        <xsl:with-param name="attrName" select="'xlink:href='"/>
+                        <xsl:with-param name="text" select="$tagContent"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <a href="{$href}" target="_blank" rel="noopener noreferrer">
+                    <xsl:choose>
+                        <xsl:when test="contains($tagContent, 'externalPubTitle&gt;')">
+                            <xsl:value-of select="substring-before(substring-after($tagContent, 'externalPubTitle&gt;'), '&lt;/externalPubTitle')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </a>
+            </xsl:when>
+            <xsl:when test="$tagName = 'internalRef'">
+                <xsl:variable name="id">
+                    <xsl:call-template name="extract-attribute">
+                        <xsl:with-param name="attrName" select="'internalRefId='"/>
+                        <xsl:with-param name="text" select="$tagContent"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <a href="#{$id}">
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </a>
+            </xsl:when>
+            <xsl:when test="$tagName = 'emphasis'">
+                <strong>
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </strong>
+            </xsl:when>
+            <xsl:when test="$tagName = 'superScript'">
+                <sup>
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </sup>
+            </xsl:when>
+            <xsl:when test="$tagName = 'subScript'">
+                <sub>
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </sub>
+            </xsl:when>
+        </xsl:choose>
+    </xsl:template>
+    <!-- HELPER: Attribute Extractor -->
+    <xsl:template name="extract-attribute">
+        <xsl:param name="attrName"/>
+        <xsl:param name="text"/>
+        <xsl:variable name="afterAttr" select="substring-after($text, $attrName)"/>
+        <xsl:variable name="quote" select="substring($afterAttr, 1, 1)"/>
+        <xsl:value-of select="substring-before(substring($afterAttr, 2), $quote)"/>
+    </xsl:template>
+    <!--
+    ==========================================================================================
+    END: NEW GENERIC PARSER s
+    ==========================================================================================
+    -->
+    <xsl:template match="*[local-name()='emphasis']">
+        <span id="{@id}" class="font-weight-bold">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
-    <xsl:template match="emphasis[@emphasisType='et02']">
-        <span class="ps-italic">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    <xsl:template match="underline">
+    <xsl:template match="*[local-name()='underline']">
         <span class="text-decoration-underline">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+    <xsl:template match="*[local-name()='superScript']">
+        <sup>
+            <xsl:apply-templates/>
+        </sup>
+    </xsl:template>
+    <xsl:template match="*[local-name()='subScript']">
+        <sub>
+            <xsl:apply-templates/>
+        </sub>
+    </xsl:template>
+    <xsl:template match="*[local-name()='acronym']">
+        <abbr>
+            <xsl:attribute name="title">
+                <xsl:value-of select="*[local-name()='acronymDefinition']"/>
+            </xsl:attribute>
+            <xsl:call-template name="add-applic-attribute"/>
+            <xsl:value-of select="*[local-name()='acronymTerm']"/>
+        </abbr>
+    </xsl:template>
     <xsl:template match="table">
-        <div class="table-responsive mb-3 s1000d-table" id="{@id}">
-            <xsl:if test="title">
-                <h5 class="s1000d-table-title text-center mt-2 mb-1" id="{generate-id(title)}">
-                    <xsl:if test="$numbered-titles">
-                        <span class="s1000d-table-title-prefix">Table
-                            <xsl:variable name="chapterNumberDot">
-                                <xsl:if test="ancestor::procedure[ancestor::content]">
-                                    <xsl:number count="procedure" level="single" from="content" format="1"/>-
+        <div class="row">
+            <div class="col-12">
+                <div class="levelOneBar">
+                    <div class="d-flex" style= "display:flex !important">
+                        <div class="para0Indent" style="text-align: left; margin-left: 66px; padding-top: 6px; padding-bottom: 6px"/>
+                        <div class="para0TextDescription flex-grow-1 pb-3" style=" padding-bottom: 1rem !important">
+                            <xsl:if test="title">
+                                <div class="text-center font-italic mt-2 mb-1" id="tbl-{generate-id(.)}">
+                                    <xsl:text>Table </xsl:text>
+                                    <xsl:call-template name="get-chapter-number">
+                                        <xsl:with-param name="node" select="."/>
+                                    </xsl:call-template>
+                                    <xsl:text>-</xsl:text>
+                                    <xsl:number count="table" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
+                                    <xsl:text>: </xsl:text>
+                                    <xsl:apply-templates select="title" mode="inline"/>
+                                </div>
+                            </xsl:if>
+                            <table border="1" style= "width: 100%; text-align: left; border-spacing: 0; border-collapse: separate; border-radius: 8px; border: 2px solid #E7E7E7; margin-bottom: 16px ">
+                                <xsl:apply-templates select="@*"/>
+                                <xsl:apply-templates select="tgroup"/>
+                                <xsl:apply-templates select="tbody[not(parent::tgroup)]"/>
+                                <xsl:if test="not(tgroup) and not(tbody) and row">
+                                    <tbody>
+                                        <xsl:apply-templates select="row"/>
+                                    </tbody>
                                 </xsl:if>
-                            </xsl:variable>
-                            <xsl:value-of select="$chapterNumberDot"/>
-                            <xsl:number level="any" count="table" from="*[self::content or self::procedure[not(ancestor::procedure)] or self::description]" format="1"/>:
-                        </span>
-                    </xsl:if>
-                    <xsl:apply-templates select="title" mode="inline"/>
-                </h5>
-            </xsl:if>
-            <table class="table table-bordered table-sm">
-                <xsl:apply-templates select="tgroup"/>
-                <xsl:apply-templates select="tbody[not(parent::tgroup)]"/>
-                <xsl:if test="not(tgroup) and not(tbody) and row">
-                    <tbody>
-                        <xsl:apply-templates select="row"/>
-                    </tbody>
-                </xsl:if>
-            </table>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </xsl:template>
     <xsl:template match="tgroup">
-        <xsl:if test="@cols and string(xs:integer(number(@cols))) != 'NaN' ">
-            <colgroup>
-                <xsl:for-each select="1 to xs:integer(number(@cols))">
-                    <col/>
-                </xsl:for-each>
-            </colgroup>
-        </xsl:if>
         <xsl:apply-templates select="thead"/>
         <xsl:apply-templates select="tbody"/>
     </xsl:template>
     <xsl:template match="thead">
-        <thead class="thead-light">
+        <thead>
             <xsl:apply-templates select="row"/>
         </thead>
     </xsl:template>
@@ -519,143 +1404,171 @@
     </xsl:template>
     <xsl:template match="entry">
         <td>
-            <xsl:if test="@namest">
-                <xsl:attribute name="data-colname">
-                    <xsl:value-of select="@namest"/>
-                </xsl:attribute>
-            </xsl:if>
-            <xsl:if test="@nameend">
-                <xsl:attribute name="data-colname-end">
-                    <xsl:value-of select="@nameend"/>
-                </xsl:attribute>
-            </xsl:if>
             <xsl:if test="@morerows">
                 <xsl:attribute name="rowspan">
                     <xsl:value-of select="number(@morerows) + 1"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="@nameend and not(@namest = @nameend)">
-                <xsl:variable name="colspecs" select="ancestor::tgroup[1]/colspec"/>
-                <xsl:variable name="start-col-pos" select="count($colspecs[@colname=current()/@namest]/preceding-sibling::colspec) + 1"/>
-                <xsl:variable name="end-col-pos" select="count($colspecs[@colname=current()/@nameend]/preceding-sibling::colspec) + 1"/>
-                <xsl:if test="$end-col-pos > $start-col-pos">
-                    <xsl:attribute name="colspan">
-                        <xsl:value-of select="$end-col-pos - $start-col-pos + 1"/>
-                    </xsl:attribute>
-                </xsl:if>
+            <xsl:if test="@namest and @nameend">
+                <xsl:variable name="start" select="number(substring-after(@namest, 'c'))"/>
+                <xsl:variable name="end" select="number(substring-after(@nameend, 'c'))"/>
+                <xsl:attribute name="colspan">
+                    <xsl:value-of select="$end - $start + 1"/>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:attribute name="valign">top</xsl:attribute>
+            <xsl:if test="position() = 1 and ancestor::tbody">
+                <xsl:attribute name="class">pb-4</xsl:attribute>
+                <xsl:attribute name="width">20%</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="ancestor::thead">
+                <xsl:attribute name="class">pb-4 font-weight-bold</xsl:attribute>
             </xsl:if>
             <xsl:apply-templates/>
         </td>
     </xsl:template>
-    <xsl:template match="figure">
-        <div class="text-center my-3 p-3 border rounded" id="{@id}">
-            <xsl:if test="title">
-                <h5 class="s1000d-figure-title" id="{generate-id(title)}">
-                    <xsl:if test="$numbered-titles">
-                        <span class="s1000d-figure-title-prefix">Figure
-                            <xsl:variable name="chapterNumberDot">
-                                <xsl:if test="ancestor::procedure[ancestor::content]">
-                                    <xsl:number count="procedure" level="single" from="content" format="1"/>-
-                                </xsl:if>
-                            </xsl:variable>
-                            <xsl:value-of select="$chapterNumberDot"/>
-                            <xsl:number level="any" count="figure" from="*[self::content or self::procedure[not(ancestor::procedure)] or self::description]" format="1"/>:
-                        </span>
-                    </xsl:if>
-                    <xsl:apply-templates select="title" mode="inline"/>
-                </h5>
-            </xsl:if>
-            <xsl:apply-templates select="graphic"/>
-            <xsl:if test="graphic/@infoEntityIdent">
-                <div class="mt-2">
-                    <button class="btn btn-sm btn-outline-secondary icn-link" type="button">View
-                        <xsl:value-of select="graphic/@infoEntityIdent"/>
-                    </button>
+    <xsl:template match="@*">
+        <xsl:copy/>
+    </xsl:template>
+    <!-- Figure and Symbol Templates -->
+    <xsl:template name="create-media-container">
+        <xsl:param name="elementId" select="''"/>
+        <xsl:param name="content"/>
+        <div class="row" id="{$elementId}">
+            <div class="col-12">
+                <!-- <div class="levelOneBar"> -->
+                <div class="d-flex">
+                    <div class="para0Indent"/>
+                    <div class="para0TextDescription flex-grow-1 pb-3">
+                        <xsl:copy-of select="$content"/>
+                    </div>
                 </div>
-            </xsl:if>
+                <!-- </div> -->
+            </div>
         </div>
     </xsl:template>
-    <xsl:template match="graphic">
-        <img class="img-fluid fig">
+    <xsl:template match="figure">
+        <xsl:call-template name="create-media-container">
+            <xsl:with-param name="elementId" select="@id"/>
+            <xsl:with-param name="content">
+                <xsl:if test="title">
+                    <div class="text-center font-italic mt-2 mb-1" id="fig-{generate-id(.)}">
+                        <xsl:text>Figure </xsl:text>
+                        <xsl:call-template name="get-chapter-number">
+                            <xsl:with-param name="node" select="."/>
+                        </xsl:call-template>
+                        <xsl:text>-</xsl:text>
+                        <xsl:number count="figure" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
+                        <xsl:text>: </xsl:text>
+                        <xsl:apply-templates select="title" mode="inline"/>
+                    </div>
+                </xsl:if>
+                <div class="text-center">
+                    <div class="container-fluid m-0 pb-4">
+                        <xsl:apply-templates select="graphic"/>
+                        <!-- <br/> -->
+                        <button class="btn btn-sm btn-secondary mb-1 icn-link">View</button>
+                        <br/>
+                        <div class="icn mb-2">
+                            <xsl:value-of select="graphic/@infoEntityIdent"/>
+                        </div>
+                    </div>
+                </div>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="symbol">
+        <xsl:call-template name="create-media-container">
+            <xsl:with-param name="elementId" select="@id"/>
+            <xsl:with-param name="content">
+                <div class="text-center">
+                    <div class="container-fluid m-0 pb-4">
+                        <xsl:apply-templates select="." mode="generate-image"/>
+                        <!-- <br/> -->
+                        <!-- <div class="icn">
+                            <xsl:value-of select="@infoEntityIdent"/>
+                        </div> -->
+                    </div>
+                </div>
+            </xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template match="graphic | symbol" mode="generate-image">
+        <img type="image/png">
+            <xsl:attribute name="class">
+                <xsl:choose>
+                    <xsl:when test="local-name()='symbol'">symbol</xsl:when>
+                    <xsl:otherwise>img-fluid fig</xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
             <xsl:attribute name="src">
-                <xsl:value-of select="concat('illustrations/', @infoEntityIdent, '.png')"/>
+                <xsl:value-of select="concat('illustrations/', translate(@infoEntityIdent, '–—', '--'), '.png')"/>
             </xsl:attribute>
             <xsl:attribute name="alt">
                 <xsl:choose>
-                    <xsl:when test="../title">
-                        <xsl:value-of select="normalize-space(../title)"/>
+                    <xsl:when test="parent::figure and ../*[local-name()='title']">
+                        <xsl:value-of select="../*[local-name()='title']"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="@infoEntityIdent"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
+            <xsl:attribute name="title">
+                <xsl:value-of select="@infoEntityIdent"/>
+            </xsl:attribute>
         </img>
     </xsl:template>
-    <xsl:template match="title" mode="inline">
+    <xsl:template match="graphic">
+        <xsl:apply-templates select="." mode="generate-image"/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='title']" mode="inline">
         <xsl:apply-templates/>
     </xsl:template>
-    <xsl:template match="title">
-        <h3 class="ps-Title_font ps-Title_3 ps-Title_color">
-            <xsl:apply-templates/>
-        </h3>
-    </xsl:template>
-    <xsl:template match="internalRef">
+    <xsl:template match="*[local-name()='internalRef']">
         <xsl:variable name="target-id" select="@internalRefId"/>
         <xsl:variable name="target" select="key('ids', $target-id)"/>
-        <a href="#{$target-id}" class="ps-Link">
+        <a href="#{$target-id}">
             <xsl:choose>
-                <xsl:when test="name($target)='figure'">Figure
+                <xsl:when test="local-name($target)='figure'">
+                    <xsl:text>Figure </xsl:text>
                     <xsl:for-each select="$target">
-                        <xsl:variable name="chapterNumberDot">
-                            <xsl:if test="ancestor::procedure[ancestor::content]">
-                                <xsl:number count="procedure" level="single" from="content" format="1"/>-
-                            </xsl:if>
-                        </xsl:variable>
-                        <xsl:value-of select="$chapterNumberDot"/>
-                        <xsl:number level="any" count="figure" from="*[self::content or self::procedure[not(ancestor::procedure)] or self::description]" format="1"/>
+                        <xsl:call-template name="get-chapter-number">
+                            <xsl:with-param name="node" select="."/>
+                        </xsl:call-template>
+                        <xsl:text>-</xsl:text>
+                        <xsl:number count="figure" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
                     </xsl:for-each>
                 </xsl:when>
-                <xsl:when test="name($target)='table'">Table
+                <xsl:when test="local-name($target)='table'">
+                    <xsl:text>Table </xsl:text>
                     <xsl:for-each select="$target">
-                        <xsl:variable name="chapterNumberDot">
-                            <xsl:if test="ancestor::procedure[ancestor::content]">
-                                <xsl:number count="procedure" level="single" from="content" format="1"/>-
-                            </xsl:if>
-                        </xsl:variable>
-                        <xsl:value-of select="$chapterNumberDot"/>
-                        <xsl:number level="any" count="table" from="*[self::content or self::procedure[not(ancestor::procedure)] or self::description]" format="1"/>
+                        <xsl:call-template name="get-chapter-number">
+                            <xsl:with-param name="node" select="."/>
+                        </xsl:call-template>
+                        <xsl:text>-</xsl:text>
+                        <xsl:number count="table" level="any" from="*[local-name()='description' or local-name()='procedure']" format="1"/>
                     </xsl:for-each>
                 </xsl:when>
-                <xsl:when test="name($target)='levelledPara'">Para
-                    <xsl:if test="$numbered-titles">
-                        <xsl:variable name="targetProcAncestor" select="$target/ancestor::procedure[1]"/>
-                        <xsl:variable name="targetDescAncestor" select="$target/ancestor::description[1]"/>
-                        <xsl:choose>
-                            <xsl:when test="$targetProcAncestor">
-                                <xsl:for-each select="$targetProcAncestor">
-                                    <xsl:number count="procedure" level="single" from="content" format="1"/>
-                                </xsl:for-each>.
-                                <xsl:for-each select="$target">
-                                    <xsl:number count="levelledPara" level="multiple" from="procedure" format="1"/>
-                                </xsl:for-each>
-                            </xsl:when>
-                            <xsl:when test="$targetDescAncestor">
-                                <xsl:for-each select="$target">
-                                    <xsl:number count="levelledPara" level="multiple" from="description" format="1"/>
-                                </xsl:for-each>
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:if>
+                <xsl:when test="local-name($target)='levelledPara'">
+                    <xsl:text>Para </xsl:text>
+                    <xsl:for-each select="$target">
+                        <xsl:call-template name="get-chapter-number">
+                            <xsl:with-param name="node" select="."/>
+                        </xsl:call-template>
+                        <xsl:text>.</xsl:text>
+                        <xsl:number count="*[local-name()='levelledPara']" level="multiple" from="*[local-name()='description' or local-name()='procedure']" format="1.1"/>
+                    </xsl:for-each>
                 </xsl:when>
-                <xsl:when test="name($target)='proceduralStep'">Step (
+                <xsl:when test="local-name($target)='proceduralStep'">
+                    <xsl:text>Step </xsl:text>(
                     <xsl:value-of select="$target-id"/>)
                 </xsl:when>
                 <xsl:when test="normalize-space(.)">
                     <xsl:apply-templates/>
                 </xsl:when>
-                <xsl:when test="$target/title">
-                    <xsl:apply-templates select="$target/title" mode="inline"/>
+                <xsl:when test="$target/*[local-name()='title']">
+                    <xsl:apply-templates select="$target/*[local-name()='title']" mode="inline"/>
                 </xsl:when>
                 <xsl:otherwise>Ref (
                     <xsl:value-of select="$target-id"/>)
@@ -663,51 +1576,18 @@
             </xsl:choose>
         </a>
     </xsl:template>
-    <!-- Preliminary Requirements (Styling classes added to titles) -->
-    <xsl:template match="preliminaryRqmts">
-        <div class="preliminary-requirements-section mt-4 mb-4 p-3 border rounded">
-            <h3 id="{@id}" class="mb-3 ps-Title_font ps-Title_3 ps-Title_color">Preliminary Requirements</h3>
-            <xsl:apply-templates select="reqCondGroup | reqPersons | reqTechInfoGroup | reqSupportEquips | reqSupplies | reqSpares | reqSafety"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="reqCondGroup">
-        <div class="req-cond-group mt-3">
-            <h4 class="mb-2 ps-Title_font ps-Title_4 ps-Title_color">Required Conditions</h4>
-            <table class="tblReferences table-bordered table-sm table-striped prelim-req-table s1000d-table">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Action / Condition</th>
-                        <th>Data Module / Technical Publication</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <xsl:apply-templates select="reqCondPm | reqCondDm | reqCondNoRef"/>
-                </tbody>
-            </table>
-        </div>
-    </xsl:template>
-    <xsl:template match="reqCondPm | reqCondDm | reqCondNoRef">
-        <tr>
-            <td>
-                <xsl:apply-templates select="reqCond/node()"/>
-            </td>
-            <td>
-                <xsl:apply-templates select="pmRef | dmRef"/>
-                <xsl:if test="not(pmRef) and not(dmRef)">N/A</xsl:if>
-            </td>
-        </tr>
-    </xsl:template>
-    <xsl:template match="pmRef">
-        <xsl:variable name="pmIdent" select="pmRefIdent"/>
-        <xsl:variable name="pmCodeEl" select="$pmIdent/pmCode"/>
-        <xsl:variable name="langEl" select="$pmIdent/language"/>
-        <xsl:variable name="issueEl" select="$pmIdent/issueInfo"/>
+    <xsl:template match="*[local-name()='pmRef']">
+        <xsl:variable name="pmIdent" select="*[local-name()='pmRefIdent']"/>
+        <xsl:variable name="pmCodeEl" select="$pmIdent/*[local-name()='pmCode']"/>
+        <xsl:variable name="langEl" select="$pmIdent/*[local-name()='language']"/>
+        <xsl:variable name="issueEl" select="$pmIdent/*[local-name()='issueInfo']"/>
         <xsl:variable name="pm_mic" select="$pmCodeEl/@modelIdentCode"/>
         <xsl:variable name="pm_issuer" select="$pmCodeEl/@pmIssuer"/>
         <xsl:variable name="pm_number" select="$pmCodeEl/@pmNumber"/>
         <xsl:variable name="pm_volume" select="$pmCodeEl/@pmVolume"/>
         <xsl:variable name="pm_filename" select="concat(translate(concat($pm_mic, '-', $pm_issuer, '-', $pm_number, '-', $pm_volume), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '.html')"/>
-        <a href="{$pm_filename}" class="pm-reference-link ps-Link">PM:
+        <a href="{$pm_filename}" class="pm-reference-link">
+            <xsl:text>PM: </xsl:text>
             <xsl:value-of select="$pm_mic"/>-
             <xsl:value-of select="$pm_issuer"/>-
             <xsl:value-of select="$pm_number"/>-
@@ -724,226 +1604,228 @@
             </xsl:if>.
         </a>
     </xsl:template>
-    <xsl:template match="reqPersons">
-        <div class="req-persons mt-3">
-            <h4 class="mb-2 ps-Title_font ps-Title_4 ps-Title_color">Required Personnel</h4>
-            <table class="tblReferences table-bordered table-sm table-striped prelim-req-table s1000d-table">
+    <xsl:template match="*[local-name()='reqTechInfoGroup']">
+        <div class="req-tech-info-group mt-3">
+            <xsl:call-template name="add-applic-attribute"/>
+            <h4 class="mb-2">Required Technical Information</h4>
+            <table class="tblReferences table-bordered table-sm table-striped prelim-req-table">
                 <thead class="thead-light">
                     <tr>
-                        <th>Persons</th>
                         <th>Category</th>
-                        <th>Skill Level</th>
-                        <th>Trade</th>
-                        <th>Est. Time</th>
+                        <th>Data Module / Technical Publication</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <xsl:apply-templates select="person"/>
+                    <xsl:choose>
+                        <xsl:when test="*[local-name()='reqTechInfo']">
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <tr>
+                                <td colspan="2" class="text-center">None</td>
+                            </tr>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </tbody>
             </table>
         </div>
     </xsl:template>
-    <xsl:template match="person">
+    <xsl:template match="*[local-name()='reqTechInfo']">
         <tr>
+            <xsl:call-template name="add-applic-attribute"/>
             <td>
-                <xsl:value-of select="@man"/>
+                <xsl:value-of select="@reqTechInfoCategory"/>
             </td>
             <td>
-                <xsl:value-of select="personCategory/@personCategoryCode"/>
-            </td>
-            <td>
-                <xsl:value-of select="personSkill/@skillLevelCode"/>
-            </td>
-            <td>
-                <xsl:value-of select="trade"/>
-            </td>
-            <td>
-                <xsl:value-of select="estimatedTime"/>
-                <xsl:value-of select="estimatedTime/@unitOfMeasure"/>
+                <xsl:apply-templates/>
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="reqTechInfoGroup">
-        <div class="req-tech-info-group mt-3" style="margin: 0 10px" >
-            <h4 class="mb-2 ps-Title_font ps-Title_4 ps-Title_color">Required Technical Information</h4>
-            <ul class="list-group list-group-flush">
-                <xsl:apply-templates select="reqTechInfo"/>
-            </ul>
+    <xsl:template match="*[local-name()='safetyRqmts']">
+        <xsl:call-template name="add-applic-attribute"/>
+        <xsl:apply-templates/>
+    </xsl:template>
+    <!-- Warning, Caution, Note Templates -->
+    <xsl:template match="*[local-name()='warning']">
+        <div class="row">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="col-12">
+                <table class="warningBackground">
+                    <tbody>
+                        <tr>
+                            <td class="text-center p-4">
+                                <table class="warningBody">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center font-weight-bold p-4">
+                                                <div class="h6 font-weight-bold">WARNING</div>
+                                                <div class="font-weight-bold">
+                                                    <p class="pb-0 m-0">
+                                                        <xsl:apply-templates select="*[local-name()='warningAndCautionPara']"/>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </xsl:template>
-    <xsl:template match="reqTechInfo">
-        <li class="list-group-item">
-            <xsl:if test="@reqTechInfoCategory">
-                <span class="badge badge-info mr-2">Category:
-                    <xsl:value-of select="@reqTechInfoCategory"/>
-                </span>
-            </xsl:if>
-            <xsl:apply-templates select="dmRef"/>
-        </li>
-    </xsl:template>
-    <xsl:template match="reqSupportEquips | reqSupplies | reqSpares">
-        <div class="mt-3">
-            <h4 id="{@id}" class="mb-2 ps-Title_font ps-Title_4 ps-Title_color">
-                <xsl:choose>
-                    <xsl:when test="self::reqSupportEquips">Support Equipment</xsl:when>
-                    <xsl:when test="self::reqSupplies">Consumables, materials and expendables</xsl:when>
-                    <xsl:when test="self::reqSpares">Spares</xsl:when>
-                </xsl:choose>
-            </h4>
-            <xsl:apply-templates select="supportEquipDescrGroup | supplyDescrGroup | spareDescrGroup"/>
+    <xsl:template match="*[local-name()='caution']">
+        <div class="row">
+            <xsl:call-template name="add-applic-attribute"/>
+            <div class="col-12">
+                <table class="cautionBackground">
+                    <tbody>
+                        <tr>
+                            <td class="text-center p-4">
+                                <table class="cautionBody">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center font-weight-bold p-4">
+                                                <div class="h6 font-weight-bold">CAUTION</div>
+                                                <div class="font-weight-bold">
+                                                    <p class="pb-0 m-0">
+                                                        <xsl:apply-templates select="*[local-name()='warningAndCautionPara']"/>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </xsl:template>
-    <xsl:template match="supportEquipDescrGroup | supplyDescrGroup | spareDescrGroup">
-        <table class="tblReferences table-bordered table-sm table-striped prelim-req-table s1000d-table">
-            <thead class="thead-light">
-                <tr>
-                    <th>Name</th>
-                    <th>Manufacturer / Part No.</th>
-                    <th>Quantity</th>
-                    <th>Remark</th>
-                </tr>
-            </thead>
-            <tbody>
-                <xsl:apply-templates select="supportEquipDescr | supplyDescr | spareDescr"/>
-            </tbody>
-        </table>
-    </xsl:template>
-    <xsl:template match="supportEquipDescr | supplyDescr | spareDescr">
-        <tr>
-            <td>
-                <xsl:value-of select="name"/>
-            </td>
-            <td>
-                <xsl:value-of select="identNumber/manufacturerCode"/>
-                <xsl:if test="identNumber/manufacturerCode and identNumber/partAndSerialNumber/partNumber">
-                    <xsl:text> / </xsl:text>
-                </xsl:if>
-                <xsl:value-of select="identNumber/partAndSerialNumber/partNumber"/>
-            </td>
-            <td>
-                <xsl:value-of select="reqQuantity"/>
-                <xsl:if test="self::supplyDescr and reqQuantity/@unitOfMeasure">
-                    <xsl:text> </xsl:text>
-                    <xsl:value-of select="reqQuantity/@unitOfMeasure"/>
-                </xsl:if>
-            </td>
-            <td>
-                <xsl:apply-templates select="remarks/simplePara/node()"/>
-            </td>
-        </tr>
-    </xsl:template>
-    <xsl:template match="reqSafety">
-        <div class="req-safety mt-3">
-            <h4 id="{@id}" class="mb-2 ps-Title_font ps-Title_4 ps-Title_color">Safety Requirements</h4>
-            <xsl:apply-templates select="safetyRqmts"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="safetyRqmts">
-        <xsl:apply-templates select="warning | caution | note"/>
-    </xsl:template>
-    <xsl:template match="warning">
-        <div class="alert alert-danger mt-2 s1000d-note ps-box" role="alert" id="{@id}">
-            <h5 class="alert-heading s1000d-note-prefix">WARNING:</h5>
-            <xsl:apply-templates select="warningAndCautionPara"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="caution">
-        <div class="alert alert-warning mt-2 s1000d-note ps-box" role="alert" id="{@id}">
-            <h5 class="alert-heading s1000d-note-prefix">CAUTION:</h5>
-            <xsl:apply-templates select="warningAndCautionPara"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="safetyRqmts/note">
-        <div class="alert alert-info mt-2 s1000d-note ps-box" role="alert" id="{@id}">
-            <h5 class="alert-heading s1000d-note-prefix">NOTE:</h5>
-            <xsl:apply-templates select="notePara"/>
-        </div>
-    </xsl:template>
-    <xsl:template match="warningAndCautionPara | notePara">
-        <p class="mb-0 s1000d-para">
+    <xsl:template match="*[local-name()='warningAndCautionPara'] | *[local-name()='notePara']">
+        <p class="mb-0">
+            <xsl:call-template name="add-applic-attribute"/>
             <xsl:apply-templates/>
         </p>
     </xsl:template>
-    <!-- S1000D Identifiers -->
-    <xsl:template match="dmRef[not(ancestor::reqTechInfo) and not(ancestor::refs) and not(ancestor::identAndStatusSection)]">
-        <xsl:variable name="ref-dmc">
-            <xsl:apply-templates select="dmRefIdent/dmCode" mode="text"/>
+    <xsl:template match="*[local-name()='dmRef']">
+        <xsl:variable name="ref-dmc_raw">
+            <xsl:apply-templates select="*[local-name()='dmRefIdent']/*[local-name()='dmCode']" mode="text"/>
         </xsl:variable>
-        <xsl:variable name="ref-filename" select="concat(translate($ref-dmc, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '.html')"/>
-        <a href="{$ref-filename}" class="ps-Link">
+        <xsl:variable name="ref-dmc" select="normalize-space($ref-dmc_raw)"/>
+        <xsl:variable name="ref-filename" select="concat('DMC-', $ref-dmc, '.html')"/>
+        <a href="{$ref-filename}">
             <xsl:value-of select="$ref-dmc"/>
         </a>
     </xsl:template>
-    <xsl:template match="dmRef" mode="refs">
+    <xsl:template match="*[local-name()='dmRef']" mode="refs">
         <tr>
+            <xsl:call-template name="add-applic-attribute"/>
             <td>
                 <xsl:apply-templates select="."/>
             </td>
             <td>
+                <xsl:variable name="ref-dmc_raw">
+                    <xsl:apply-templates select="*[local-name()='dmRefIdent']/*[local-name()='dmCode']" mode="text"/>
+                </xsl:variable>
+                <xsl:variable name="ref-dmc" select="normalize-space($ref-dmc_raw)"/>
+                <xsl:variable name="ref-filename" select="concat($csdb-path, 'DMC-', $ref-dmc, '.xml')"/>
+                <xsl:variable name="referenced-doc" select="document($ref-filename)"/>
+                <xsl:variable name="info-name" select="$referenced-doc/*[local-name()='dmodule']/*[local-name()='identAndStatusSection']/*[local-name()='dmAddress']/*[local-name()='dmAddressItems']/*[local-name()='dmTitle']/*[local-name()='infoName']/text()"/>
                 <xsl:choose>
-                    <xsl:when test="dmRefAddressItems/dmTitle">
-                        <xsl:apply-templates select="dmRefAddressItems/dmTitle"/>
+                    <xsl:when test="normalize-space($info-name)">
+                        <xsl:value-of select="$info-name"/>
                     </xsl:when>
                     <xsl:otherwise>N/A</xsl:otherwise>
                 </xsl:choose>
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="dmIdent | dmRefIdent">
-        <xsl:apply-templates select="dmCode" mode="text"/>
+    <xsl:template match="*[local-name()='externalPubRef']" mode="refs">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:choose>
+                    <xsl:when test="@xlink:href">
+                        <a href="{@xlink:href}" target="_blank" rel="noopener noreferrer">
+                            <!-- Try to find Code first, then Title -->
+                            <xsl:variable name="pubCode" select=".//*[local-name()='externalPubCode']"/>
+                            <xsl:choose>
+                                <xsl:when test="normalize-space($pubCode)">
+                                    <xsl:value-of select="$pubCode"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <!-- Fallback to Title if no Code exists -->
+                                    <xsl:value-of select=".//*[local-name()='externalPubTitle']"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </a>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select=".//*[local-name()='externalPubCode']"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </td>
+            <td>
+                <xsl:variable name="pubTitle" select=".//*[local-name()='externalPubTitle']"/>
+                <xsl:choose>
+                    <xsl:when test="normalize-space($pubTitle)">
+                        <xsl:value-of select="$pubTitle"/>
+                    </xsl:when>
+                    <xsl:otherwise>External Publication</xsl:otherwise>
+                </xsl:choose>
+            </td>
+        </tr>
     </xsl:template>
-    <xsl:template match="dmCode" mode="text">
-        <xsl:value-of select="@modelIdentCode"/>-
-        <xsl:value-of select="@systemDiffCode"/>-
-        <xsl:value-of select="@systemCode"/>-
-        <xsl:value-of select="@subSystemCode"/>
-        <xsl:value-of select="@subSubSystemCode"/>-
-        <xsl:value-of select="@assyCode"/>-
-        <xsl:value-of select="@disassyCode"/>
-        <xsl:value-of select="@disassyCodeVariant"/>-
-        <xsl:value-of select="@infoCode"/>
-        <xsl:value-of select="@infoCodeVariant"/>-
-        <xsl:value-of select="@itemLocationCode"/>
+    <xsl:template match="*[local-name()='pmRef']" mode="refs">
+        <tr>
+            <xsl:call-template name="add-applic-attribute"/>
+            <td>
+                <xsl:apply-templates select="."/>
+            </td>
+            <td>
+                <xsl:text>Publication Module</xsl:text>
+                <xsl:if test="*[local-name()='pmRefAddressItems']/*[local-name()='pmTitle']/descendant-or-self::*/text()[normalize-space()]">
+                    <xsl:text> – </xsl:text>
+                    <xsl:apply-templates select="*[local-name()='pmRefAddressItems']/*[local-name()='pmTitle']/node()"/>
+                </xsl:if>
+            </td>
+        </tr>
     </xsl:template>
-    <xsl:template match="dmCode">
-        <xsl:value-of select="@modelIdentCode"/>-
-        <xsl:value-of select="@systemDiffCode"/>-
-        <xsl:value-of select="@systemCode"/>-
-        <xsl:value-of select="@subSystemCode"/>
-        <xsl:value-of select="@subSubSystemCode"/>-
-        <xsl:value-of select="@assyCode"/>-
-        <xsl:value-of select="@disassyCode"/>
-        <xsl:value-of select="@disassyCodeVariant"/>-
-        <xsl:value-of select="@infoCode"/>
-        <xsl:value-of select="@infoCodeVariant"/>-
-        <xsl:value-of select="@itemLocationCode"/>
+    <xsl:template match="*[local-name()='dmIdent'] | *[local-name()='dmRefIdent']">
+        <xsl:apply-templates select="*[local-name()='dmCode']" mode="text"/>
     </xsl:template>
-    <xsl:template match="issueDate">
+    <xsl:template match="*[local-name()='dmCode']" mode="text">
+        <xsl:value-of select="concat(@modelIdentCode, '-', @systemDiffCode, '-', @systemCode, '-', @subSystemCode, @subSubSystemCode, '-', @assyCode, '-', @disassyCode, @disassyCodeVariant, '-', @infoCode, @infoCodeVariant, '-', @itemLocationCode)"/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='dmCode']">
+        <xsl:value-of select="concat(@modelIdentCode, '-', @systemDiffCode, '-', @systemCode, '-', @subSystemCode, @subSubSystemCode, '-', @assyCode, '-', @disassyCode, @disassyCodeVariant, '-', @infoCode, @infoCodeVariant, '-', @itemLocationCode)"/>
+    </xsl:template>
+    <xsl:template match="*[local-name()='issueDate']">
         <xsl:value-of select="@year"/>-
         <xsl:value-of select="@month"/>-
         <xsl:value-of select="@day"/>
     </xsl:template>
-    <xsl:template match="language">
+    <xsl:template match="*[local-name()='language']">
         <xsl:value-of select="@languageIsoCode"/>/
         <xsl:value-of select="@countryIsoCode"/>
     </xsl:template>
-    <xsl:template match="dmTitle">
-        <xsl:apply-templates select="techName"/>
-        <xsl:if test="infoName">
-            <xsl:text> – </xsl:text>
-            <xsl:apply-templates select="infoName"/>
+    <xsl:template match="*[local-name()='dmTitle']">
+        <xsl:apply-templates select="*[local-name()='techName']"/>
+        <xsl:if test="*[local-name()='infoName']"> –
+            <xsl:apply-templates select="*[local-name()='infoName']"/>
         </xsl:if>
-        <xsl:if test="infoNameVariant">
-            <xsl:text> (</xsl:text>
-            <xsl:apply-templates select="infoNameVariant"/>
-            <xsl:text>)</xsl:text>
+        <xsl:if test="*[local-name()='infoNameVariant']"> (
+            <xsl:apply-templates select="*[local-name()='infoNameVariant']"/>)
         </xsl:if>
     </xsl:template>
-    <xsl:template match="techName | infoName | infoNameVariant">
-        <xsl:value-of select="."/>
+    <xsl:template match="*[local-name()='techName'] | *[local-name()='infoName'] | *[local-name()='infoNameVariant']">
+        <xsl:value-of select="." disable-output-escaping="yes"/>
     </xsl:template>
-    <xsl:template match="responsiblePartnerCompany | originator">
-        <xsl:value-of select="enterpriseName"/> (
+    <xsl:template match="*[local-name()='responsiblePartnerCompany'] | *[local-name()='originator']">
+        <xsl:value-of select="*[local-name()='enterpriseName']"/> (
         <xsl:value-of select="@enterpriseCode"/>)
     </xsl:template>
     <xsl:template name="object-id">
@@ -957,13 +1839,5 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    <!-- Symbol for Tool Icon (JSS may have specific iconography) -->
-    <xsl:template match="symbol">
-        <xsl:if test="@symbolType='toolIcon' or contains(lower-case(@repsSysOrientedSymbolName),'tool') or contains(lower-case(@id),'tool')">
-            <img src="images/Tool_Symbol.jpg" alt="Tool Symbol" class="s1000d-tool-icon" style="height: 1em; vertical-align: baseline; margin-right: 0.2em;"/>
-        </xsl:if>
-        <xsl:apply-templates/>
-    </xsl:template>
-    <!-- Remove empty text nodes -->
     <xsl:template match="text()[normalize-space(.) = '']"/>
 </xsl:stylesheet>

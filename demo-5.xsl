@@ -1029,7 +1029,7 @@
                         </xsl:call-template>
                     </xsl:when>
                     <!-- TYPE B: Paired tags (Added dmRef here) -->
-                    <xsl:when test="$tagName = 'internalRef' or $tagName = 'emphasis' or $tagName = 'verbatimText' or $tagName = 'externalPubRef' or $tagName = 'dmRef'">
+                    <xsl:when test="$tagName = 'internalRef' or $tagName = 'emphasis' or $tagName = 'verbatimText' or $tagName = 'externalPubRef' or $tagName = 'dmRef' or $tagName = 'superScript' or $tagName = 'subScript'">
                         <xsl:variable name="closingTag" select="concat('&lt;/', $tagName, '&gt;')"/>
                         <xsl:call-template name="handle-paired-tag">
                             <xsl:with-param name="tagName" select="$tagName"/>
@@ -1146,6 +1146,16 @@
                     <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
                 </strong>
             </xsl:when>
+            <xsl:when test="$tagName = 'superScript'">
+                <sup>
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </sup>
+            </xsl:when>
+            <xsl:when test="$tagName = 'subScript'">
+                <sub>
+                    <xsl:value-of select="substring-after($tagContent, '&gt;')"/>
+                </sub>
+            </xsl:when>
         </xsl:choose>
     </xsl:template>
     <!-- HELPER: Attribute Extractor -->
@@ -1170,6 +1180,16 @@
         <span class="text-decoration-underline">
             <xsl:apply-templates/>
         </span>
+    </xsl:template>
+    <xsl:template match="*[local-name()='superScript']">
+        <sup>
+            <xsl:apply-templates/>
+        </sup>
+    </xsl:template>
+    <xsl:template match="*[local-name()='subScript']">
+        <sub>
+            <xsl:apply-templates/>
+        </sub>
     </xsl:template>
     <xsl:template match="*[local-name()='acronym']">
         <abbr>
